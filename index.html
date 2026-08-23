@@ -305,7 +305,7 @@
       <h1>Aditya&nbsp;Mate</h1>
       <p class="role">Applied Scientist, Microsoft<br><span class="ital">Previously, Harvard PhD in CS, Google Research, IBM Research.</span></p>
 
-      <p class="blurb">8 years of AI/ML experience spanning LLMs, reasoning agents, probabilistic modeling, reinforcement learning and bandit algorithms for decision-making under uncertainty. Published at NeurIPS, ICML, AAAI, AAMAS, EMNLP — with experience translating research into deployed ML systems in product settings.</p>
+      <p class="blurb"><span id="yoe">8</span> years of AI/ML experience spanning LLMs, reasoning agents, probabilistic modeling, reinforcement learning and bandit algorithms for decision-making under uncertainty. Published at NeurIPS, ICML, AAAI, AAMAS, EMNLP — with experience translating research into deployed ML systems in product settings.</p>
 
       <div class="trajectory" aria-hidden="true">
         <div class="tline"></div>
@@ -359,7 +359,7 @@
         <li><span class="brass-dot"></span>Best Paper Award, NeurIPS 2021 Workshop on Machine Learning in Public Health</li>
         <li><span class="brass-dot"></span>Best Lightning Paper &amp; Best Thematic Paper, NeurIPS 2020 Workshops on ML in Public Health / ML for Health</li>
       </ul>
-      <p>This work has been featured in the <a href="https://seas.harvard.edu/news/2022/11/machine-learning-maternal-care" target="_blank" rel="noopener">Harvard newsletter</a>, the <a href="https://ai.googleblog.com/2022/08/using-ml-to-boost-engagement-with.html" target="_blank" rel="noopener">Google AI blog</a>, and the <a href="https://www.nature.com/articles/nindia.2020.73" target="_blank" rel="noopener">Nature newsletter</a>. In 2013, I was selected to represent India, by India's Department of Science &amp; Technology, at the <a href="https://www.sydney.edu.au/science/industry-and-community/community-engagement/international-science-school.html" target="_blank" rel="noopener">International Science School</a> at the University of Sydney, Australia.</p>
+      <p>This work has been featured in the <a href="https://seas.harvard.edu/news/2022/11/machine-learning-maternal-care" target="_blank" rel="noopener">Harvard newsletter</a> and the <a href="https://ai.googleblog.com/2022/08/using-ml-to-boost-engagement-with.html" target="_blank" rel="noopener">Google AI blog</a>. My other past research has been featured in the <a href="https://www.nature.com/articles/nindia.2020.73" target="_blank" rel="noopener">Nature Asia newsletter</a>, <a href="https://www.businessinsider.com/scientists-strategy-prevent-second-wave-coronavirus-more-lockdowns-2020-5" target="_blank" rel="noopener">Business Insider</a>, <a href="https://medicalxpress.com/news/2020-05-strategy-limit-covid-.html" target="_blank" rel="noopener">Medical Xpress</a>, and <a href="https://www.esakal.com/pune/lockdown-required-coronavirus-287431" target="_blank" rel="noopener">Sakal Media</a>, among others. In 2013, I was selected to represent India, by India's Department of Science &amp; Technology, at the <a href="https://www.sydney.edu.au/science/industry-and-community/community-engagement/international-science-school.html" target="_blank" rel="noopener">International Science School</a> at the University of Sydney, Australia.</p>
     </section>
 
     <section id="experience" class="block">
@@ -407,5 +407,15 @@
     <p>Aditya Mate · Cambridge, MA</p>
   </footer>
 
+  <script>
+    (function(){
+      // Ticks over every July 1st; shows 8 through June 2027, 9 from July 2027, etc.
+      var BASE_YEAR = 2018;
+      var now = new Date();
+      var effectiveYear = now.getMonth() >= 6 ? now.getFullYear() : now.getFullYear() - 1;
+      var el = document.getElementById('yoe');
+      if (el) el.textContent = effectiveYear - BASE_YEAR;
+    })();
+  </script>
 </body>
 </html>
