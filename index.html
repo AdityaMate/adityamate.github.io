@@ -85,8 +85,8 @@
   .hero-text{ flex: 1; min-width: 0; }
   .portrait{
     flex-shrink: 0;
-    width: 208px;
-    height: 208px;
+    width: 224px;
+    height: 224px;
     border: 1px solid var(--ink);
     padding: 6px;
     margin-top: 0.2rem;
@@ -116,10 +116,17 @@
   .hero .role{
     font-size: 1.08rem;
     color: var(--ink-soft);
-    max-width: 46ch;
-    margin: 0 0 3rem;
+    max-width: 50ch;
+    margin: 0 0 1.2rem;
   }
   .hero .role .ital{ font-family: 'Newsreader', serif; font-style: italic; color: var(--ink); }
+
+  .hero .blurb{
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    max-width: 48ch;
+    margin: 0 0 2.6rem;
+  }
 
   /* ---------- Trajectory (signature element) ---------- */
   .trajectory{
@@ -276,7 +283,7 @@
   <header class="masthead">
     <div class="mark">AM</div>
     <nav class="quicklinks">
-      <a href="CV_AdityaMate_full.pdf" target="_blank" rel="noopener">Full CV</a>
+      <a href="CV_AdityaMate_full.pdf" target="_blank" rel="noopener">CV (full)</a>
       <span class="dot">·</span>
       <a href="CV_AdityaMate_2pg.pdf" target="_blank" rel="noopener">CV (2pg)</a>
       <span class="dot">·</span>
@@ -295,9 +302,10 @@
 
   <section class="hero">
     <div class="hero-text">
-      <p class="eyebrow">Cambridge, Massachusetts</p>
       <h1>Aditya&nbsp;Mate</h1>
-      <p class="role">Applied Scientist, Microsoft — <span class="ital">reasoning agents, LLM evaluation &amp; safety, and decision-making under uncertainty.</span></p>
+      <p class="role">Applied Scientist, Microsoft<br><span class="ital">Previously, Harvard PhD in CS, Google Research, IBM Research.</span></p>
+
+      <p class="blurb">8 years of AI/ML experience spanning LLMs, reasoning agents, probabilistic modeling, reinforcement learning and bandit algorithms for decision-making under uncertainty. Published at NeurIPS, ICML, AAAI, AAMAS, EMNLP — with experience translating research into deployed ML systems in product settings.</p>
 
       <div class="trajectory" aria-hidden="true">
         <div class="tline"></div>
