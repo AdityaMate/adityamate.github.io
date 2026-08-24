@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — Aditya Mate</title>
+<meta name="description" content="Selected publications by Aditya Mate: book chapters, journal papers, and conference and workshop papers spanning LLMs, reasoning agents, restless bandits, and decision-making under uncertainty.">
+<link rel="canonical" href="https://adityamate.github.io/publications.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F9F8F4;
+    --ink: #16191F;
+    --ink-soft: #52565E;
+    --rule: #DBD7CB;
+    --indigo: #2E4372;
+    --indigo-tint: #EDF0F6;
+    --brass: #96742A;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: var(--indigo); text-decoration: none; border-bottom: 1px solid rgba(46,67,114,0.35); }
+  a:hover{ border-bottom-color: var(--indigo); }
+  a:focus-visible{ outline: 2px solid var(--indigo); outline-offset: 3px; border-radius: 2px; }
+
+  .mono{ font-family: 'IBM Plex Mono', monospace; }
+
+  /* ---------- Masthead ---------- */
+  .masthead{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--rule);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .quicklinks{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items:center;
+  }
+  .quicklinks a{ border-bottom: 1px solid transparent; color: var(--ink); }
+  .quicklinks a:hover{ color: var(--indigo); border-bottom-color: var(--indigo); }
+  .quicklinks .pipe{ color: var(--rule); }
+
+  /* ---------- Page header ---------- */
+  .pubs-header{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 1rem;
+  }
+  .pubs-header .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+    margin: 0 0 0.9rem;
+  }
+  .pubs-header h1{
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.9rem;
+  }
+  .pubs-header p{
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  /* ---------- Content blocks ---------- */
+  main{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .block{
+    padding: 2.6rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .block > h2{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+    margin: 0 0 1.6rem;
+    font-weight: 500;
+  }
+
+  .pub-list{ list-style:none; margin:0; padding:0; }
+  .pub-item{ margin-bottom: 1.8rem; }
+  .pub-item:last-child{ margin-bottom: 0; }
+  .pub-tag{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--brass);
+    margin: 0 0 0.35rem;
+  }
+  .pub-title{
+    font-family: 'Newsreader', serif;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    margin: 0 0 0.35rem;
+  }
+  .pub-meta{
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    margin: 0 0 0.35rem;
+    max-width: 66ch;
+  }
+  .pub-meta strong{ color: var(--ink); font-weight: 600; }
+  .pub-venue{ font-style: italic; }
+  .pub-note{
+    font-size: 0.82rem;
+    color: var(--brass);
+    margin: 0;
+  }
+  .pub-link{ font-size: 0.85rem; }
+
+  footer{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (max-width: 640px){
+    .masthead{ flex-direction: column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="masthead">
+    <nav class="quicklinks">
+      <a href="index.html">Home</a>
+      <span class="pipe">|</span>
+      <span class="cv-group">CV (<a href="CV_AdityaMate_2pg.pdf" target="_blank" rel="noopener">short</a> | <a href="CV_AdityaMate_full.pdf" target="_blank" rel="noopener">full</a>)</span>
+      <span class="pipe">|</span>
+      <a href="https://www.linkedin.com/in/aditya-mate/" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="pipe">|</span>
+      <a href="https://scholar.google.com/citations?user=2yHJIP0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Scholar</a>
+      <span class="pipe">|</span>
+      <a href="mailto:adityamate@microsoft.com">Email</a>
+    </nav>
+  </header>
+
+  <div class="pubs-header">
+    <p class="eyebrow">Aditya Mate</p>
+    <h1>Publications</h1>
+    <p>Selected list, newest first. * denotes equal contribution. See the <a href="CV_AdityaMate_full.pdf" target="_blank" rel="noopener">full CV</a> for teaching, service, and press coverage.</p>
+  </div>
+
+  <main>
+
+    <section class="block">
+      <h2>Book Chapters</h2>
+      <ul class="pub-list">
+        <li class="pub-item">
+          <p class="pub-tag">2023</p>
+          <p class="pub-title">"Field Study in Deploying Restless Multi-Armed Bandits: Assisting Non-Profits in Improving Maternal and Child Health"</p>
+          <p class="pub-meta"><strong>Aditya Mate</strong>, Shresth Verma, Gargi Singh, Aparna Taneja, Milind Tambe</p>
+          <p class="pub-link"><a href="https://rdcu.be/ef96m" target="_blank" rel="noopener">Read chapter →</a></p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h2>Journal Publications</h2>
+      <ul class="pub-list">
+        <li class="pub-item">
+          <p class="pub-tag">[J5] · MSJAR 2025</p>
+          <p class="pub-title">"Building Gold-Standard Datasets for AI Quality Evaluation"</p>
+          <p class="pub-meta">Tian Xia, <strong>Aditya Mate</strong>*, Regina Ceballos*, et al. — <span class="pub-venue">Microsoft Journal on Applied Research (MSJAR), Vol. 22</span></p>
+          <p class="pub-note">* Equal contribution</p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[J4] · JAAMAS 2025</p>
+          <p class="pub-title">"A Game-Theoretic Approach for Hierarchical Epidemic Control"</p>
+          <p class="pub-meta">Feiran Jia, <strong>Aditya Mate</strong>, Zun Li, Shahin Jabbari, Mithun Chakraborty, Milind Tambe, Michael P. Wellman, Yevgeniy Vorobeychik — <span class="pub-venue">Journal of Autonomous Agents and Multi-Agent Systems, Vol. 39</span></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[J3] · MSJAR 2023</p>
+          <p class="pub-title">"Graph Based LLM Agents for Complex Reasoning Tasks"</p>
+          <p class="pub-meta">Newman Cheng, David Koleczek, Ha Trinh, Kate Lytvynes, <strong>Aditya Mate</strong>, Allen Stewart, et al., Chester Curme, Jonathan Larson — <span class="pub-venue">Microsoft Journal of Applied Research (MSJAR), Vol. 20</span></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[J2] · PNAS 2020</p>
+          <p class="pub-title">"Modeling Between-Population Variation in COVID-19 Dynamics in Hubei, Lombardy, and New York City"</p>
+          <p class="pub-meta">Bryan Wilder, Marie Charpignon, Jackson A. Killian, Han-Ching Ou, <strong>Aditya Mate</strong>, Shahin Jabbari, Andrew Perrault, Angel Desai, Milind Tambe, Maimuna S. Majumder — <span class="pub-venue">Proceedings of the National Academy of Sciences (PNAS)</span></p>
+          <p class="pub-link"><a href="https://www.pnas.org/doi/10.1073/pnas.2010651117" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[J1] · HFES 2020</p>
+          <p class="pub-title">"An Exploratory Study of a Masking Strategy of Cyberdeception Using CyberVAN"</p>
+          <p class="pub-meta">Palvi Aggarwal, Omkar Thakoor, <strong>Aditya Mate</strong>, Milind Tambe, Edward A. Cranford, Christian Lebiere, Cleotilde Gonzalez — <span class="pub-venue">Proceedings of the Human Factors and Ergonomics Society Annual Meeting (HFES)</span></p>
+          <p class="pub-link"><a href="https://journals.sagepub.com/doi/abs/10.1177/1071181320641100" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h2>Conference Publications (Rigorously Reviewed)</h2>
+      <ul class="pub-list">
+        <li class="pub-item">
+          <p class="pub-tag">[C14] · CAIS 2026</p>
+          <p class="pub-title">"SAPO: Secure Automated Prompt Optimization via Multi-Agent Collaboration"</p>
+          <p class="pub-meta">Emmanuel Boateng, et al., <strong>Aditya Mate</strong>, Ehi Nosakhare — <span class="pub-venue">ACM Conference on AI and Agentic Systems (CAIS)</span></p>
+          <p class="pub-link"><a href="https://www.caisconf.org/program/2026/papers/sapo-secure-automated-prompt-optimization-via-multi-agent-collaboration/" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C13] · EMNLP 2025</p>
+          <p class="pub-title">"How to Fine-Tune Safely on a Budget: Model Adaptation Using Minimal Resources"</p>
+          <p class="pub-meta">Anh Pham, Mihir Thalanki, Michael Sun, Aditya Chaloo, Ankita Gupta, Tian Xia, <strong>Aditya Mate</strong>, Ehimwenma Nosakhare, Soundararajan Srinivasan — <span class="pub-venue">EMNLP 2025 Industry Track</span></p>
+          <p class="pub-link"><a href="https://arxiv.org/abs/2510.21885v1" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C12] · ICML 2023</p>
+          <p class="pub-title">"Improved Policy Evaluation for Randomized Trials of Algorithmic Resource Allocation"</p>
+          <p class="pub-meta"><strong>Aditya Mate</strong>, Bryan Wilder, Aparna Taneja, Milind Tambe — <span class="pub-venue">International Conference on Machine Learning (ICML)</span></p>
+          <p class="pub-link"><a href="https://arxiv.org/abs/2302.02570" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C11] · AAMAS 2023</p>
+          <p class="pub-title">"Restless Multi-Armed Bandits for Maternal and Child Health: Results from Decision-Focused Learning"</p>
+          <p class="pub-meta">Shresth Verma, <strong>Aditya Mate</strong>, Kai Wang, Neha Madhiwalla, Aparna Hegde, Aparna Taneja, Milind Tambe — <span class="pub-venue">International Conference on Autonomous Agents and Multiagent Systems (AAMAS)</span></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C10] · AAAI 2023</p>
+          <p class="pub-title">"Decision-Focused Learning in Restless Multi-Armed Bandits with Application to Maternal and Child Care Domain"</p>
+          <p class="pub-meta">Kai Wang*, Shresth Verma*, <strong>Aditya Mate</strong>, Sanket Shah, Aparna Taneja, Neha Madhiwalla, Aparna Hegde, Milind Tambe — <span class="pub-venue">AAAI Conference on Artificial Intelligence, Washington DC</span></p>
+          <p class="pub-note">* Equal contribution</p>
+          <p class="pub-link"><a href="https://arxiv.org/pdf/2202.00916.pdf" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C9] · IAAI 2023</p>
+          <p class="pub-title">"Increasing Impact of Mobile Health Programs: SAHELI for Maternal and Child Care"</p>
+          <p class="pub-meta">Shresth Verma*, Gargi Singh*, <strong>Aditya Mate</strong>, Paritosh Verma, Sruthi Gorantla, Neha Madhiwalla, Aparna Hegde, Divy Thakkar, Aparna Taneja, Manish Jain, Milind Tambe — <span class="pub-venue">Innovative Applications of Artificial Intelligence (IAAI), Washington DC</span></p>
+          <p class="pub-link"><a href="https://teamcore.seas.harvard.edu/files/teamcore/files/iaai_2023_armman_rmab_deployment_5.pdf" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C8] · AAAI 2022</p>
+          <p class="pub-title">"Field Study and Deployment of Restless Multi-Armed Bandits for Improving Maternal and Child Health Outcomes"</p>
+          <p class="pub-meta"><strong>Aditya Mate</strong>*, Lovish Madaan*, Aparna Taneja, Neha Madhiwalla, Shresth Verma, Gargi Singh, Aparna Hegde, Pradeep Varakantham, Milind Tambe — <span class="pub-venue">AAAI Conference on Artificial Intelligence, Vancouver</span></p>
+          <p class="pub-note">* Equal contribution — recognized with the IAAI 2023 Innovative Application Award</p>
+          <p class="pub-link"><a href="https://arxiv.org/pdf/2109.08075.pdf" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C7] · AAMAS 2022</p>
+          <p class="pub-title">"Efficient Algorithms for Finite Horizon and Streaming Restless Multi-Armed Bandit Problems"</p>
+          <p class="pub-meta"><strong>Aditya Mate</strong>, Arpita Biswas, Christoph Siebenbrunner, Susobhan Ghosh, Milind Tambe — <span class="pub-venue">International Conference on Autonomous Agents and Multiagent Systems (AAMAS)</span></p>
+          <p class="pub-link"><a href="https://arxiv.org/pdf/2103.04730.pdf" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C6] · UAI 2022</p>
+          <p class="pub-title">"Solving Structured Hierarchical Games Using Differential Backward Induction" (Oral Presentation)</p>
+          <p class="pub-meta">Zun Li, Feiran Jia, <strong>Aditya Mate</strong>, Shahin Jabbari, Mithun Chakraborty, Milind Tambe, Yevgeniy Vorobeychik — <span class="pub-venue">Conference on Uncertainty in Artificial Intelligence (UAI)</span></p>
+          <p class="pub-link"><a href="https://arxiv.org/pdf/2106.04663.pdf" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C5] · AAMAS 2021</p>
+          <p class="pub-title">"Risk-Sensitive Interventions in Public Health: Planning with Restless Multi-Armed Bandits"</p>
+          <p class="pub-meta"><strong>Aditya Mate</strong>, Andrew Perrault, Milind Tambe — <span class="pub-venue">International Conference on Autonomous Agents and Multiagent Systems (AAMAS)</span></p>
+          <p class="pub-link"><a href="https://www.ifaamas.org/Proceedings/aamas2021/pdfs/p880.pdf" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C4] · NeurIPS 2020</p>
+          <p class="pub-title">"Collapsing Bandits and Their Application to Public Health Interventions"</p>
+          <p class="pub-meta"><strong>Aditya Mate</strong>*, Jackson Killian*, Haifeng Xu, Andrew Perrault, Milind Tambe — <span class="pub-venue">Advances in Neural Information Processing Systems (NeurIPS), Vancouver</span></p>
+          <p class="pub-note">* Equal contribution</p>
+          <p class="pub-link"><a href="https://papers.nips.cc/paper/2020/file/b460cf6b09878b00a3e1ad4c72344ccd-Paper.pdf" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C3] · AAAI 2020</p>
+          <p class="pub-title">"End-to-End Game-Focused Learning of Adversary Behavior in Security Games"</p>
+          <p class="pub-meta">Andrew Perrault, Bryan Wilder, Eric Ewing, <strong>Aditya Mate</strong>, Bistra Dilkina, Milind Tambe — <span class="pub-venue">AAAI Conference on Artificial Intelligence, New York</span></p>
+          <p class="pub-link"><a href="https://ojs.aaai.org/index.php/AAAI/article/view/5494/5350" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C2] · AAMAS 2020</p>
+          <p class="pub-title">"Scalable Game-Focused Learning of Adversary Models: Data-to-Decisions in Network Security Games"</p>
+          <p class="pub-meta">Kai Wang, Andrew Perrault, <strong>Aditya Mate</strong>, Milind Tambe — <span class="pub-venue">International Conference on Autonomous Agents and Multi-Agent Systems (AAMAS), Auckland</span></p>
+          <p class="pub-link"><a href="https://www.ifaamas.org/Proceedings/aamas2020/pdfs/p1449.pdf" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[C1] · COMSNETS 2020</p>
+          <p class="pub-title">"Whittle Index for AoI-aware Scheduling"</p>
+          <p class="pub-meta">B. Sombabu, <strong>Aditya Mate</strong>, D. Manjunath, Sharayu Moharir — <span class="pub-venue">International Conference on Communication Systems and Networks (COMSNETS), IEEE</span></p>
+          <p class="pub-link"><a href="https://www.dropbox.com/s/rlg0tazif0vbull/techReport.pdf?dl=0" target="_blank" rel="noopener">Read paper →</a></p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h2>Selected Workshop Papers</h2>
+      <ul class="pub-list">
+        <li class="pub-item">
+          <p class="pub-tag">[W9] · NeurIPS 2025 Workshop</p>
+          <p class="pub-title">"One Head, Many Models: Cross-Attention Routing for Cost-Aware LLM Selection"</p>
+          <p class="pub-meta">Roshini Pulishetty*, Mani Kishan Ghantasala*, Keerthy Kaushik Dasoju*, Niti Mangwani*, Vishal Garimella, <strong>Aditya Mate</strong>, Somya Chatterjee, Yue Kang, Ehi Nosakhare, Sadid Hasan, Soundar Srinivasan — <span class="pub-venue">Workshop on Evaluating the Evolving LLM Lifecycle, NeurIPS</span></p>
+          <p class="pub-note">* Equal contribution</p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[W8] · AAAI 2023 Workshop</p>
+          <p class="pub-title">"Decision-Focused Evaluation: Analyzing Performance of Deployed Restless Multi-Arm Bandits"</p>
+          <p class="pub-meta">Paritosh Verma, Shresth Verma, <strong>Aditya Mate</strong>, Aparna Taneja, Milind Tambe — <span class="pub-venue">Workshop on Artificial Intelligence for Social Good (AI4SG)</span></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[W7] · NeurIPS 2022 Workshop</p>
+          <p class="pub-title">"Case Study: Applying Decision Focused Learning in the Real World"</p>
+          <p class="pub-meta">Shresth Verma, <strong>Aditya Mate</strong>, Kai Wang, Aparna Taneja, Milind Tambe — <span class="pub-venue">Workshop on Trustworthy and Socially Responsible Machine Learning, NeurIPS</span></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[W6] · NeurIPS 2021 Workshop</p>
+          <p class="pub-title">"Restless Bandits in the Field: Real-World Study for Improving Maternal and Child Health Outcomes"</p>
+          <p class="pub-meta"><strong>Aditya Mate</strong>*, Lovish Madaan*, Aparna Taneja, Neha Madhiwalla, Shresth Verma, Gargi Singh, Aparna Hegde, Pradeep Varakantham, Milind Tambe — <span class="pub-venue">Workshop on Machine Learning in Public Health (MLPH), NeurIPS</span></p>
+          <p class="pub-note">* Equal contribution — Best Paper Award</p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[W5] · NeurIPS 2020 Workshop</p>
+          <p class="pub-title">"Incorporating Healthcare Motivated Constraints in Restless Bandit Based Resource Allocation"</p>
+          <p class="pub-meta">Aviva Prins, <strong>Aditya Mate</strong>, Jackson Killian, Rediet Abebe, Milind Tambe — <span class="pub-venue">Workshop on Machine Learning for Health (ML4H), NeurIPS, Vancouver</span></p>
+          <p class="pub-note">Best Thematic Submission</p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[W4] · NeurIPS 2020 Workshop</p>
+          <p class="pub-title">"Incorporating Healthcare Motivated Constraints in Restless Bandit Based Resource Allocation"</p>
+          <p class="pub-meta">Aviva Prins, <strong>Aditya Mate</strong>, Jackson Killian, Rediet Abebe, Milind Tambe — <span class="pub-venue">Workshop on Machine Learning in Public Health (MLPH), NeurIPS, Vancouver</span></p>
+          <p class="pub-note">Best Lightning Paper</p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[W3] · AAMAS 2020 Workshop</p>
+          <p class="pub-title">"Building Decision Aids for Community Health Workers: Optimizing Interventions via Restless Bandits"</p>
+          <p class="pub-meta"><strong>Aditya Mate</strong>*, Jackson Killian*, Haifeng Xu, Andrew Perrault, Milind Tambe — <span class="pub-venue">OptLearnMAS, AAMAS, Auckland</span></p>
+          <p class="pub-note">* Equal contribution</p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[W2] · KDD 2020 Workshop</p>
+          <p class="pub-title">"Evaluating COVID-19 Lockdown Policies For India: A Preliminary Modeling Assessment for Individual States"</p>
+          <p class="pub-meta"><strong>Aditya Mate</strong>, Jackson A. Killian, Bryan Wilder, Marie Charpignon, Ananya Awasthi, Milind Tambe, Maimuna S. Majumder — <span class="pub-venue">ACM SIGKDD Workshop on Humanitarian Mapping</span></p>
+        </li>
+        <li class="pub-item">
+          <p class="pub-tag">[W1] · KDD &amp; ICML 2020 Workshop</p>
+          <p class="pub-title">"Bayesian Inference of Between-Population Variation in COVID-19 Dynamics"</p>
+          <p class="pub-meta">Bryan Wilder, Marie Charpignon, Jackson Killian, Han-Ching Ou, <strong>Aditya Mate</strong>, Shahin Jabbari, Andrew Perrault, Angel Desai, Milind Tambe, Maimuna Majumder — <span class="pub-venue">Workshop on Machine Learning for Global Health, ICML</span></p>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Aditya Mate · Cambridge, MA</p>
+  </footer>
+
+</body>
+</html>
