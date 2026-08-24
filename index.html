@@ -153,7 +153,19 @@
     font-size: 0.98rem;
     color: var(--ink-soft);
     max-width: 48ch;
-    margin: 0 0 2.6rem;
+    margin: 0 0 1rem;
+  }
+
+  .hero .ac-badge{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    color: var(--brass);
+    border: 1px solid rgba(150,116,42,0.35);
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 3px;
+    margin: 0 0 2.4rem;
   }
 
   /* ---------- Trajectory (signature element) ---------- */
@@ -237,6 +249,7 @@
     background: var(--brass);
     flex-shrink: 0;
   }
+  .talk-venue{ font-weight: 600; color: var(--ink); font-size: 1.05em; }
 
   /* Timeline (experience) */
   .timeline{
@@ -332,6 +345,8 @@
 
       <p class="blurb"><span id="yoe">8</span> years of AI/ML experience spanning LLMs, reasoning agents, probabilistic modeling, reinforcement learning and bandit algorithms for decision-making under uncertainty. Published at NeurIPS, ICML, AAAI, AAMAS, EMNLP, PNAS, etc. — with experience translating research into deployed ML systems in product settings.</p>
 
+      <p class="ac-badge">Area Chair / Senior PC — ICLR, NeurIPS, ICML, AAAI, IJCAI &amp; AAMAS</p>
+
       <div class="trajectory" aria-hidden="true">
         <div class="tline"></div>
         <div class="tnode">
@@ -422,11 +437,12 @@
 
     <section id="talks" class="block">
       <p class="eyebrow">Invited Talks</p>
+      <p>I'm frequently invited to speak on LLM reasoning agents and decision-making under uncertainty at academic and industry venues.</p>
       <ul class="awards-list">
-        <li><span class="brass-dot"></span>Invited Talk, New York AI Agents Summit — CUNY, Manhattan, NY (May 2026)</li>
-        <li><span class="brass-dot"></span>Invited Talk, Microsoft Research New England — ML Ideas Seminar, Cambridge, MA (June 2024)</li>
-        <li><span class="brass-dot"></span>Invited Talk, University of Maryland — Multi-Agent Reinforcement Learning Group (March 2024)</li>
-        <li><span class="brass-dot"></span>Guest Lecture, Carnegie Mellon University — course 10-718: Machine Learning in Practice (Feb 2023)</li>
+        <li><span class="brass-dot"></span><span class="talk-venue">New York AI Agents Summit</span> — Invited Talk, CUNY, Manhattan, NY (May 2026)</li>
+        <li><span class="brass-dot"></span><span class="talk-venue">Microsoft Research New England</span> — Invited Talk, ML Ideas Seminar, Cambridge, MA (June 2024)</li>
+        <li><span class="brass-dot"></span><span class="talk-venue">University of Maryland</span> — Invited Talk, Multi-Agent Reinforcement Learning Group (March 2024)</li>
+        <li><span class="brass-dot"></span><span class="talk-venue">Carnegie Mellon University</span> — Guest Lecture, course 10-718: Machine Learning in Practice (Feb 2023)</li>
       </ul>
     </section>
 
