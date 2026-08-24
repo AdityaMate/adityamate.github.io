@@ -224,18 +224,19 @@
     padding: 0;
   }
   .awards-list li{
-    display:flex;
-    align-items:flex-start;
-    gap: 0.65rem;
+    position: relative;
+    padding-left: 1.15rem;
     margin-bottom: 0.6rem;
     max-width: 60ch;
   }
-  .brass-dot{
+  .awards-list li::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
     width: 6px; height: 6px;
-    margin-top: 0.55em;
     border-radius: 1px;
     background: var(--brass);
-    flex-shrink: 0;
   }
   #talks .awards-list li{ max-width: none; font-size: 0.84rem; }
 
@@ -380,13 +381,13 @@
     <section id="awards" class="block">
       <p class="eyebrow">Awards</p>
       <ul class="awards-list">
-        <li><span class="brass-dot"></span>IAAI 2023 Innovative Application Award</li>
-        <li><span class="brass-dot"></span>Runner-up, INFORMS 2022 "Doing Good with Good OR" Competition</li>
-        <li><span class="brass-dot"></span><strong>Best Paper Award</strong>, NeurIPS 2021 Workshop on Machine Learning in Public Health</li>
-        <li><span class="brass-dot"></span><strong>Best Lightning Paper</strong> &amp; Best Thematic Paper, NeurIPS 2020 Workshops on ML in Public Health / ML for Health</li>
-        <li><span class="brass-dot"></span>All India Rank 273, among 1.3 million examinees in the IIT Joint Entrance Exam (JEE) 2013</li>
-        <li><span class="brass-dot"></span>All India Rank 15, KVPY Scholarship, Government of India (2012)</li>
-        <li><span class="brass-dot"></span>Selected by India's Dept. of Science &amp; Technology to represent India at the Prof. Harry Messel International Science School, University of Sydney, Australia (2013)</li>
+        <li>IAAI 2023 Innovative Application Award</li>
+        <li>Runner-up, INFORMS 2022 "Doing Good with Good OR" Competition</li>
+        <li><strong>Best Paper Award</strong>, NeurIPS 2021 Workshop on Machine Learning in Public Health</li>
+        <li><strong>Best Lightning Paper</strong> &amp; <strong>Best Thematic Paper</strong>, NeurIPS 2020 Workshops on ML in Public Health / ML for Health</li>
+        <li>All India Rank 273, among 1.3 million examinees in the IIT Joint Entrance Exam (JEE) 2013</li>
+        <li>All India Rank 15, KVPY Scholarship, Government of India (2012)</li>
+        <li>Selected by India's Dept. of Science &amp; Technology to represent India at the Prof. Harry Messel International Science School, University of Sydney, Australia (2013)</li>
       </ul>
       <p>My doctoral research has been featured in the <a href="https://seas.harvard.edu/news/2022/11/machine-learning-maternal-care" target="_blank" rel="noopener">Harvard newsletter</a> and the <a href="https://ai.googleblog.com/2022/08/using-ml-to-boost-engagement-with.html" target="_blank" rel="noopener">Google AI blog</a>. My past research has also been featured in the <a href="https://www.nature.com/articles/nindia.2020.73" target="_blank" rel="noopener">Nature Asia newsletter</a>, <a href="https://www.businessinsider.com/scientists-strategy-prevent-second-wave-coronavirus-more-lockdowns-2020-5" target="_blank" rel="noopener">Business Insider</a>, <a href="https://medicalxpress.com/news/2020-05-strategy-limit-covid-.html" target="_blank" rel="noopener">Medical Xpress</a>, and <a href="https://www.esakal.com/pune/lockdown-required-coronavirus-287431" target="_blank" rel="noopener">Sakal Media</a>, among others.</p>
     </section>
@@ -430,10 +431,10 @@
       <p class="eyebrow">Invited Talks</p>
       <p>I've had the opportunity to share my work on LLM reasoning agents and decision-making under uncertainty at a few academic and industry venues.</p>
       <ul class="awards-list">
-        <li><span class="brass-dot"></span><strong>New York AI Agents Summit</strong> — CUNY, Manhattan, NY (May 2026), Invited Talk</li>
-        <li><span class="brass-dot"></span><strong>Microsoft Research New England</strong> — ML Ideas Seminar, Cambridge, MA (June 2024), Invited Talk</li>
-        <li><span class="brass-dot"></span><strong>University of Maryland</strong> — Multi-Agent Reinforcement Learning Group (March 2024), Invited Talk</li>
-        <li><span class="brass-dot"></span><strong>Carnegie Mellon University</strong> — course 10-718: Machine Learning in Practice (Feb 2023), Guest Lecture</li>
+        <li><strong>New York AI Agents Summit</strong> — CUNY, Manhattan, NY (May 2026), Invited Talk</li>
+        <li><strong>Microsoft Research New England</strong> — ML Ideas Seminar, Cambridge, MA (June 2024), Invited Talk</li>
+        <li><strong>University of Maryland</strong> — Multi-Agent Reinforcement Learning Group (March 2024), Invited Talk</li>
+        <li><strong>Carnegie Mellon University</strong> — course 10-718: Machine Learning in Practice (Feb 2023), Guest Lecture</li>
       </ul>
     </section>
 
