@@ -27,11 +27,11 @@ img{max-width:100%}
 .block{padding:2.6rem 0;border-top:1px solid var(--rule)}
 
 /* intro */
-.intro{padding:3.6rem 0 2.8rem;max-width:640px}
+.intro{padding:3.6rem 0 2.4rem}
 .intro h1.has-sub{margin-bottom:.3rem}
 .intro .subtitle{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--ink-soft);margin:0 0 1.3rem}
 .intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.7rem,7vw,4.2rem);line-height:1.02;letter-spacing:-.015em;margin:0 0 1.1rem}
-.lede{font-family:var(--serif);font-size:1.28rem;line-height:1.55;color:var(--ink-soft);margin:0 0 1.2rem}
+.lede{font-family:var(--serif);font-size:1.06rem;line-height:1.6;color:var(--ink-soft);margin:0 0 .9rem}
 .meta-links{font-size:.88rem;color:var(--ink-soft);margin:0}
 .meta-links a{border-bottom:1px solid rgba(46,67,114,.35)}
 .meta-links a:hover{border-bottom-color:var(--indigo)}
@@ -151,7 +151,7 @@ footer a:hover{color:var(--indigo)}
   .masthead{padding:1.2rem 1.25rem .9rem}
   .wrap,.post{padding:0 1.25rem}
   .intro{padding:2.6rem 0 2.2rem}
-  .lede{font-size:1.15rem}
+  .lede{font-size:1rem}
   .feat-grid{grid-template-columns:1fr;gap:.75rem}
   .feat-grid .card{flex-direction:row}
   .feat-grid .card-img{flex:0 0 34%;aspect-ratio:auto}
