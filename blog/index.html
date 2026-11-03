@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="A Slice of My Life" href="https://adityamate.github.io/blog/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="blog.css?v=ed19f68f">
+<link rel="stylesheet" href="blog.css?v=af571df0">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -37,9 +37,12 @@
   <p class="lede">Welcome to my non-technical, non-serious personal blog! This is where I post curious stories, armchair thoughts, travel accounts or just some random slice-of-my-life narrations from my personal diary.</p>
   <p class="meta-links">Read something? I’d love to hear what you think, <a href="https://docs.google.com/forms/d/e/1FAIpQLSeq8BZfUlsnZ-JsNJCu9C_hOrYUOk3JcfokS55Jc4S9epCujA/viewform?usp=sf_link" target="_blank" rel="noopener">anonymously</a>.</p>
 </section>
-<section class="block" aria-labelledby="start-h">
-  <h2 class="eyebrow" id="start-h">Pinned stories</h2>
-  <div class="feat-grid"><a class="card lead" href="internship-at-sony-japan/">
+<section class="block browse" data-default="featured" aria-labelledby="all-h">
+  <div class="archive-head"><h2 class="eyebrow" id="all-h">Browse</h2><span class="archive-count" aria-live="polite"></span></div>
+  <div class="filters" role="group" aria-label="Browse writing"><button class="chip" data-key="featured" aria-pressed="true">Featured<span class="n">3</span></button><button class="chip" data-key="all" aria-pressed="false">All<span class="n">4</span></button><span class="chip-sep" aria-hidden="true"></span><button class="chip" data-key="cricket" aria-pressed="false">Cricket<span class="n">1</span></button><button class="chip" data-key="travel" aria-pressed="false">Travel<span class="n">2</span></button><button class="chip" data-key="work-study" aria-pressed="false">Work &amp; Study<span class="n">2</span></button><button class="chip" data-key="life" aria-pressed="false">Life<span class="n">2</span></button></div>
+  <div class="filters series-row" role="group" aria-label="Series"><span class="chip-label">Series</span><button class="chip chip-series" data-key="series-crease" aria-pressed="false">Tales from the Crease<span class="n">1</span></button><button class="chip chip-series" data-key="series-diary" aria-pressed="false">Pages from My Diary<span class="n">1</span></button></div>
+  <p class="series-note" data-key="series-crease" hidden><strong>Tales from the Crease</strong> — Stories from matches I’ve played: the collapses, the comebacks, and the baseball player who out-batted all of us. <span class="more">· More match stories on the way</span> <button class="note-clear" type="button">Show all writing ×</button></p><p class="series-note" data-key="series-diary" hidden><strong>Pages from My Diary</strong> — Unpolished pages from my diary: the trips, reunions and ordinary days I would happily freeze in time. <span class="more">· More pages on the way</span> <button class="note-clear" type="button">Show all writing ×</button></p>
+  <div class="panel panel-featured"><div class="feat-grid"><a class="card lead" href="internship-at-sony-japan/">
   <div class="card-img"><img src="img/sony-japan-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="card-body">
     <p class="kicker"><span class="fmt fmt-essay">Story</span><span>June 2016</span></p>
     <h3>Internship at Sony Corporation Japan</h3>
@@ -61,30 +64,25 @@
     <p class="readtime">3 min read →</p>
   </div>
 </a></div>
-</section>
-<section class="block" aria-labelledby="series-h">
-  <h2 class="eyebrow" id="series-h">Series</h2>
-  <div class="series-grid" style="--cols:1"><a class="card series-tile" href="#series-crease">
+<div class="series-grid" style="--n:2"><a class="card series-block" href="#series-crease">
   <div class="card-img"><img src="img/cricket-houston-01.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="card-body">
-    <p class="series-eyebrow">Series · 1 story so far</p>
+    <p class="series-eyebrow"><svg class="pages-icon" viewBox="0 0 20 20" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="1.5" width="12" height="13" rx="1.2"/><path d="M4 4.5v12.2c0 .5.3.8.8.8h10.7M1.5 7.5v10"/></svg>Series · 1 story so far</p>
     <h3>Tales from the Crease</h3>
     <p class="hook">Stories from matches I’ve played: the collapses, the comebacks, and the baseball player who out-batted all of us.</p>
+    <p class="readtime">View the series →</p>
   </div>
-</a><a class="card series-tile" href="#series-diary">
+</a><a class="card series-block" href="#series-diary">
   <div class="card-img"><img src="img/pune-trip-01.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="card-body">
-    <p class="series-eyebrow">Series · 1 page so far</p>
+    <p class="series-eyebrow"><svg class="pages-icon" viewBox="0 0 20 20" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="1.5" width="12" height="13" rx="1.2"/><path d="M4 4.5v12.2c0 .5.3.8.8.8h10.7M1.5 7.5v10"/></svg>Series · 1 page so far</p>
     <h3>Pages from My Diary</h3>
     <p class="hook">Unpolished pages from my diary: the trips, reunions and ordinary days I would happily freeze in time.</p>
+    <p class="readtime">View the series →</p>
   </div>
-</a></div>
-</section>
-<section class="block archive" aria-labelledby="all-h">
-  <div class="archive-head"><h2 class="eyebrow" id="all-h">All writing</h2><span class="archive-count" aria-live="polite">4 pieces</span></div>
-  <div class="filters" role="group" aria-label="Filter writing"><button class="chip" data-key="all" aria-pressed="true">All<span class="n">4</span></button><span class="chip-sep" aria-hidden="true"></span><button class="chip" data-key="cricket" aria-pressed="false">Cricket<span class="n">1</span></button><button class="chip" data-key="travel" aria-pressed="false">Travel<span class="n">2</span></button><button class="chip" data-key="work-study" aria-pressed="false">Work &amp; Study<span class="n">2</span></button><button class="chip" data-key="life" aria-pressed="false">Life<span class="n">2</span></button></div>
-  <p class="series-note" data-key="series-crease" hidden><strong>Tales from the Crease</strong> — Stories from matches I’ve played: the collapses, the comebacks, and the baseball player who out-batted all of us. <span class="more">· More match stories on the way</span> <button class="note-clear" type="button">Show all writing ×</button></p><p class="series-note" data-key="series-diary" hidden><strong>Pages from My Diary</strong> — Unpolished pages from my diary: the trips, reunions and ordinary days I would happily freeze in time. <span class="more">· More pages on the way</span> <button class="note-clear" type="button">Show all writing ×</button></p>
-  <div class="year"><h3 class="year-label">2022</h3><ul class="rows"><li class="row" data-tags="essay cricket life series-crease"><a href="cricket-houston/">
+</a></div></div>
+  <div class="panel panel-list" hidden>
+    <div class="year"><h3 class="year-label">2022</h3><ul class="rows"><li class="row" data-tags="essay cricket life series-crease"><a href="cricket-houston/">
   <span class="row-date">Mar</span>
   <span class="row-main">
     <span class="row-title">Cricket Camaraderie in Houston</span>
@@ -113,7 +111,9 @@
     <span class="row-meta"><span class="fmt fmt-essay">Story</span><span>Travel</span><span>Work &amp; Study</span><span>5 min</span></span>
   </span>
   <span class="row-thumb"><img src="img/thumbs/sony-japan-04.jpg" alt="" loading="lazy" decoding="async"></span></a></li></ul></div>
-  <p class="empty" hidden>Nothing here yet.</p>
+    <p class="empty" hidden>Nothing here yet.</p>
+  </div>
+  <noscript><style>.panel-list[hidden]{display:block}</style></noscript>
 </section>
 <section class="block" aria-labelledby="soon-h">
   <h2 class="eyebrow" id="soon-h">Coming soon</h2>
@@ -124,6 +124,6 @@
   <span>Aditya Mate · Cambridge, MA</span>
   <span><a href="https://docs.google.com/forms/d/e/1FAIpQLSeq8BZfUlsnZ-JsNJCu9C_hOrYUOk3JcfokS55Jc4S9epCujA/viewform?usp=sf_link" target="_blank" rel="noopener">Anonymous feedback</a> · <a href="feed.xml">RSS</a></span>
 </footer>
-<script src="blog.js?v=ed19f68f" defer></script>
+<script src="blog.js?v=af571df0" defer></script>
 </body>
 </html>

@@ -47,10 +47,6 @@ BLOG = {
               'stories, armchair thoughts, travel accounts or just some random slice-of-my-life '
               'narrations from my personal diary.'),
     'feedback': 'https://docs.google.com/forms/d/e/1FAIpQLSeq8BZfUlsnZ-JsNJCu9C_hOrYUOk3JcfokS55Jc4S9epCujA/viewform?usp=sf_link',
-    # optional dashed boxes that fill empty slots in the Series row (up to 3 in total), e.g. ['More series on the way']
-    'series_coming': [],
-    # how many series bars sit side by side (1 = full-width bars, 2 = two across)
-    'series_columns': 1,
     # dashed "Coming soon" boxes at the bottom of the page; add or remove titles freely
     'in_the_works': [
         'First impressions of the City of Angels',
@@ -300,18 +296,24 @@ def series_list(posts, key, rel, current=None):
     return '<ol class="series-list">' + ''.join(items) + '</ol>'
 
 
-def series_card(key, v, sp):
+PAGES_ICON = ('<svg class="pages-icon" viewBox="0 0 20 20" width="15" height="15" fill="none" stroke="currentColor" '
+              'stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="1.5" width="12" height="13" rx="1.2"/>'
+              '<path d="M4 4.5v12.2c0 .5.3.8.8.8h10.7M1.5 7.5v10"/></svg>')
+
+
+def series_block(key, v, sp):
     n = len(sp)
     unit = v.get('unit', ('story', 'stories'))[0 if n == 1 else 1]
     cover = v.get('cover') or next((q['cover'] for q in sp if q['cover']), None)
     img = (f'<div class="card-img"><img src="{esc(local(cover, ""))}" alt="" loading="lazy" decoding="async"></div>'
            if cover else '<div class="card-img"></div>')
-    return f'''<a class="card series-tile" href="#series-{key}">
+    return f'''<a class="card series-block" href="#series-{key}">
   {img}
   <div class="card-body">
-    <p class="series-eyebrow">Series · {n} {unit} so far</p>
+    <p class="series-eyebrow">{PAGES_ICON}Series · {n} {unit} so far</p>
     <h3>{esc(v['title'])}</h3>
     <p class="hook">{esc(v['blurb'])}</p>
+    <p class="readtime">View the series →</p>
   </div>
 </a>'''
 
@@ -319,41 +321,40 @@ def series_card(key, v, sp):
 def build_index(posts):
     rel = ''
     feat = sorted([p for p in posts if p['featured']], key=lambda p: p['featured'])[:3]
-    feat_html = ''
-    if feat:
-        cards = [card(feat[0], rel, 'lead')] + [card(p, rel) for p in feat[1:]]
-        feat_html = f'''<section class="block" aria-labelledby="start-h">
-  <h2 class="eyebrow" id="start-h">Pinned stories</h2>
-  <div class="feat-grid">{''.join(cards)}</div>
-</section>'''
+    live_series = [(k, v, series_posts(posts, k)) for k, v in SERIES.items() if series_posts(posts, k)]
+    default_key = 'featured' if feat else 'all'
 
-    # filter chips: only show ones that have posts
-    chips = [f'<button class="chip" data-key="all" aria-pressed="true">All<span class="n">{len(posts)}</span></button>']
+    # menu: Featured (default) | All | topics, then a prominent row for the series
+    def chip(key, label, n, cls=''):
+        return f'<button class="chip{cls}" data-key="{key}" aria-pressed="{"true" if key == default_key else "false"}">{label}<span class="n">{n}</span></button>'
+    chips = []
+    if feat:
+        chips.append(chip('featured', 'Featured', len(feat)))
+    chips.append(chip('all', 'All', len(posts)))
     for k, (_, plural) in FORMATS.items():
         n = sum(p['format'] == k for p in posts)
         if n and k not in NO_FORMAT_CHIP:
-            chips.append(f'<button class="chip" data-key="{k}" aria-pressed="false">{plural}<span class="n">{n}</span></button>')
+            chips.append(chip(k, plural, n))
     chips.append('<span class="chip-sep" aria-hidden="true"></span>')
     for t in TOPICS:
         n = sum(t in p['topics'] for p in posts)
         if n:
-            chips.append(f'<button class="chip" data-key="{slugify(t)}" aria-pressed="false">{esc(t)}<span class="n">{n}</span></button>')
+            chips.append(chip(slugify(t), esc(t), n))
+    series_chips = ''.join(chip(f'series-{k}', esc(v['title']), len(sp), ' chip-series') for k, v, sp in live_series)
+    series_row = (f'<div class="filters series-row" role="group" aria-label="Series"><span class="chip-label">Series</span>{series_chips}</div>'
+                  if live_series else '')
     series_notes = ''
-    live_series = [(k, v, series_posts(posts, k)) for k, v in SERIES.items() if series_posts(posts, k)]
     for k, v, sp in live_series:
         more = f' <span class="more">· {esc(v["more_coming"])}</span>' if v.get('more_coming') else ''
         series_notes += (f'<p class="series-note" data-key="series-{k}" hidden><strong>{esc(v["title"])}</strong> — '
                          f'{esc(v["blurb"])}{more} <button class="note-clear" type="button">Show all writing ×</button></p>')
-    series_html = ''
+    feat_html = ''
+    if feat:
+        cards = [card(feat[0], rel, 'lead')] + [card(p, rel) for p in feat[1:]]
+        feat_html = f'<div class="feat-grid">{"".join(cards)}</div>'
     if live_series:
-        shown = live_series[:3]
-        cards = ''.join(series_card(k, v, sp) for k, v, sp in shown)
-        soon = BLOG.get('series_coming', [])[:3 - len(shown)]
-        cards += ''.join(f'<div class="series-soon"><p class="series-eyebrow">Coming soon</p><p class="series-soon-title">{esc(w)}</p></div>' for w in soon)
-        series_html = f'''<section class="block" aria-labelledby="series-h">
-  <h2 class="eyebrow" id="series-h">Series</h2>
-  <div class="series-grid" style="--cols:{BLOG.get('series_columns', 1)}">{cards}</div>
-</section>'''
+        blocks = ''.join(series_block(k, v, sp) for k, v, sp in live_series[:3])
+        feat_html += f'\n<div class="series-grid" style="--n:{min(len(live_series), 3)}">{blocks}</div>'
 
     years = {}
     for p in posts:
@@ -393,14 +394,17 @@ def build_index(posts):
   <p class="lede">{esc(BLOG['intro'])}</p>
   <p class="meta-links">Read something? I’d love to hear what you think, <a href="{BLOG['feedback']}" target="_blank" rel="noopener">anonymously</a>.</p>
 </section>
-{feat_html}
-{series_html}
-<section class="block archive" aria-labelledby="all-h">
-  <div class="archive-head"><h2 class="eyebrow" id="all-h">All writing</h2><span class="archive-count" aria-live="polite">{len(posts)} pieces</span></div>
-  <div class="filters" role="group" aria-label="Filter writing">{''.join(chips)}</div>
+<section class="block browse" data-default="{default_key}" aria-labelledby="all-h">
+  <div class="archive-head"><h2 class="eyebrow" id="all-h">Browse</h2><span class="archive-count" aria-live="polite"></span></div>
+  <div class="filters" role="group" aria-label="Browse writing">{''.join(chips)}</div>
+  {series_row}
   {series_notes}
-  {year_html}
-  <p class="empty" hidden>Nothing here yet.</p>
+  <div class="panel panel-featured"{'' if feat else ' hidden'}>{feat_html}</div>
+  <div class="panel panel-list"{' hidden' if feat else ''}>
+    {year_html}
+    <p class="empty" hidden>Nothing here yet.</p>
+  </div>
+  <noscript><style>.panel-list[hidden]{{display:block}}</style></noscript>
 </section>
 {works}
 </main>'''
