@@ -1,6 +1,6 @@
 ---
 slug: internship-at-sony-japan
-title: Undergrad Internship at Sony, Japan
+title: Internship at Sony Corporation Japan
 date: 2016-06-15
 date_label: June 2016
 format: essay
