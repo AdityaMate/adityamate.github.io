@@ -16,6 +16,7 @@ Writing a new post: add blog-src/posts/YYYY-MM-DD-some-slug.md with front matter
     featured: 1              # optional, 1-3 = position in "Pinned stories"
     cover: /blog/img/my-photo.jpg   # optional card image
     hook: One or two sentences that make people want to click.
+    excerpt: **Mar 2022:** Optional text for the All writing list (markdown); ends with Read more...  Falls back to hook.
     draft: true              # optional, keeps it unpublished
     ---
 
@@ -128,6 +129,7 @@ def parse_post(path):
         'featured': meta.get('featured') if isinstance(meta.get('featured'), int) and meta.get('featured') is not True else (1 if meta.get('featured') is True else None),
         'cover': meta.get('cover'),
         'hook': meta.get('hook', ''),
+        'excerpt': meta.get('excerpt', ''),
         'draft': meta.get('draft', False),
         'body': m.group(2),
     }
@@ -365,13 +367,14 @@ def build_index(posts):
             if p['series']:
                 part = series_posts(posts, p['series']).index(p) + 1
                 bits.append(f'<span class="series-tag">{esc(SERIES[p["series"]]["title"])} · {part:02d}</span>')
+            row_hook = (inline_md(p['excerpt']) + ' <span class="read-more">Read more...</span>') if p['excerpt'] else esc(p['hook'])
             thumb = thumb_for(p, '')
             thumb_html = f'\n  <span class="row-thumb"><img src="{esc(thumb)}" alt="" loading="lazy" decoding="async"></span>' if thumb else ''
             rows += f'''<li class="row{'' if thumb else ' no-thumb'}" data-tags="{tags}"><a href="{p['slug']}/">
   <span class="row-date">{p['date'].strftime('%b')}</span>
   <span class="row-main">
     <span class="row-title">{esc(p['title'])}</span>
-    <span class="row-hook">{esc(p['hook'])}</span>
+    <span class="row-hook">{row_hook}</span>
     <span class="row-meta">{''.join(bits)}</span>
   </span>{thumb_html}</a></li>'''
         year_html += f'<div class="year"><h3 class="year-label">{y}</h3><ul class="rows">{rows}</ul></div>'

@@ -10,6 +10,7 @@ series_part: 1
 featured: 2
 cover: /blog/img/cricket-houston-group.jpg
 hook: The tournament ran Saturday to Tuesday, but our team was so sure we'd crash out in the group stages that most of us booked return tickets for Monday. Let me explain why.
+excerpt: **March 2022:** The tournament stretched over 4 days from Saturday till Tuesday; but our team was so sure that we wouldn’t make it past the initial group stages, that most of us booked return tickets for Monday itself. Let me make it clear why.
 ---
 
 We participated in a US college cricket tournament at Houston this weekend and it was arguably the most hilarious and comical experience I’ve had playing cricket in any tournament so far. The tournament stretched over 4 days from Saturday till Tuesday; but our team was so sure that we wouldn’t make it past the initial group stages, that most of us booked return tickets for Monday itself. Let me make it clear why.

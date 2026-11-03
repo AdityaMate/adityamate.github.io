@@ -8,6 +8,7 @@ topics: [Travel, Work & Study]
 featured: 1
 cover: /blog/img/sony-japan-04.jpg
 hook: Even the toilet seat in Japan feels like an airplane cockpit, with its own dashboard of buttons, adjustable jets, seat heating and a built-in music system.
+excerpt: **June 2016:** "even the usual toilet seat in Japan feels like the cockpit of an airplane because it comes equipped with its own dashboard of buttons that control an automatic washlet with speed and direction-adjustable jets, an inbuilt music system(!!) and a temperature adjustable seat heating system."
 ---
 
 ## The (cool) project at Sony
