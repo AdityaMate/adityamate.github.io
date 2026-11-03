@@ -169,10 +169,15 @@ footer a:hover{color:var(--indigo)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* series tiles: same family as the featured cards, with a stacked-paper edge */
-.series-grid{display:grid;grid-template-columns:repeat(var(--n,2),1fr);gap:1.8rem}
-.series-tile,.series-tile:hover{border-left:3px solid var(--brass);box-shadow:5px 5px 0 -1px var(--card),5px 5px 0 0 var(--rule),10px 10px 0 -1px var(--card),10px 10px 0 0 var(--rule)}
-.series-tile .card-img{aspect-ratio:16/8}
-.series-tile h3{font-size:1.3rem}
+.series-grid{display:grid;grid-template-columns:repeat(var(--cols,1),1fr);gap:2.6rem 3rem;padding:0 1.35rem 1.35rem 0}
+/* a wide horizontal bar with a deep stack of paper layers behind it */
+.series-tile,.series-tile:hover{flex-direction:row;border-left:3px solid var(--brass);box-shadow:5px 5px 0 -1px var(--card),5px 5px 0 0 var(--rule),10px 10px 0 -1px var(--card),10px 10px 0 0 var(--rule),15px 15px 0 -1px var(--card),15px 15px 0 0 var(--rule),20px 20px 0 -1px var(--card),20px 20px 0 0 var(--rule)}
+.series-tile .card-img{position:relative;flex:0 0 32%;aspect-ratio:auto;min-height:9.5rem}
+.series-tile .card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.series-tile .card-body{justify-content:center;padding:1rem 1.5rem;gap:.3rem}
+.series-tile h3{font-size:1.5rem}
+.series-tile h3::after{content:" →";color:var(--brass);opacity:0;transition:opacity .2s}
+.series-tile:hover h3::after{opacity:1}
 .series-eyebrow{margin:0;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
 .note-clear{margin-left:.5rem;padding:0;border:0;background:none;font-family:var(--mono);font-size:.72rem;color:var(--indigo);text-decoration:underline;cursor:pointer}
 
@@ -183,4 +188,4 @@ footer a:hover{color:var(--indigo)}
 
 .series-soon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;min-height:9rem;padding:1.4rem;text-align:center;border:2px dashed var(--rule);background:rgba(219,215,203,.2)}
 .series-soon-title{margin:0;font-family:var(--serif);font-style:italic;font-size:1.12rem;color:var(--ink-soft)}
-@media (max-width:760px){.series-grid{grid-template-columns:1fr;gap:1.6rem}.series-tile .card-img{aspect-ratio:16/9}}
+@media (max-width:760px){.series-grid{gap:2rem;padding:0 .8rem .8rem 0}.series-tile,.series-tile:hover{flex-direction:column;box-shadow:4px 4px 0 -1px var(--card),4px 4px 0 0 var(--rule),8px 8px 0 -1px var(--card),8px 8px 0 0 var(--rule),12px 12px 0 -1px var(--card),12px 12px 0 0 var(--rule)}.series-tile .card-img{flex:none;aspect-ratio:16/9;min-height:0}.series-tile .card-img img{position:static}}

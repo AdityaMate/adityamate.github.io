@@ -46,14 +46,24 @@ BLOG = {
               'stories, armchair thoughts, travel accounts or just some random slice-of-my-life '
               'narrations from my personal diary.'),
     'feedback': 'https://docs.google.com/forms/d/e/1FAIpQLSeq8BZfUlsnZ-JsNJCu9C_hOrYUOk3JcfokS55Jc4S9epCujA/viewform?usp=sf_link',
-    # dashed boxes that fill the empty slots in the Series row (up to 3 slots in total); name upcoming series here
-    'series_coming': ['More series on the way'],
+    # optional dashed boxes that fill empty slots in the Series row (up to 3 in total), e.g. ['More series on the way']
+    'series_coming': [],
+    # how many series bars sit side by side (1 = full-width bars, 2 = two across)
+    'series_columns': 1,
     # dashed "Coming soon" boxes at the bottom of the page; add or remove titles freely
-    'in_the_works': ['First impressions of the City of Angels', 'Snapshots enroute the Ph.D.'],
+    'in_the_works': [
+        'First impressions of the City of Angels',
+        'Snapshots enroute the Ph.D.',
+        'Pandemic year in the rear-view mirror',
+        'Working at Mountain View and Yorktown Heights... virtually',
+        'NYC: The east coast way of life',
+        'The Sklarzhaus, Vermont',
+    ],
 }
 SERIES = {
     'crease': {
         'title': 'Tales from the Crease',
+        'cover': '/blog/img/cricket-houston-01.jpg',   # optional; defaults to the first story's cover
         'blurb': ('Stories from matches I’ve played: the collapses, the comebacks, '
                   'and the baseball player who out-batted all of us.'),
         'more_coming': 'More match stories on the way',
@@ -300,7 +310,6 @@ def series_card(key, v, sp):
     <p class="series-eyebrow">Series · {n} {unit} so far</p>
     <h3>{esc(v['title'])}</h3>
     <p class="hook">{esc(v['blurb'])}</p>
-    <p class="readtime">View the series →</p>
   </div>
 </a>'''
 
@@ -341,7 +350,7 @@ def build_index(posts):
         cards += ''.join(f'<div class="series-soon"><p class="series-eyebrow">Coming soon</p><p class="series-soon-title">{esc(w)}</p></div>' for w in soon)
         series_html = f'''<section class="block" aria-labelledby="series-h">
   <h2 class="eyebrow" id="series-h">Series</h2>
-  <div class="series-grid" style="--n:{len(shown) + len(soon)}">{cards}</div>
+  <div class="series-grid" style="--cols:{BLOG.get('series_columns', 1)}">{cards}</div>
 </section>'''
 
     years = {}
