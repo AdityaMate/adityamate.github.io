@@ -13,7 +13,7 @@ Writing a new post: add blog-src/posts/YYYY-MM-DD-some-slug.md with front matter
     topics: [Cricket]        # any of the TOPICS below
     series: crease           # optional, a key from SERIES below
     series_part: 2           # optional, its position in the series
-    featured: 1              # optional, 1-3 = position in "Start here"
+    featured: 1              # optional, 1-3 = position in "Pinned stories"
     cover: /blog/img/my-photo.jpg   # optional card image
     hook: One or two sentences that make people want to click.
     draft: true              # optional, keeps it unpublished
@@ -46,7 +46,10 @@ BLOG = {
               'stories, armchair thoughts, travel accounts or just some random slice-of-my-life '
               'narrations from my personal diary.'),
     'feedback': 'https://docs.google.com/forms/d/e/1FAIpQLSeq8BZfUlsnZ-JsNJCu9C_hOrYUOk3JcfokS55Jc4S9epCujA/viewform?usp=sf_link',
-    'in_the_works': [],   # e.g. ['First impressions of the City of Angels']
+    # dashed boxes that fill the empty slots in the Series row (up to 3 slots in total); name upcoming series here
+    'series_coming': ['More series on the way'],
+    # dashed "Coming soon" boxes at the bottom of the page; add or remove titles freely
+    'in_the_works': ['First impressions of the City of Angels', 'Snapshots enroute the Ph.D.'],
 }
 SERIES = {
     'crease': {
@@ -63,12 +66,16 @@ SERIES = {
         'unit': ('page', 'pages'),
     },
 }
-# formats whose filter chip is left out because a series already covers them
-NO_FORMAT_CHIP = {'diary'}
+# formats whose filter chip is left out (a Stories chip next to All is just confusing; a series covers diary)
+NO_FORMAT_CHIP = {'diary', 'essay'}
 # keys are what you write in front matter (format: essay); the labels are what readers see
 FORMATS = {'essay': ('Story', 'Stories'), 'note': ('Note', 'Notes'), 'diary': ('Diary', 'Diary')}
 TOPICS = ['Cricket', 'Travel', 'Work & Study', 'Life']
 # -------------------------------------------------------------------------
+
+# short content hash appended to blog.css / blog.js links so browsers never reuse a stale copy after a deploy
+import hashlib
+ASSET_V = hashlib.md5(b''.join((SRC / a).read_bytes() for a in ('blog.css', 'blog.js'))).hexdigest()[:8]
 
 esc = lambda s: html.escape(str(s), quote=True)
 slugify = lambda s: re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
@@ -223,7 +230,7 @@ def page(*, rel, title, desc, url, image, body, og_type='article'):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="{esc(BLOG['title'])}" href="{SITE}/blog/feed.xml">
 {FONTS}
-<link rel="stylesheet" href="{rel}blog.css">
+<link rel="stylesheet" href="{rel}blog.css?v={ASSET_V}">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -241,7 +248,7 @@ def page(*, rel, title, desc, url, image, body, og_type='article'):
   <span>Aditya Mate · Cambridge, MA</span>
   <span><a href="{BLOG['feedback']}" target="_blank" rel="noopener">Anonymous feedback</a> · <a href="{rel}feed.xml">RSS</a></span>
 </footer>
-<script src="{rel}blog.js" defer></script>
+<script src="{rel}blog.js?v={ASSET_V}" defer></script>
 </body>
 </html>
 '''
@@ -281,6 +288,23 @@ def series_list(posts, key, rel, current=None):
     return '<ol class="series-list">' + ''.join(items) + '</ol>'
 
 
+def series_card(key, v, sp):
+    n = len(sp)
+    unit = v.get('unit', ('story', 'stories'))[0 if n == 1 else 1]
+    cover = v.get('cover') or next((q['cover'] for q in sp if q['cover']), None)
+    img = (f'<div class="card-img"><img src="{esc(local(cover, ""))}" alt="" loading="lazy" decoding="async"></div>'
+           if cover else '<div class="card-img"></div>')
+    return f'''<a class="card series-tile" href="#series-{key}">
+  {img}
+  <div class="card-body">
+    <p class="series-eyebrow">Series · {n} {unit} so far</p>
+    <h3>{esc(v['title'])}</h3>
+    <p class="hook">{esc(v['blurb'])}</p>
+    <p class="readtime">View the series →</p>
+  </div>
+</a>'''
+
+
 def build_index(posts):
     rel = ''
     feat = sorted([p for p in posts if p['featured']], key=lambda p: p['featured'])[:3]
@@ -288,7 +312,7 @@ def build_index(posts):
     if feat:
         cards = [card(feat[0], rel, 'lead')] + [card(p, rel) for p in feat[1:]]
         feat_html = f'''<section class="block" aria-labelledby="start-h">
-  <h2 class="eyebrow" id="start-h">Start here</h2>
+  <h2 class="eyebrow" id="start-h">Pinned stories</h2>
   <div class="feat-grid">{''.join(cards)}</div>
 </section>'''
 
@@ -305,12 +329,20 @@ def build_index(posts):
             chips.append(f'<button class="chip" data-key="{slugify(t)}" aria-pressed="false">{esc(t)}<span class="n">{n}</span></button>')
     series_notes = ''
     live_series = [(k, v, series_posts(posts, k)) for k, v in SERIES.items() if series_posts(posts, k)]
-    if live_series:
-        chips.append('<span class="chip-break" aria-hidden="true"></span><span class="chip-label">Series</span>')
     for k, v, sp in live_series:
-        chips.append(f'<button class="chip chip-series" data-key="series-{k}" aria-pressed="false">{esc(v["title"])}<span class="n">{len(sp)}</span></button>')
         more = f' <span class="more">· {esc(v["more_coming"])}</span>' if v.get('more_coming') else ''
-        series_notes += f'<p class="series-note" data-key="series-{k}" hidden>{esc(v["blurb"])}{more}</p>'
+        series_notes += (f'<p class="series-note" data-key="series-{k}" hidden><strong>{esc(v["title"])}</strong> — '
+                         f'{esc(v["blurb"])}{more} <button class="note-clear" type="button">Show all writing ×</button></p>')
+    series_html = ''
+    if live_series:
+        shown = live_series[:3]
+        cards = ''.join(series_card(k, v, sp) for k, v, sp in shown)
+        soon = BLOG.get('series_coming', [])[:3 - len(shown)]
+        cards += ''.join(f'<div class="series-soon"><p class="series-eyebrow">Coming soon</p><p class="series-soon-title">{esc(w)}</p></div>' for w in soon)
+        series_html = f'''<section class="block" aria-labelledby="series-h">
+  <h2 class="eyebrow" id="series-h">Series</h2>
+  <div class="series-grid" style="--n:{len(shown) + len(soon)}">{cards}</div>
+</section>'''
 
     years = {}
     for p in posts:
@@ -337,7 +369,8 @@ def build_index(posts):
 
     works = ''
     if BLOG['in_the_works']:
-        works = '<p class="in-works">In the works: ' + ' · '.join(esc(w) for w in BLOG['in_the_works']) + '</p>'
+        boxes = ''.join(f'<div class="soon-box"><div class="soon-art" aria-hidden="true"></div><p class="soon-title">{esc(w)}</p></div>' for w in BLOG['in_the_works'])
+        works = f'<section class="block" aria-labelledby="soon-h">\n  <h2 class="eyebrow" id="soon-h">Coming soon</h2>\n  <div class="soon-grid">{boxes}</div>\n</section>'
 
     sub = BLOG.get('subtitle')
     h1_html = f'<h1 class="has-sub">{esc(BLOG["title"])}</h1>\n  <p class="subtitle">{esc(sub)}</p>' if sub else f'<h1>{esc(BLOG["title"])}</h1>'
@@ -349,14 +382,15 @@ def build_index(posts):
   <p class="meta-links">Read something? I’d love to hear what you think, <a href="{BLOG['feedback']}" target="_blank" rel="noopener">anonymously</a>.</p>
 </section>
 {feat_html}
+{series_html}
 <section class="block archive" aria-labelledby="all-h">
   <div class="archive-head"><h2 class="eyebrow" id="all-h">All writing</h2><span class="archive-count" aria-live="polite">{len(posts)} pieces</span></div>
   <div class="filters" role="group" aria-label="Filter writing">{''.join(chips)}</div>
   {series_notes}
   {year_html}
   <p class="empty" hidden>Nothing here yet.</p>
-  {works}
 </section>
+{works}
 </main>'''
     return page(rel=rel, title=f'{BLOG["title"]} · Writing by Aditya Mate', desc=BLOG['intro'],
                 url='/blog/', image=feat[0]['cover'] if feat else None, body=body, og_type='website')

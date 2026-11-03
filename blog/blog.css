@@ -57,9 +57,6 @@ img{max-width:100%}
 .card .card-img{aspect-ratio:3/2}
 
 /* series */
-.series-card{display:grid;grid-template-columns:1fr 1.15fr;gap:2.2rem;background:var(--indigo-tint);border-left:3px solid var(--brass);padding:1.9rem 2.1rem}
-.series-title{font-family:var(--serif);font-weight:500;font-size:1.9rem;line-height:1.12;margin:0 0 .7rem}
-.series-card .blurb{margin:0;color:var(--ink-soft)}
 .series-list{list-style:none;margin:0;padding:0;border-top:1px solid rgba(46,67,114,.18)}
 .series-list li{border-bottom:1px solid rgba(46,67,114,.18)}
 .series-list a{display:grid;grid-template-columns:2.3rem 1fr auto;gap:.6rem;padding:.75rem 0;color:var(--ink);align-items:baseline}
@@ -80,8 +77,6 @@ img{max-width:100%}
 .chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .chip .n{opacity:.55;margin-left:.4rem}
 .chip-sep{width:1px;background:var(--rule);margin:.2rem .35rem}
-.chip-break{flex-basis:100%;height:0}
-.chip-label{align-self:center;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-right:.2rem}
 .year{display:grid;grid-template-columns:5.5rem 1fr;gap:1rem;border-top:1px solid var(--rule);padding-top:1rem}
 .year-label{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:var(--brass);margin:0;line-height:1.3}
 .rows{list-style:none;margin:0;padding:0}
@@ -102,7 +97,6 @@ img{max-width:100%}
 .row-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .9rem;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft)}
 .row-meta .series-tag{color:var(--brass)}
 .empty{font-family:var(--serif);font-style:italic;color:var(--ink-soft)}
-.in-works{font-family:var(--mono);font-size:.75rem;color:var(--ink-soft);border-top:1px dashed var(--rule);padding-top:1rem;margin:1rem 0 0}
 
 /* post */
 .post{max-width:680px;margin:0 auto;padding:0 1.5rem}
@@ -161,8 +155,7 @@ footer a:hover{color:var(--indigo)}
   .feat-grid .card-body{padding:.75rem .9rem}
   .feat-grid .card h3{font-size:1.05rem}
   .feat-grid .card .hook{-webkit-line-clamp:2}
-  .series-card{grid-template-columns:1fr;gap:1.3rem;padding:1.5rem 1.3rem}
-  .year{grid-template-columns:1fr;gap:.2rem}
+    .year{grid-template-columns:1fr;gap:.2rem}
   .row a,.row.no-thumb a{grid-template-columns:2.6rem 1fr}
   .row-thumb{grid-column:2;max-width:15rem;margin-top:.2rem}
   .prose{font-size:1.13rem}
@@ -174,3 +167,20 @@ footer a:hover{color:var(--indigo)}
   .chip-sep{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* series tiles: same family as the featured cards, with a stacked-paper edge */
+.series-grid{display:grid;grid-template-columns:repeat(var(--n,2),1fr);gap:1.8rem}
+.series-tile,.series-tile:hover{border-left:3px solid var(--brass);box-shadow:5px 5px 0 -1px var(--card),5px 5px 0 0 var(--rule),10px 10px 0 -1px var(--card),10px 10px 0 0 var(--rule)}
+.series-tile .card-img{aspect-ratio:16/8}
+.series-tile h3{font-size:1.3rem}
+.series-eyebrow{margin:0;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.note-clear{margin-left:.5rem;padding:0;border:0;background:none;font-family:var(--mono);font-size:.72rem;color:var(--indigo);text-decoration:underline;cursor:pointer}
+
+/* coming soon boxes */
+.soon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.4rem}
+.soon-art{aspect-ratio:16/9;border:2px dashed var(--rule);background:rgba(219,215,203,.2)}
+.soon-title{margin:.7rem 0 0;text-align:center;font-family:var(--serif);font-style:italic;font-size:1.12rem;color:var(--ink-soft)}
+
+.series-soon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;min-height:9rem;padding:1.4rem;text-align:center;border:2px dashed var(--rule);background:rgba(219,215,203,.2)}
+.series-soon-title{margin:0;font-family:var(--serif);font-style:italic;font-size:1.12rem;color:var(--ink-soft)}
+@media (max-width:760px){.series-grid{grid-template-columns:1fr;gap:1.6rem}.series-tile .card-img{aspect-ratio:16/9}}

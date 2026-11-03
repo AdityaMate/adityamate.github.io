@@ -25,12 +25,22 @@
         history.replaceState(null, '', c.dataset.key === 'all' ? location.pathname : '#' + c.dataset.key);
       });
     });
-    var h = location.hash.slice(1);
-    if (h && chips.some(function (c) { return c.dataset.key === h; })) {
-      apply(h);
-      var arch = document.querySelector('.archive');
-      if (arch) arch.scrollIntoView();
-    }
+    var keys = chips.map(function (c) { return c.dataset.key; }).concat(notes.map(function (n) { return n.dataset.key; }));
+    var route = function (scroll) {
+      var h = location.hash.slice(1);
+      if (!h) { apply('all'); return; }
+      if (keys.indexOf(h) > -1) {
+        apply(h);
+        var arch = document.querySelector('.archive');
+        if (scroll && arch) arch.scrollIntoView();
+      }
+    };
+    notes.forEach(function (n) {
+      var x = n.querySelector('.note-clear');
+      if (x) x.addEventListener('click', function () { apply('all'); history.replaceState(null, '', location.pathname); });
+    });
+    window.addEventListener('hashchange', function () { route(true); });
+    route(true);
   }
 
   // ---- click any photo in a post to see it full size
