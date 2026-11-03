@@ -44,7 +44,7 @@ img{max-width:100%}
 .fmt-diary::before{background:transparent;border:1.5px solid var(--sage);width:6px;height:6px}
 
 /* cards */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.9rem}
 .card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--rule);color:var(--ink);overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
 .card:hover{border-color:var(--indigo);transform:translateY(-2px);box-shadow:0 14px 28px -20px rgba(22,25,31,.5)}
 .card-img{aspect-ratio:16/10;overflow:hidden;background:var(--indigo-tint)}
@@ -189,11 +189,29 @@ footer a:hover{color:var(--indigo)}
 .chip-series[aria-pressed=true]{background:var(--brass);border-color:var(--brass);color:var(--card)}
 @media (max-width:760px){.chip-label{min-width:0;width:100%}}
 
-/* series blocks inside Featured: story-card family with a multi-page (stacked paper) look */
-.series-grid{display:grid;grid-template-columns:repeat(var(--n,2),1fr);gap:2.2rem 2.4rem;margin-top:2.2rem;padding:0 1.2rem 1.2rem 0}
-.series-block,.series-block:hover{border-left:3px solid var(--brass);box-shadow:5px 5px 0 -1px var(--card),5px 5px 0 0 var(--rule),10px 10px 0 -1px var(--card),10px 10px 0 0 var(--rule),15px 15px 0 -1px var(--card),15px 15px 0 0 var(--rule)}
-.series-block .card-img{aspect-ratio:16/7}
-.series-block h3{font-size:1.3rem}
+/* series blocks inside Featured: same size as the story cards, sitting on a fanned stack of sheets */
+.series-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem 1.9rem;margin-top:2.2rem;padding-bottom:1.6rem}
+.series-stack{position:relative}
+.series-stack .sheet{position:absolute;inset:0;background:#f1ede2;border:1px solid #c6bea8;border-radius:2px;transition:transform .35s ease}
+.series-stack .sheet-1{transform:translate(6px,6px) rotate(.8deg);background:#f4f0e6;box-shadow:0 1px 2px rgba(22,25,31,.12)}
+.series-stack .sheet-2{transform:translate(12px,11px) rotate(-.9deg);background:#eee9dc;box-shadow:0 1px 2px rgba(22,25,31,.12)}
+.series-stack .sheet-3{transform:translate(18px,16px) rotate(1deg);background:#e7e1d2;box-shadow:0 12px 20px -14px rgba(22,25,31,.55)}
+.series-stack:hover .sheet-1{transform:translate(8px,8px) rotate(1.3deg)}
+.series-stack:hover .sheet-2{transform:translate(16px,14px) rotate(-1.5deg)}
+.series-stack:hover .sheet-3{transform:translate(24px,20px) rotate(1.7deg)}
+.series-block,.series-block:hover{position:relative;z-index:1;height:100%;border-left:3px solid var(--brass);box-shadow:0 1px 3px rgba(22,25,31,.18)}
+.series-block .card-body{min-height:12.7rem}
 .series-eyebrow{display:flex;align-items:center;gap:.45rem;margin:0;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
 .pages-icon{flex:none}
-@media (max-width:760px){.series-grid{grid-template-columns:1fr;gap:2rem;padding:0 .8rem .8rem 0}.series-block,.series-block:hover{box-shadow:4px 4px 0 -1px var(--card),4px 4px 0 0 var(--rule),8px 8px 0 -1px var(--card),8px 8px 0 0 var(--rule),12px 12px 0 -1px var(--card),12px 12px 0 0 var(--rule)}}
+@media (max-width:760px){
+  .series-grid{grid-template-columns:1fr;gap:1.6rem;padding:0 1rem 1rem 0}
+  .series-block{flex-direction:row}
+  .series-block .card-img{flex:0 0 34%;aspect-ratio:auto}
+  .series-block .card-body{padding:.75rem .9rem;min-height:0}
+  .series-block h3{font-size:1.05rem}
+  .series-eyebrow{font-size:.6rem;letter-spacing:.06em;white-space:nowrap}
+  .series-block .hook{-webkit-line-clamp:2}
+  .series-stack .sheet-1{transform:translate(5px,5px) rotate(.7deg)}
+  .series-stack .sheet-2{transform:translate(10px,9px) rotate(-.8deg)}
+  .series-stack .sheet-3{transform:translate(15px,13px) rotate(.9deg)}
+}

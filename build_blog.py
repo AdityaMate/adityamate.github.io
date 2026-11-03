@@ -307,7 +307,9 @@ def series_block(key, v, sp):
     cover = v.get('cover') or next((q['cover'] for q in sp if q['cover']), None)
     img = (f'<div class="card-img"><img src="{esc(local(cover, ""))}" alt="" loading="lazy" decoding="async"></div>'
            if cover else '<div class="card-img"></div>')
-    return f'''<a class="card series-block" href="#series-{key}">
+    return f'''<div class="series-stack">
+  <span class="sheet sheet-3" aria-hidden="true"></span><span class="sheet sheet-2" aria-hidden="true"></span><span class="sheet sheet-1" aria-hidden="true"></span>
+  <a class="card series-block" href="#series-{key}">
   {img}
   <div class="card-body">
     <p class="series-eyebrow">{PAGES_ICON}Series · {n} {unit} so far</p>
@@ -315,7 +317,8 @@ def series_block(key, v, sp):
     <p class="hook">{esc(v['blurb'])}</p>
     <p class="readtime">View the series →</p>
   </div>
-</a>'''
+</a>
+</div>'''
 
 
 def build_index(posts):
