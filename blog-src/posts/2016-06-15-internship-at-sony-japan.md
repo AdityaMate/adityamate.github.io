@@ -6,7 +6,7 @@ date_label: June 2016
 format: essay
 topics: [Travel, Work & Study]
 featured: 1
-cover: /blog/img/sony-japan-06.jpg
+cover: /blog/img/sony-japan-04.jpg
 hook: Even the toilet seat in Japan feels like an airplane cockpit, with its own dashboard of buttons, adjustable jets, seat heating and a built-in music system.
 ---
 

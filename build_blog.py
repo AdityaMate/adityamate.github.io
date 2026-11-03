@@ -53,8 +53,18 @@ SERIES = {
                   'and the baseball player who out-batted all of us.'),
         'more_coming': 'More match stories on the way',
     },
+    'diary': {
+        'title': 'Pages from My Diary',
+        'blurb': ('Unpolished pages from my diary: the trips, reunions and ordinary days '
+                  'I would happily freeze in time.'),
+        'more_coming': 'More pages on the way',
+        'unit': ('page', 'pages'),
+    },
 }
-FORMATS = {'essay': ('Essay', 'Essays'), 'note': ('Note', 'Notes'), 'diary': ('Diary', 'Diary')}
+# formats whose filter chip is left out because a series already covers them
+NO_FORMAT_CHIP = {'diary'}
+# keys are what you write in front matter (format: essay); the labels are what readers see
+FORMATS = {'essay': ('Story', 'Stories'), 'note': ('Note', 'Notes'), 'diary': ('Diary', 'Diary')}
 TOPICS = ['Cricket', 'Travel', 'Work & Study', 'Life']
 # -------------------------------------------------------------------------
 
@@ -117,6 +127,33 @@ def parse_post(path):
 def local(src, rel):
     """Turn /blog/... paths into paths relative to the page."""
     return rel + src[len('/blog/'):] if src.startswith('/blog/') else src
+
+
+USED_THUMBS = set()
+
+
+def thumb_for(p, rel):
+    """Small 3:2 thumbnail for the 'All writing' rows: the post's cover, else its first body image.
+    Written to blog/img/thumbs/ (falls back to the full image if Pillow isn't installed)."""
+    src = p['cover']
+    if not src:
+        m = re.search(r'!\[.*?\]\((/blog/img/[^)\s]+)\)', p['body'])
+        src = m.group(1) if m else None
+    if not src or not src.startswith('/blog/img/'):
+        return None
+    try:
+        from PIL import Image, ImageOps
+        origin = ROOT / src.lstrip('/')
+        dest = OUT / 'img' / 'thumbs' / (pathlib.Path(src).stem + '.jpg')
+        if not dest.exists() or dest.stat().st_mtime < origin.stat().st_mtime:
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            with Image.open(origin) as im:
+                im = ImageOps.fit(ImageOps.exif_transpose(im).convert('RGB'), (360, 240), Image.LANCZOS)
+                im.save(dest, 'JPEG', quality=80, optimize=True, progressive=True)
+        USED_THUMBS.add(dest.name)
+        return f'{rel}img/thumbs/{dest.name}'
+    except ImportError:
+        return local(src, rel)
 
 
 def inline_md(s):
@@ -262,7 +299,7 @@ def build_index(posts):
         series_html += f'''<section class="block" id="series-{key}" aria-labelledby="s-{key}">
   <div class="series-card">
     <div>
-      <p class="eyebrow">Series · {n} {'story' if n == 1 else 'stories'} so far</p>
+      <p class="eyebrow">Series · {n} {s.get('unit', ('story', 'stories'))[0 if n == 1 else 1]} so far</p>
       <h2 class="series-title" id="s-{key}">{esc(s['title'])}</h2>
       <p class="blurb">{esc(s['blurb'])}</p>
     </div>
@@ -274,7 +311,7 @@ def build_index(posts):
     chips = [f'<button class="chip" data-key="all" aria-pressed="true">All<span class="n">{len(posts)}</span></button>']
     for k, (_, plural) in FORMATS.items():
         n = sum(p['format'] == k for p in posts)
-        if n:
+        if n and k not in NO_FORMAT_CHIP:
             chips.append(f'<button class="chip" data-key="{k}" aria-pressed="false">{plural}<span class="n">{n}</span></button>')
     chips.append('<span class="chip-sep" aria-hidden="true"></span>')
     for t in TOPICS:
@@ -294,13 +331,15 @@ def build_index(posts):
             if p['series']:
                 part = series_posts(posts, p['series']).index(p) + 1
                 bits.append(f'<span class="series-tag">{esc(SERIES[p["series"]]["title"])} · {part:02d}</span>')
-            rows += f'''<li class="row" data-tags="{tags}"><a href="{p['slug']}/">
+            thumb = thumb_for(p, '')
+            thumb_html = f'\n  <span class="row-thumb"><img src="{esc(thumb)}" alt="" loading="lazy" decoding="async"></span>' if thumb else ''
+            rows += f'''<li class="row{'' if thumb else ' no-thumb'}" data-tags="{tags}"><a href="{p['slug']}/">
   <span class="row-date">{p['date'].strftime('%b')}</span>
   <span class="row-main">
     <span class="row-title">{esc(p['title'])}</span>
     <span class="row-hook">{esc(p['hook'])}</span>
     <span class="row-meta">{''.join(bits)}</span>
-  </span></a></li>'''
+  </span>{thumb_html}</a></li>'''
         year_html += f'<div class="year"><h3 class="year-label">{y}</h3><ul class="rows">{rows}</ul></div>'
 
     works = ''
@@ -421,6 +460,11 @@ def main():
         (OUT / p['slug'] / 'index.html').write_text(build_post(p, posts), encoding='utf-8')
     (OUT / 'feed.xml').write_text(build_feed(posts), encoding='utf-8')
     (ROOT / 'sitemap.xml').write_text(build_sitemap(posts), encoding='utf-8')
+    thumbs = OUT / 'img' / 'thumbs'
+    if thumbs.exists():
+        for f in thumbs.iterdir():
+            if f.name not in USED_THUMBS:
+                f.unlink()
     print(f'Built {len(posts)} posts into blog/')
     if '--serve' in sys.argv:
         import functools, http.server

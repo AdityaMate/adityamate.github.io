@@ -8,7 +8,7 @@ topics: [Cricket, Life]
 series: crease
 series_part: 1
 featured: 2
-cover: /blog/img/cricket-houston-01.jpg
+cover: /blog/img/cricket-houston-group.jpg
 hook: The tournament ran Saturday to Tuesday, but our team was so sure we'd crash out in the group stages that most of us booked return tickets for Monday. Let me explain why.
 ---
 
