@@ -80,14 +80,21 @@ img{max-width:100%}
 .chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .chip .n{opacity:.55;margin-left:.4rem}
 .chip-sep{width:1px;background:var(--rule);margin:.2rem .35rem}
+.chip-break{flex-basis:100%;height:0}
+.chip-label{align-self:center;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-right:.2rem}
 .year{display:grid;grid-template-columns:5.5rem 1fr;gap:1rem;border-top:1px solid var(--rule);padding-top:1rem}
 .year-label{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:var(--brass);margin:0;line-height:1.3}
 .rows{list-style:none;margin:0;padding:0}
 .row a{display:grid;grid-template-columns:3rem 1fr 9.5rem;gap:.75rem 1.4rem;padding:.3rem 0 1.5rem;color:var(--ink)}
 .row.no-thumb a{grid-template-columns:3rem 1fr}
 .row-thumb{display:block;margin-top:.4rem;aspect-ratio:3/2;overflow:hidden;border-radius:3px;border:1px solid var(--rule);background:var(--indigo-tint)}
-.row-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s}
-.row a:hover .row-thumb img{transform:scale(1.04)}
+.row-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.series-note{margin:1rem 0 0;padding:.7rem 1rem;border-left:3px solid var(--brass);background:var(--indigo-tint);color:var(--ink-soft);font-size:.92rem;max-width:62ch}
+.series-note .more{font-family:var(--mono);font-size:.74rem;color:var(--brass);white-space:nowrap}
+.row-thumb{position:relative;z-index:1;transition:transform .3s ease,box-shadow .3s ease}
+@media (hover:hover){
+  .row a:hover .row-thumb{transform:scale(1.75);transform-origin:top right;z-index:5;box-shadow:0 20px 38px -14px rgba(22,25,31,.55)}
+}
 .row-date{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);padding-top:.45rem;text-transform:uppercase;letter-spacing:.08em}
 .row-title{display:block;font-family:var(--serif);font-size:1.38rem;font-weight:500;line-height:1.25;transition:color .15s}
 .row a:hover .row-title{color:var(--indigo)}

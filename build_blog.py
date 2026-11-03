@@ -292,23 +292,6 @@ def build_index(posts):
   <div class="feat-grid">{''.join(cards)}</div>
 </section>'''
 
-    series_html = ''
-    for key, s in SERIES.items():
-        sp = series_posts(posts, key)
-        if not sp:
-            continue
-        n = len(sp)
-        series_html += f'''<section class="block" id="series-{key}" aria-labelledby="s-{key}">
-  <div class="series-card">
-    <div>
-      <p class="eyebrow">Series · {n} {s.get('unit', ('story', 'stories'))[0 if n == 1 else 1]} so far</p>
-      <h2 class="series-title" id="s-{key}">{esc(s['title'])}</h2>
-      <p class="blurb">{esc(s['blurb'])}</p>
-    </div>
-    {series_list(posts, key, rel)}
-  </div>
-</section>'''
-
     # filter chips: only show ones that have posts
     chips = [f'<button class="chip" data-key="all" aria-pressed="true">All<span class="n">{len(posts)}</span></button>']
     for k, (_, plural) in FORMATS.items():
@@ -320,6 +303,14 @@ def build_index(posts):
         n = sum(t in p['topics'] for p in posts)
         if n:
             chips.append(f'<button class="chip" data-key="{slugify(t)}" aria-pressed="false">{esc(t)}<span class="n">{n}</span></button>')
+    series_notes = ''
+    live_series = [(k, v, series_posts(posts, k)) for k, v in SERIES.items() if series_posts(posts, k)]
+    if live_series:
+        chips.append('<span class="chip-break" aria-hidden="true"></span><span class="chip-label">Series</span>')
+    for k, v, sp in live_series:
+        chips.append(f'<button class="chip chip-series" data-key="series-{k}" aria-pressed="false">{esc(v["title"])}<span class="n">{len(sp)}</span></button>')
+        more = f' <span class="more">· {esc(v["more_coming"])}</span>' if v.get('more_coming') else ''
+        series_notes += f'<p class="series-note" data-key="series-{k}" hidden>{esc(v["blurb"])}{more}</p>'
 
     years = {}
     for p in posts:
@@ -328,7 +319,7 @@ def build_index(posts):
     for y in sorted(years, reverse=True):
         rows = ''
         for p in years[y]:
-            tags = ' '.join([p['format']] + [slugify(t) for t in p['topics']])
+            tags = ' '.join([p['format']] + [slugify(t) for t in p['topics']] + ([f'series-{p["series"]}'] if p['series'] else []))
             bits = [fmt_badge(p)] + [f'<span>{esc(t)}</span>' for t in p['topics']] + [f'<span>{p["minutes"]} min</span>']
             if p['series']:
                 part = series_posts(posts, p['series']).index(p) + 1
@@ -358,10 +349,10 @@ def build_index(posts):
   <p class="meta-links">Read something? I’d love to hear what you think, <a href="{BLOG['feedback']}" target="_blank" rel="noopener">anonymously</a>.</p>
 </section>
 {feat_html}
-{series_html}
 <section class="block archive" aria-labelledby="all-h">
   <div class="archive-head"><h2 class="eyebrow" id="all-h">All writing</h2><span class="archive-count" aria-live="polite">{len(posts)} pieces</span></div>
   <div class="filters" role="group" aria-label="Filter writing">{''.join(chips)}</div>
+  {series_notes}
   {year_html}
   <p class="empty" hidden>Nothing here yet.</p>
   {works}

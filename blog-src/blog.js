@@ -6,6 +6,7 @@
     var years = [].slice.call(document.querySelectorAll('.year'));
     var count = document.querySelector('.archive-count');
     var empty = document.querySelector('.empty');
+    var notes = [].slice.call(document.querySelectorAll('.series-note'));
     var apply = function (key) {
       var n = 0;
       rows.forEach(function (r) {
@@ -16,6 +17,7 @@
       chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.key === key)); });
       if (count) count.textContent = n + (n === 1 ? ' piece' : ' pieces');
       if (empty) empty.hidden = n > 0;
+      notes.forEach(function (x) { x.hidden = x.dataset.key !== key; });
     };
     chips.forEach(function (c) {
       c.addEventListener('click', function () {
@@ -24,7 +26,11 @@
       });
     });
     var h = location.hash.slice(1);
-    if (h && chips.some(function (c) { return c.dataset.key === h; })) apply(h);
+    if (h && chips.some(function (c) { return c.dataset.key === h; })) {
+      apply(h);
+      var arch = document.querySelector('.archive');
+      if (arch) arch.scrollIntoView();
+    }
   }
 
   // ---- click any photo in a post to see it full size
