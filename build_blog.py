@@ -40,9 +40,11 @@ SITE = 'https://adityamate.github.io'
 UNLISTED = True
 
 BLOG = {
-    'title': 'Off the Clock',
-    'intro': ('My non-technical, non-serious corner of the internet: curious stories, '
-              'armchair thoughts, travel accounts, and the odd page from my diary.'),
+    'title': 'A Slice of My Life',
+    'subtitle': 'Mate Notes',   # small italic line under the title; '' to hide
+    'intro': ('Welcome to my non-technical, non-serious personal blog! This is where I post curious '
+              'stories, armchair thoughts, travel accounts or just some random slice-of-my-life '
+              'narrations from my personal diary.'),
     'feedback': 'https://docs.google.com/forms/d/e/1FAIpQLSeq8BZfUlsnZ-JsNJCu9C_hOrYUOk3JcfokS55Jc4S9epCujA/viewform?usp=sf_link',
     'in_the_works': [],   # e.g. ['First impressions of the City of Angels']
 }
@@ -346,10 +348,12 @@ def build_index(posts):
     if BLOG['in_the_works']:
         works = '<p class="in-works">In the works: ' + ' · '.join(esc(w) for w in BLOG['in_the_works']) + '</p>'
 
+    sub = BLOG.get('subtitle')
+    h1_html = f'<h1 class="has-sub">{esc(BLOG["title"])}</h1>\n  <p class="subtitle">{esc(sub)}</p>' if sub else f'<h1>{esc(BLOG["title"])}</h1>'
     body = f'''<main id="content" class="wrap">
 <section class="intro">
   <p class="eyebrow">Writing</p>
-  <h1>{esc(BLOG['title'])}</h1>
+  {h1_html}
   <p class="lede">{esc(BLOG['intro'])}</p>
   <p class="meta-links">Read something? I’d love to hear what you think, <a href="{BLOG['feedback']}" target="_blank" rel="noopener">anonymously</a>.</p>
 </section>
