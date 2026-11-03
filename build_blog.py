@@ -34,6 +34,11 @@ OUT = ROOT / 'blog'
 SITE = 'https://adityamate.github.io'
 
 # ---------------------------------------------------------------- settings
+# While True: blog pages get <meta name="robots" content="noindex"> and the blog
+# URLs are left out of sitemap.xml. Set to False when you're ready to go public
+# (and point the homepage "Blog" link back at blog/).
+UNLISTED = True
+
 BLOG = {
     'title': 'Off the Clock',
     'intro': ('My non-technical, non-serious corner of the internet: curious stories, '
@@ -168,6 +173,7 @@ def page(*, rel, title, desc, url, image, body, og_type='article'):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
+{'<meta name="robots" content="noindex">' if UNLISTED else ''}
 <link rel="canonical" href="{SITE}{url}">
 <meta property="og:type" content="{og_type}">
 <meta property="og:url" content="{SITE}{url}">
@@ -388,7 +394,9 @@ def build_feed(posts):
 
 
 def build_sitemap(posts):
-    urls = [('/', '1.0'), ('/publications.html', '0.8'), ('/blog/', '0.8')] + [(f'/blog/{p["slug"]}/', '0.6') for p in posts]
+    urls = [('/', '1.0'), ('/publications.html', '0.8')]
+    if not UNLISTED:
+        urls += [('/blog/', '0.8')] + [(f'/blog/{p["slug"]}/', '0.6') for p in posts]
     body = ''.join(f'\n  <url>\n    <loc>{SITE}{u}</loc>\n    <priority>{pr}</priority>\n  </url>' for u, pr in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}\n</urlset>\n'
 
