@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Off the Clock · Aditya Mate</title>
+  <link>https://adityamate.github.io/blog/</link>
+  <description>My non-technical, non-serious corner of the internet: curious stories, armchair thoughts, travel accounts, and the odd page from my diary.</description>
+  <item>
+    <title>Cricket Camaraderie in Houston</title>
+    <link>https://adityamate.github.io/blog/cricket-houston/</link>
+    <guid>https://adityamate.github.io/blog/cricket-houston/</guid>
+    <pubDate>Tue, 15 Mar 2022 12:00:00 +0000</pubDate>
+    <description>The tournament ran Saturday to Tuesday, but our team was so sure we&#x27;d crash out in the group stages that most of us booked return tickets for Monday. Let me explain why.</description>
+  </item>
+  <item>
+    <title>First Taste of Harvard Business School</title>
+    <link>https://adityamate.github.io/blog/first-taste-of-harvard-business-school/</link>
+    <guid>https://adityamate.github.io/blog/first-taste-of-harvard-business-school/</guid>
+    <pubDate>Thu, 24 Sep 2020 12:00:00 +0000</pubDate>
+    <description>My first B-school class ever, a negotiation course at HBS, and a pleasant surprise about what actually goes on inside those revered classrooms.</description>
+  </item>
+  <item>
+    <title>Weekend at Forest Trails, Pune</title>
+    <link>https://adityamate.github.io/blog/pune-trip/</link>
+    <guid>https://adityamate.github.io/blog/pune-trip/</guid>
+    <pubDate>Wed, 15 Jan 2020 12:00:00 +0000</pubDate>
+    <description>If I were John Keats writing my own Ode on a Grecian Urn, I&#x27;d freeze time at 12:30 pm last Sunday.</description>
+  </item>
+  <item>
+    <title>Undergrad Internship at Sony, Japan</title>
+    <link>https://adityamate.github.io/blog/internship-at-sony-japan/</link>
+    <guid>https://adityamate.github.io/blog/internship-at-sony-japan/</guid>
+    <pubDate>Wed, 15 Jun 2016 12:00:00 +0000</pubDate>
+    <description>Even the toilet seat in Japan feels like an airplane cockpit, with its own dashboard of buttons, adjustable jets, seat heating and a built-in music system.</description>
+  </item>
+</channel>
+</rss>

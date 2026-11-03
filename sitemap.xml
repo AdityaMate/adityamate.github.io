@@ -2,12 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://adityamate.github.io/</loc>
-    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://adityamate.github.io/publications.html</loc>
-    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://adityamate.github.io/blog/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://adityamate.github.io/blog/cricket-houston/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adityamate.github.io/blog/first-taste-of-harvard-business-school/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adityamate.github.io/blog/pune-trip/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://adityamate.github.io/blog/internship-at-sony-japan/</loc>
+    <priority>0.6</priority>
   </url>
 </urlset>
