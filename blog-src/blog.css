@@ -8,6 +8,8 @@
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+/* faint Longfellow Bridge across the top of every page, fading into the paper */
+body::before{content:"";position:absolute;z-index:-1;top:0;left:0;right:0;height:34rem;background:url(bridge.jpg) center 35%/cover no-repeat;opacity:.17;pointer-events:none;-webkit-mask-image:linear-gradient(#000 35%,transparent);mask-image:linear-gradient(#000 35%,transparent)}
 a{color:var(--indigo);text-decoration:none}
 a:focus-visible,button:focus-visible,[role=button]:focus-visible{outline:2px solid var(--indigo);outline-offset:3px;border-radius:2px}
 img{max-width:100%}
@@ -281,10 +283,9 @@ footer a:hover{color:var(--indigo)}
   background-size:100% 4.4cqw,88% 4.4cqw;background-repeat:repeat-y;background-position:0 0,0 0;
   box-shadow:1px 0 3px rgba(0,0,0,.4)}
 
-/* title: a slice of cheesecake and the dots */
+/* title dots */
 .nowrap{white-space:nowrap}
 .dots{margin-left:.03em}
-.cheesecake{display:inline-block;height:.95em;width:auto;margin-left:.22em;vertical-align:-.1em}
 
 /* list markers: the series' mini cover and a star hang to the left of the title */
 .row-main{position:relative}

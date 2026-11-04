@@ -383,16 +383,6 @@ BOOK_MINI = ('<svg class="mini-icon" viewBox="0 0 20 28" width="20" height="28" 
              '<rect x="7.4" y="18.6" width="9" height="1.5" rx=".75" fill="#ead9ab"/><path d="M13.6 2h2.4v6.4l-1.2-1.1-1.2 1.1z" fill="#c7a04a"/></svg>')
 SERIES_MINI = {'pitch': PAD_MINI, 'snapshot': BOOK_MINI}
 
-# a slice of cheesecake to go with "a slice of my life..."
-CHEESECAKE = ('<svg class="cheesecake" viewBox="0 0 68 52" aria-hidden="true" focusable="false">'
-              '<path d="M5 41 L5 28 Q5 26 7 25.5 L60 13 Q63 12.4 63 15 L63 41 Q63 43 61 43 L7 43 Q5 43 5 41Z" fill="#f8e7b0"/>'
-              '<path d="M5 35 L63 35 L63 41 Q63 43 61 43 L7 43 Q5 43 5 41Z" fill="#b97c42"/>'
-              '<path d="M5 35 L63 35" stroke="#8f5a2a" stroke-width="1.2"/>'
-              '<path d="M5 28 Q5 26 7 25.5 L60 13 Q63 12.4 63 15 L63 19 L5 33Z" fill="#d93a47"/>'
-              '<path d="M12 31 q0 7 3 7 q3 0 3 -7z M30 27 q0 6 3 6 q3 0 3 -6z M48 22 q0 7 3 7 q3 0 3 -7z" fill="#d93a47"/>'
-              '<ellipse cx="46" cy="10.5" rx="5.2" ry="5.8" fill="#c1121f"/><path d="M43.6 6.2 q2.4 -3 5 0" stroke="#2f8a4a" stroke-width="2" fill="none" stroke-linecap="round"/>'
-              '<g fill="#fff3cf" fill-opacity=".9"><circle cx="44.4" cy="9.6" r=".7"/><circle cx="47.2" cy="11.4" r=".7"/><circle cx="45.6" cy="13" r=".7"/></g></svg>')
-
 
 def uniq_ids(html_, suffix):
     """Keep SVG gradient ids unique when the same block appears twice on a page."""
@@ -485,7 +475,7 @@ def build_index(posts):
 
     sub = BLOG.get('subtitle')
     head, _, last = BLOG['title'].rpartition(' ')
-    h1_text = f'{esc(head)} <span class="nowrap">{esc(last)}<span class="dots">…</span>{CHEESECAKE}</span>' if head else esc(BLOG['title'])
+    h1_text = f'{esc(head)} <span class="nowrap">{esc(last)}<span class="dots">…</span></span>' if head else esc(BLOG['title'])
     h1_html = f'<h1 class="has-sub">{h1_text}</h1>\n  <p class="subtitle">{esc(sub)}</p>' if sub else f'<h1>{h1_text}</h1>'
     body = f'''<main id="content" class="wrap">
 <section class="intro">
@@ -594,7 +584,7 @@ def main():
     for d in OUT.iterdir():
         if d.is_dir() and (d / 'index.html').exists() and d.name not in slugs and d.name != 'img':
             shutil.rmtree(d)
-    for asset in ('blog.css', 'blog.js'):
+    for asset in ('blog.css', 'blog.js', 'bridge.jpg'):
         shutil.copyfile(SRC / asset, OUT / asset)
     (OUT / 'index.html').write_text(build_index(posts), encoding='utf-8')
     for p in posts:
