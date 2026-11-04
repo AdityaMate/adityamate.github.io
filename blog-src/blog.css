@@ -238,31 +238,18 @@ footer a:hover{color:var(--indigo)}
 .pitch-text .book-kicker{font-size:3cqw;letter-spacing:.12em;white-space:nowrap;color:#6b4c1c}
 .pitch-text .book-title{margin-top:.8cqw;font-size:7cqw;line-height:1.1;color:#3a240f}
 
-/* the cricket series as a top-bound notepad: punched margin with spiral rings, a stack of sheets below */
-.book-pad{transform-origin:center top}
-.book-pad:hover{transform:perspective(1000px) rotateX(7deg) translateY(-3px)}
-.book-pad::before{display:none}
-.book-pad::after{left:4px;right:-3px;bottom:-9px;height:10px}
-.book-pad .book-cover{background:#fbf8ef;border-radius:3px 3px 5px 5px}
-.book-pad .book-cover::before{inset:12cqw 0 0 0}
-.book-pad .book-cover img{top:12cqw;height:calc(100% - 12cqw)}
-.pad-rings{position:absolute;z-index:4;left:0;right:0;top:-2.4cqw;height:14cqw;pointer-events:none}
-.pad-rings-svg{display:block;width:100%;height:100%;filter:drop-shadow(0 1.5px 1.5px rgba(0,0,0,.35))}
-
 /* single-page layout: pinned cards, series shelf, then the full list with its own filters */
 .series-shelf .series-grid{margin-top:1.1rem}
 .chip-series{font-size:.75rem;padding:.42rem .85rem}
-.pin-tag{display:inline-flex;align-items:center;gap:.3rem;color:var(--brass)}
-.pin-icon{flex:none}
 
 /* one pinned row: series (notepad / book) + pinned stories, four across, all the same height */
 .pinned-grid{grid-template-columns:repeat(4,1fr);gap:1.4rem;align-items:stretch;padding-bottom:.9rem}
-.pinned-grid .book{aspect-ratio:auto;align-self:stretch;min-height:19rem}
+.pinned-grid .book{aspect-ratio:auto;align-self:start;height:87%;min-height:0}
 .pinned-grid .card h3{font-size:1.05rem}
 @media (max-width:760px){
   .pinned-grid{grid-template-columns:1fr 1fr;gap:1.6rem 1.4rem}
   .pinned-grid .card{grid-column:1/-1}
-  .pinned-grid .book{aspect-ratio:270/383;min-height:0}
+  .pinned-grid .book{aspect-ratio:270/335;height:auto;min-height:0}
 }
 .read-all{font-size:.8rem;color:var(--ink)}
 .read-all span{color:var(--brass);margin-left:.15rem}
@@ -270,7 +257,7 @@ footer a:hover{color:var(--indigo)}
 /* chosen series: its thumbnail with a plain description beside it, then the filtered list below */
 .series-hero{display:flex;align-items:center;gap:2.2rem;margin:.2rem 0 2.4rem;padding-right:1.4rem}
 .series-hero[hidden]{display:none}
-.series-hero .book{flex:0 0 12.5rem;width:12.5rem;aspect-ratio:270/383;align-self:flex-start}
+.series-hero .book{flex:0 0 12.5rem;width:12.5rem;aspect-ratio:270/335;align-self:flex-start}
 .series-hero-text{flex:1;min-width:0}
 .series-hero-eyebrow{margin:0;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
 .series-hero-text h3{margin:.4rem 0 .6rem;font-family:var(--serif);font-weight:500;font-size:1.7rem;line-height:1.15}
@@ -282,8 +269,32 @@ footer a:hover{color:var(--indigo)}
 }
 
 /* the diary book is a little shorter than its neighbours */
-.pinned-grid .book-snap{align-self:start;aspect-ratio:auto;height:87%;min-height:0}
-.series-hero .book-snap{aspect-ratio:270/335}
 @media (max-width:760px){
-  .pinned-grid .book-snap{align-self:start;height:auto;aspect-ratio:270/335}
+  }
+
+/* cricket book as a scorebook: hardback with a stitched cloth-tape spine and cloth corners */
+.book-score .book-cover{border-radius:2px 6px 6px 2px}
+.score-spine{position:absolute;z-index:3;left:0;top:0;bottom:0;width:11cqw;background-color:#7e1c26;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 1px,transparent 1px 3px),repeating-linear-gradient(-45deg,rgba(0,0,0,.1) 0 1px,transparent 1px 3px),linear-gradient(90deg,rgba(0,0,0,.35),rgba(255,255,255,.08) 55%,rgba(0,0,0,.25));box-shadow:1px 0 3px rgba(0,0,0,.4)}
+.score-spine::before,.score-spine::after{content:"";position:absolute;top:2cqw;bottom:2cqw;width:0;border-left:1.5px dashed rgba(255,255,255,.75)}
+.score-spine::before{left:1.8cqw}.score-spine::after{right:1.8cqw}
+.score-corner{position:absolute;z-index:3;width:11cqw;height:11cqw;background-color:#7e1c26;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 1px,transparent 1px 3px),repeating-linear-gradient(-45deg,rgba(0,0,0,.1) 0 1px,transparent 1px 3px)}
+.score-corner-tr{top:0;right:0;clip-path:polygon(0 0,100% 0,100% 100%)}
+.score-corner-br{bottom:0;right:0;clip-path:polygon(100% 0,100% 100%,0 100%)}
+
+/* title: a slice of cheesecake and the dots */
+.nowrap{white-space:nowrap}
+.dots{margin-left:.03em}
+.cheesecake{display:inline-block;height:.95em;width:auto;margin-left:.22em;vertical-align:-.1em}
+
+/* list markers: the series' mini cover and a star hang to the left of the title */
+.row-main{position:relative}
+.row-marks{position:absolute;right:100%;top:.28rem;margin-right:.6rem;display:flex;flex-direction:column;align-items:center;gap:.45rem}
+.mark{display:block;line-height:0}
+.mark .mini-icon{display:block}
+.mark-star{color:var(--brass)}
+.mark-star-svg{display:block}
+@media (max-width:760px){
+  .row-marks{margin-right:.35rem}
+  .mark .mini-icon{width:15px;height:21px}
+  .mark-star-svg{width:12px;height:12px}
 }

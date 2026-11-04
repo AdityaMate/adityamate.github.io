@@ -331,33 +331,20 @@ def _pitch_svg():
 PITCH_SVG = _pitch_svg()
 
 
-def _pad_rings_svg():
-    """A row of spiral-binding rings with punched holes, poking out over the top edge of a notepad."""
-    parts = []
-    for i in range(20):
-        cx = 14 + i * 14.3
-        parts.append(f'<circle cx="{cx:.1f}" cy="26" r="3.3" fill="#2b2118"/>')
-        parts.append(f'<rect x="{cx - 1.7:.1f}" y="1.5" width="3.4" height="27" rx="1.7" fill="url(#pad-wire)" stroke="#6b6f76" stroke-width=".5"/>')
-    return ('<svg class="pad-rings-svg" viewBox="0 0 300 42" preserveAspectRatio="none" aria-hidden="true" focusable="false">'
-            '<defs><linearGradient id="pad-wire" x1="0" x2="1"><stop offset="0" stop-color="#8b9098"/><stop offset=".45" stop-color="#f1f3f6"/><stop offset="1" stop-color="#7d828a"/></linearGradient></defs>'
-            + ''.join(parts) + '</svg>')
-
-
-PAD_RINGS = _pad_rings_svg()
-
-
 def series_block(key, v, sp):
     n = len(sp)
     unit = v.get('unit', ('story', 'stories'))[0 if n == 1 else 1]
     cover = v.get('cover') or next((q['cover'] for q in sp if q['cover']), None)
     img = f'<img src="{esc(local(cover, ""))}" alt="" loading="lazy" decoding="async">' if cover else ''
     if v.get('style') == 'pitch':
-        return f'''<a class="book book-pitch book-pad" href="#series-{key}" aria-label="{esc(v['title'])}, series, {n} {unit} so far">
+        return f'''<a class="book book-pitch book-score" href="#series-{key}" aria-label="{esc(v['title'])}, series, {n} {unit} so far">
   <span class="book-cover">
     {img}
     <span class="pitch-plate">{PITCH_SVG}<span class="pitch-text"><span class="book-kicker">Series · {n} {unit}</span><span class="book-title">{esc(v['title'])}</span></span></span>
+    <span class="score-corner score-corner-tr" aria-hidden="true"></span>
+    <span class="score-corner score-corner-br" aria-hidden="true"></span>
+    <span class="score-spine" aria-hidden="true"></span>
   </span>
-  <span class="pad-rings" aria-hidden="true">{PAD_RINGS}</span>
 </a>'''
     if v.get('style') == 'snapshot':
         cap = f'<span class="snap-cap">{esc(v["caption"])}</span>' if v.get('caption') else ''
@@ -383,12 +370,35 @@ def series_block(key, v, sp):
 </a>'''
 
 
-PIN_ICON = ('<svg class="pin-icon" viewBox="0 0 16 16" width="11" height="11" fill="currentColor" aria-hidden="true">'
-            '<path d="M8 1.2l2 4.3 4.7.6-3.4 3.2.9 4.7L8 11.7 3.8 14l.9-4.7L1.3 6.1 6 5.5z"/></svg>')
+STAR_ICON = ('<svg class="mark-star-svg" viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true">'
+             '<path d="M8 1.2l2 4.3 4.7.6-3.4 3.2.9 4.7L8 11.7 3.8 14l.9-4.7L1.3 6.1 6 5.5z"/></svg>')
+
+# tiny versions of the series covers, used as markers in the list
+PAD_MINI = ('<svg class="mini-icon" viewBox="0 0 20 28" width="20" height="28" aria-hidden="true">'
+            '<rect x="2" y="2" width="16" height="24" rx="1.4" fill="#8fb8dc"/><rect x="2" y="12" width="16" height="14" fill="#c4ad74"/>'
+            '<rect x="2" y="17" width="16" height="6.4" fill="#7fae52"/><rect x="6" y="18.5" width="11" height="3.4" fill="#e6d395"/>'
+            '<rect x="2" y="2" width="4.2" height="24" rx="1.4" fill="#7e1c26"/>'
+            '<path d="M3.2 3.4v21.2M5 3.4v21.2" stroke="#f1d9db" stroke-width=".45" stroke-dasharray="1 1" fill="none"/></svg>')
+BOOK_MINI = ('<svg class="mini-icon" viewBox="0 0 20 28" width="20" height="28" aria-hidden="true">'
+             '<rect x="2" y="2" width="16" height="24" rx="1.6" fill="#7a5a1e"/><rect x="2" y="2" width="3.6" height="24" rx="1.4" fill="#58401a"/>'
+             '<g transform="rotate(-7 12 10)"><rect x="7.6" y="5" width="8.6" height="8.6" fill="#fbf9f2"/><rect x="8.6" y="6" width="6.6" height="5.2" fill="#9db9a2"/></g>'
+             '<rect x="7.4" y="18.6" width="9" height="1.5" rx=".75" fill="#ead9ab"/><path d="M13.6 2h2.4v6.4l-1.2-1.1-1.2 1.1z" fill="#c7a04a"/></svg>')
+SERIES_MINI = {'pitch': PAD_MINI, 'snapshot': BOOK_MINI}
+
+# a slice of cheesecake to go with "a slice of my life..."
+CHEESECAKE = ('<svg class="cheesecake" viewBox="0 0 68 52" aria-hidden="true" focusable="false">'
+              '<path d="M5 41 L5 28 Q5 26 7 25.5 L60 13 Q63 12.4 63 15 L63 41 Q63 43 61 43 L7 43 Q5 43 5 41Z" fill="#f8e7b0"/>'
+              '<path d="M5 35 L63 35 L63 41 Q63 43 61 43 L7 43 Q5 43 5 41Z" fill="#b97c42"/>'
+              '<path d="M5 35 L63 35" stroke="#8f5a2a" stroke-width="1.2"/>'
+              '<path d="M5 28 Q5 26 7 25.5 L60 13 Q63 12.4 63 15 L63 19 L5 33Z" fill="#d93a47"/>'
+              '<path d="M12 31 q0 7 3 7 q3 0 3 -7z M30 27 q0 6 3 6 q3 0 3 -6z M48 22 q0 7 3 7 q3 0 3 -7z" fill="#d93a47"/>'
+              '<ellipse cx="46" cy="10.5" rx="5.2" ry="5.8" fill="#c1121f"/><path d="M43.6 6.2 q2.4 -3 5 0" stroke="#2f8a4a" stroke-width="2" fill="none" stroke-linecap="round"/>'
+              '<g fill="#fff3cf" fill-opacity=".9"><circle cx="44.4" cy="9.6" r=".7"/><circle cx="47.2" cy="11.4" r=".7"/><circle cx="45.6" cy="13" r=".7"/></g></svg>')
 
 
 def uniq_ids(html_, suffix):
-    for i in ('pad-wire', 'pitch-sand'):
+    """Keep SVG gradient ids unique when the same block appears twice on a page."""
+    for i in ('pitch-sand',):
         html_ = html_.replace(f'id="{i}"', f'id="{i}{suffix}"').replace(f'url(#{i})', f'url(#{i}{suffix})')
     return html_
 
@@ -408,14 +418,14 @@ def build_index(posts):
         n = sum(p['format'] == k for p in posts)
         if n and k not in NO_FORMAT_CHIP:
             chips.append(chip(k, plural, n))
+    if live_series:
+        chips.append('<span class="chip-sep" aria-hidden="true"></span>')
+        chips += [chip(f'series-{k}', esc(v['title']), len(sp), ' chip-series') for k, v, sp in live_series]
     chips.append('<span class="chip-sep" aria-hidden="true"></span>')
     for t in TOPICS:
         n = sum(t in p['topics'] for p in posts)
         if n:
             chips.append(chip(slugify(t), esc(t), n))
-    if live_series:
-        chips.append('<span class="chip-sep" aria-hidden="true"></span>')
-        chips += [chip(f'series-{k}', esc(v['title']), len(sp), ' chip-series') for k, v, sp in live_series]
     series_notes = ''
     for k, v, sp in live_series:
         n = len(sp)
@@ -448,17 +458,21 @@ def build_index(posts):
         for p in years[y]:
             tags = ' '.join([p['format']] + [slugify(t) for t in p['topics']] + ([f'series-{p["series"]}'] if p['series'] else []))
             bits = [fmt_badge(p)] + [f'<span>{esc(t)}</span>' for t in p['topics']] + [f'<span>{p["minutes"]} min</span>']
+            marks = ''
             if p['series']:
                 part = series_posts(posts, p['series']).index(p) + 1
-                bits.append(f'<span class="series-tag">{esc(SERIES[p["series"]]["title"])} · {part:02d}</span>')
+                label = f"{SERIES[p['series']]['title']} · Part {part}"
+                mini = SERIES_MINI.get(SERIES[p['series']].get('style'), BOOK_MINI)
+                marks += f'<span class="mark" title="{esc(label)}" role="img" aria-label="{esc(label)}">{mini}</span>'
             if p['slug'] in pinned_slugs:
-                bits.append(f'<span class="pin-tag">{PIN_ICON}Recommended</span>')
+                marks += f'<span class="mark mark-star" title="Recommended" role="img" aria-label="Recommended">{STAR_ICON}</span>'
+            marks_html = f'<span class="row-marks">{marks}</span>' if marks else ''
             row_hook = (inline_md(p['excerpt']) + ' <span class="read-more">Read more...</span>') if p['excerpt'] else esc(p['hook'])
             thumb = thumb_for(p, '')
             thumb_html = f'\n  <span class="row-thumb"><img src="{esc(thumb)}" alt="" loading="lazy" decoding="async"></span>' if thumb else ''
             rows += f'''<li class="row{'' if thumb else ' no-thumb'}" data-tags="{tags}"><a href="{p['slug']}/">
   <span class="row-date">{p['date'].strftime('%b')}</span>
-  <span class="row-main">
+  <span class="row-main">{marks_html}
     <span class="row-title">{esc(p['title'])}</span>
     <span class="row-hook">{row_hook}</span>
     <span class="row-meta">{''.join(bits)}</span>
@@ -471,7 +485,9 @@ def build_index(posts):
         works = f'<section class="block" aria-labelledby="soon-h">\n  <h2 class="eyebrow" id="soon-h">Coming soon</h2>\n  <div class="soon-grid">{boxes}</div>\n</section>'
 
     sub = BLOG.get('subtitle')
-    h1_html = f'<h1 class="has-sub">{esc(BLOG["title"])}</h1>\n  <p class="subtitle">{esc(sub)}</p>' if sub else f'<h1>{esc(BLOG["title"])}</h1>'
+    head, _, last = BLOG['title'].rpartition(' ')
+    h1_text = f'{esc(head)} <span class="nowrap">{esc(last)}<span class="dots">…</span>{CHEESECAKE}</span>' if head else esc(BLOG['title'])
+    h1_html = f'<h1 class="has-sub">{h1_text}</h1>\n  <p class="subtitle">{esc(sub)}</p>' if sub else f'<h1>{h1_text}</h1>'
     body = f'''<main id="content" class="wrap">
 <section class="intro">
   <p class="eyebrow">Writing</p>
@@ -482,7 +498,7 @@ def build_index(posts):
 {pinned_html}
 {series_html}
 <section class="block archive" aria-labelledby="all-h">
-  <div class="archive-head"><h2 class="eyebrow read-all" id="all-h">Read all <span aria-hidden="true">›</span></h2><span class="archive-count" aria-live="polite">{len(posts)} pieces</span></div>
+  <div class="archive-head"><h2 class="eyebrow read-all" id="all-h">Browse all <span aria-hidden="true">›</span></h2><span class="archive-count" aria-live="polite">{len(posts)} pieces</span></div>
   <div class="filters" role="group" aria-label="Filter writing">{''.join(chips)}</div>
   {series_notes}
   {year_html}
