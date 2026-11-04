@@ -29,7 +29,7 @@ img{max-width:100%}
 /* intro */
 .intro{padding:3.6rem 0 2.4rem;position:relative}
 /* Longfellow Bridge behind the masthead and intro, full width, fading out just above Recommended */
-.intro::before{content:"";position:absolute;z-index:-1;top:-12rem;bottom:0;left:50%;width:100vw;margin-left:-50vw;background:url(bridge.jpg) center 38%/cover no-repeat;opacity:.4;pointer-events:none;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}
+.intro::before{content:"";position:absolute;z-index:-1;top:-12rem;bottom:0;left:50%;width:100vw;margin-left:-50vw;background:url(bridge.jpg) center 38%/cover no-repeat;opacity:.32;pointer-events:none;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}
 body{overflow-x:clip}
 .intro h1.has-sub{margin-bottom:.3rem}
 .intro .subtitle{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--ink-soft);margin:0 0 1.3rem}
@@ -38,6 +38,7 @@ body{overflow-x:clip}
 .meta-links{font-size:.88rem;color:var(--ink-soft);margin:0}
 .meta-links a{border-bottom:1px solid rgba(46,67,114,.35)}
 .meta-links a:hover{border-bottom-color:var(--indigo)}
+.intro .lede,.intro .meta-links,.intro .eyebrow{color:#2e3239}
 
 /* format badges */
 .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--ink-soft);margin:0;display:flex;align-items:center;gap:.35rem .8rem;flex-wrap:wrap}
