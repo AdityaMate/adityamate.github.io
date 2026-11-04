@@ -457,7 +457,7 @@ def build_index(posts):
             tags = ' '.join([p['format']] + [slugify(t) for t in p['topics']] + ([f'series-{p["series"]}'] if p['series'] else []))
             sr = SERIES.get(p['series']) if p['series'] else None
             if sr and sr.get('style') == 'snapshot':
-                first, series_bit = f'<span class="fmt fmt-{p["format"]}">{esc(sr["title"])}</span>', ''
+                first, series_bit = f'<span class="fmt fmt-{p["format"]}">Diary Page</span>', ''
             else:
                 first = fmt_badge(p)
                 series_bit = ''
