@@ -61,6 +61,8 @@ SERIES = {
     'crease': {
         'title': 'Tales from the Crease',
         'cover': '/blog/img/cricket-houston-01.jpg',   # optional; defaults to the first story's cover
+        'spine': '#2E4372',                              # book spine colour
+        'style': 'pitch',                                # title plate drawn as a sketched cricket pitch
         'blurb': ('Stories from matches I’ve played: the collapses, the comebacks, '
                   'and the baseball player who out-batted all of us.'),
         'more_coming': 'More match stories on the way',
@@ -70,6 +72,10 @@ SERIES = {
         'blurb': ('Unpolished pages from my diary: the trips, reunions and ordinary days '
                   'I would happily freeze in time.'),
         'more_coming': 'More pages on the way',
+        'spine': '#7A5A1E',
+        'cover': '/blog/img/pune-trip-02.jpg',
+        'style': 'snapshot',          # taped snapshot on a leather cover (default is a full-photo cover)
+        'caption': 'Pune, Jan 2020',  # handwritten caption under the snapshot
         'unit': ('page', 'pages'),
     },
 }
@@ -301,24 +307,66 @@ PAGES_ICON = ('<svg class="pages-icon" viewBox="0 0 20 20" width="15" height="15
               '<path d="M4 4.5v12.2c0 .5.3.8.8.8h10.7M1.5 7.5v10"/></svg>')
 
 
+def _pitch_svg():
+    """Flat top-down cricket pitch laid horizontally on a full-width band of striped grass: a rectangular strip
+    with white popping creases near each end and return creases along its edges."""
+    W, H = 300, 108
+    bands = ''.join(
+        f'<rect x="{x}" width="30.5" height="{H}" fill="{"#8dbb55" if (x // 30) % 2 == 0 else "#6fa043"}"/>'
+        for x in range(0, W, 30)
+    )
+    return (
+        f'<svg class="pitch-sketch" viewBox="0 0 {W} {H}" preserveAspectRatio="none" aria-hidden="true" focusable="false">'
+        '<defs><linearGradient id="pitch-sand" x1="0" x2="1"><stop offset="0" stop-color="#f3e0a0"/><stop offset="1" stop-color="#ecd48f"/></linearGradient></defs>'
+        + bands +
+        '<rect x="34" y="18" width="254" height="72" fill="url(#pitch-sand)"/>'
+        '<g stroke="#fffbea" stroke-linecap="butt" fill="none">'
+        '<path d="M74 6 L74 102" stroke-width="3.4"/><path d="M248 6 L248 102" stroke-width="3.4"/>'
+        '<path d="M34 27 L74 27" stroke-width="2.8"/><path d="M34 81 L74 81" stroke-width="2.8"/>'
+        '<path d="M248 27 L288 27" stroke-width="2.8"/><path d="M248 81 L288 81" stroke-width="2.8"/>'
+        '</g></svg>'
+    )
+
+
+PITCH_SVG = _pitch_svg()
+
+
 def series_block(key, v, sp):
     n = len(sp)
     unit = v.get('unit', ('story', 'stories'))[0 if n == 1 else 1]
     cover = v.get('cover') or next((q['cover'] for q in sp if q['cover']), None)
-    img = (f'<div class="card-img"><img src="{esc(local(cover, ""))}" alt="" loading="lazy" decoding="async"></div>'
-           if cover else '<div class="card-img"></div>')
-    return f'''<div class="series-stack">
-  <span class="sheet sheet-3" aria-hidden="true"></span><span class="sheet sheet-2" aria-hidden="true"></span><span class="sheet sheet-1" aria-hidden="true"></span>
-  <a class="card series-block" href="#series-{key}">
-  {img}
-  <div class="card-body">
-    <p class="series-eyebrow">{PAGES_ICON}Series · {n} {unit} so far</p>
-    <h3>{esc(v['title'])}</h3>
-    <p class="hook">{esc(v['blurb'])}</p>
-    <p class="readtime">View the series →</p>
-  </div>
-</a>
-</div>'''
+    img = f'<img src="{esc(local(cover, ""))}" alt="" loading="lazy" decoding="async">' if cover else ''
+    if v.get('style') == 'pitch':
+        return f'''<a class="book book-pitch" href="#series-{key}" style="--spine:{v.get('spine', '#2E4372')}" aria-label="{esc(v['title'])}, series, {n} {unit} so far">
+  <span class="book-cover">
+    {img}
+    <span class="book-spine" aria-hidden="true"></span>
+    <span class="book-ribbon" aria-hidden="true"></span>
+    <span class="pitch-plate">{PITCH_SVG}<span class="pitch-text"><span class="book-kicker">Series · {n} {unit}</span><span class="book-title">{esc(v['title'])}</span></span></span>
+  </span>
+</a>'''
+    if v.get('style') == 'snapshot':
+        cap = f'<span class="snap-cap">{esc(v["caption"])}</span>' if v.get('caption') else ''
+        return f'''<a class="book book-snap" href="#series-{key}" style="--spine:{v.get('spine', '#7A5A1E')}" aria-label="{esc(v['title'])}, series, {n} {unit} so far">
+  <span class="book-cover leather">
+    <span class="snap"><span class="snap-photo">{img}</span>{cap}</span>
+    <span class="tape" aria-hidden="true"></span>
+    <span class="book-spine" aria-hidden="true"></span>
+    <span class="book-ribbon" aria-hidden="true"></span>
+    <span class="snap-title"><span class="snap-kicker">Series · {n} {unit}</span><span class="snap-name">{esc(v['title'])}</span></span>
+  </span>
+</a>'''
+    return f'''<a class="book" href="#series-{key}" style="--spine:{v.get('spine', '#2E4372')}" aria-label="{esc(v['title'])}, series, {n} {unit} so far">
+  <span class="book-cover">
+    {img}
+    <span class="book-spine" aria-hidden="true"></span>
+    <span class="book-ribbon" aria-hidden="true"></span>
+    <span class="book-label">
+      <span class="book-kicker">{PAGES_ICON}Series · {n} {unit}</span>
+      <span class="book-title">{esc(v['title'])}</span>
+    </span>
+  </span>
+</a>'''
 
 
 def build_index(posts):
