@@ -277,11 +277,11 @@ footer a:hover{color:var(--indigo)}
 
 /* cricket book as a notepad: spiral binding down the left edge */
 .book-score .book-cover{border-radius:2px 6px 6px 2px}
-.score-spiral{position:absolute;z-index:3;left:0;top:0;bottom:0;width:11cqw;background-color:rgba(20,20,24,.55);
+.score-spiral{position:absolute;z-index:3;left:0;top:0;bottom:0;width:6.5cqw;background-color:#eceae4;
   background-image:
-    radial-gradient(circle at 72% 50%,#0c0c0e 0 1.1cqw,transparent 1.25cqw),
-    linear-gradient(180deg,transparent 0 1.1cqw,#8d9199 1.1cqw 1.7cqw,#f4f5f7 1.7cqw 2.3cqw,#6c7077 2.3cqw 2.9cqw,transparent 2.9cqw);
-  background-size:100% 4.4cqw,88% 4.4cqw;background-repeat:repeat-y;background-position:0 0,0 0;
+    radial-gradient(circle at 72% 50%,#9a9890 0 .8cqw,transparent .95cqw),
+    linear-gradient(180deg,transparent 0 .9cqw,#a6a9af .9cqw 1.35cqw,#ffffff 1.35cqw 1.8cqw,#8a8e95 1.8cqw 2.25cqw,transparent 2.25cqw);
+  background-size:100% 3.4cqw,90% 3.4cqw;background-repeat:repeat-y;background-position:0 0,0 0;
   box-shadow:1px 0 3px rgba(0,0,0,.4)}
 
 /* title dots */
