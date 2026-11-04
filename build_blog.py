@@ -331,19 +331,33 @@ def _pitch_svg():
 PITCH_SVG = _pitch_svg()
 
 
+def _pad_rings_svg():
+    """A row of spiral-binding rings with punched holes, poking out over the top edge of a notepad."""
+    parts = []
+    for i in range(20):
+        cx = 14 + i * 14.3
+        parts.append(f'<circle cx="{cx:.1f}" cy="26" r="3.3" fill="#2b2118"/>')
+        parts.append(f'<rect x="{cx - 1.7:.1f}" y="1.5" width="3.4" height="27" rx="1.7" fill="url(#pad-wire)" stroke="#6b6f76" stroke-width=".5"/>')
+    return ('<svg class="pad-rings-svg" viewBox="0 0 300 42" preserveAspectRatio="none" aria-hidden="true" focusable="false">'
+            '<defs><linearGradient id="pad-wire" x1="0" x2="1"><stop offset="0" stop-color="#8b9098"/><stop offset=".45" stop-color="#f1f3f6"/><stop offset="1" stop-color="#7d828a"/></linearGradient></defs>'
+            + ''.join(parts) + '</svg>')
+
+
+PAD_RINGS = _pad_rings_svg()
+
+
 def series_block(key, v, sp):
     n = len(sp)
     unit = v.get('unit', ('story', 'stories'))[0 if n == 1 else 1]
     cover = v.get('cover') or next((q['cover'] for q in sp if q['cover']), None)
     img = f'<img src="{esc(local(cover, ""))}" alt="" loading="lazy" decoding="async">' if cover else ''
     if v.get('style') == 'pitch':
-        return f'''<a class="book book-pitch" href="#series-{key}" style="--spine:{v.get('spine', '#2E4372')}" aria-label="{esc(v['title'])}, series, {n} {unit} so far">
+        return f'''<a class="book book-pitch book-pad" href="#series-{key}" aria-label="{esc(v['title'])}, series, {n} {unit} so far">
   <span class="book-cover">
     {img}
-    <span class="book-spine" aria-hidden="true"></span>
-    <span class="book-ribbon" aria-hidden="true"></span>
     <span class="pitch-plate">{PITCH_SVG}<span class="pitch-text"><span class="book-kicker">Series · {n} {unit}</span><span class="book-title">{esc(v['title'])}</span></span></span>
   </span>
+  <span class="pad-rings" aria-hidden="true">{PAD_RINGS}</span>
 </a>'''
     if v.get('style') == 'snapshot':
         cap = f'<span class="snap-cap">{esc(v["caption"])}</span>' if v.get('caption') else ''
@@ -369,19 +383,21 @@ def series_block(key, v, sp):
 </a>'''
 
 
+PIN_ICON = ('<svg class="pin-icon" viewBox="0 0 16 16" width="11" height="11" fill="currentColor" aria-hidden="true">'
+            '<circle cx="8" cy="4.6" r="3.5"/><path d="M5.6 7.8h4.8L9 11.4 8 15.4 7 11.4z"/></svg>')
+
+
 def build_index(posts):
+    """One page, fixed order, nothing swaps: Pinned cards, Series, then the complete list (filters apply to the list only)."""
     rel = ''
     feat = sorted([p for p in posts if p['featured']], key=lambda p: p['featured'])[:3]
+    pinned_slugs = {p['slug'] for p in feat}
     live_series = [(k, v, series_posts(posts, k)) for k, v in SERIES.items() if series_posts(posts, k)]
-    default_key = 'featured' if feat else 'all'
 
-    # menu: Featured (default) | All | topics, then a prominent row for the series
+    # filters for the list: All | topics | series
     def chip(key, label, n, cls=''):
-        return f'<button class="chip{cls}" data-key="{key}" aria-pressed="{"true" if key == default_key else "false"}">{label}<span class="n">{n}</span></button>'
-    chips = []
-    if feat:
-        chips.append(chip('featured', 'Featured', len(feat)))
-    chips.append(chip('all', 'All', len(posts)))
+        return f'<button class="chip{cls}" data-key="{key}" aria-pressed="{"true" if key == "all" else "false"}">{label}<span class="n">{n}</span></button>'
+    chips = [chip('all', 'All', len(posts))]
     for k, (_, plural) in FORMATS.items():
         n = sum(p['format'] == k for p in posts)
         if n and k not in NO_FORMAT_CHIP:
@@ -391,21 +407,25 @@ def build_index(posts):
         n = sum(t in p['topics'] for p in posts)
         if n:
             chips.append(chip(slugify(t), esc(t), n))
-    series_chips = ''.join(chip(f'series-{k}', esc(v['title']), len(sp), ' chip-series') for k, v, sp in live_series)
-    series_row = (f'<div class="filters series-row" role="group" aria-label="Series"><span class="chip-label">Series</span>{series_chips}</div>'
-                  if live_series else '')
+    if live_series:
+        chips.append('<span class="chip-sep" aria-hidden="true"></span>')
+        chips += [chip(f'series-{k}', esc(v['title']), len(sp), ' chip-series') for k, v, sp in live_series]
     series_notes = ''
     for k, v, sp in live_series:
         more = f' <span class="more">· {esc(v["more_coming"])}</span>' if v.get('more_coming') else ''
         series_notes += (f'<p class="series-note" data-key="series-{k}" hidden><strong>{esc(v["title"])}</strong> — '
                          f'{esc(v["blurb"])}{more} <button class="note-clear" type="button">Show all writing ×</button></p>')
-    feat_html = ''
+
+    pinned_html = ''
     if feat:
         cards = [card(feat[0], rel, 'lead')] + [card(p, rel) for p in feat[1:]]
-        feat_html = f'<div class="feat-grid">{"".join(cards)}</div>'
+        pinned_html = (f'<section class="block pinned" aria-labelledby="pinned-h">\n  <h2 class="eyebrow" id="pinned-h">Pinned stories</h2>\n'
+                       f'  <div class="feat-grid">{"".join(cards)}</div>\n</section>')
+    series_html = ''
     if live_series:
         blocks = ''.join(series_block(k, v, sp) for k, v, sp in live_series[:3])
-        feat_html += f'\n<div class="series-grid" style="--n:{min(len(live_series), 3)}">{blocks}</div>'
+        series_html = (f'<section class="block series-shelf" aria-labelledby="series-h">\n  <h2 class="eyebrow" id="series-h">Series</h2>\n'
+                       f'  <div class="series-grid">{blocks}</div>\n</section>')
 
     years = {}
     for p in posts:
@@ -419,6 +439,8 @@ def build_index(posts):
             if p['series']:
                 part = series_posts(posts, p['series']).index(p) + 1
                 bits.append(f'<span class="series-tag">{esc(SERIES[p["series"]]["title"])} · {part:02d}</span>')
+            if p['slug'] in pinned_slugs:
+                bits.append(f'<span class="pin-tag">{PIN_ICON}Pinned</span>')
             row_hook = (inline_md(p['excerpt']) + ' <span class="read-more">Read more...</span>') if p['excerpt'] else esc(p['hook'])
             thumb = thumb_for(p, '')
             thumb_html = f'\n  <span class="row-thumb"><img src="{esc(thumb)}" alt="" loading="lazy" decoding="async"></span>' if thumb else ''
@@ -445,17 +467,14 @@ def build_index(posts):
   <p class="lede">{esc(BLOG['intro'])}</p>
   <p class="meta-links">Read something? I’d love to hear what you think, <a href="{BLOG['feedback']}" target="_blank" rel="noopener">anonymously</a>.</p>
 </section>
-<section class="block browse" data-default="{default_key}" aria-labelledby="all-h">
-  <div class="archive-head"><h2 class="eyebrow" id="all-h">Browse</h2><span class="archive-count" aria-live="polite"></span></div>
-  <div class="filters" role="group" aria-label="Browse writing">{''.join(chips)}</div>
-  {series_row}
+{pinned_html}
+{series_html}
+<section class="block archive" aria-labelledby="all-h">
+  <div class="archive-head"><h2 class="eyebrow" id="all-h">All writing</h2><span class="archive-count" aria-live="polite">{len(posts)} pieces</span></div>
+  <div class="filters" role="group" aria-label="Filter writing">{''.join(chips)}</div>
   {series_notes}
-  <div class="panel panel-featured"{'' if feat else ' hidden'}>{feat_html}</div>
-  <div class="panel panel-list"{' hidden' if feat else ''}>
-    {year_html}
-    <p class="empty" hidden>Nothing here yet.</p>
-  </div>
-  <noscript><style>.panel-list[hidden]{{display:block}}</style></noscript>
+  {year_html}
+  <p class="empty" hidden>Nothing here yet.</p>
 </section>
 {works}
 </main>'''

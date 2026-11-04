@@ -239,3 +239,20 @@ footer a:hover{color:var(--indigo)}
 .pitch-text{position:absolute;left:26%;right:19%;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;text-shadow:0 0 7px rgba(243,224,160,.95),0 0 3px rgba(243,224,160,.9)}
 .pitch-text .book-kicker{font-size:3cqw;letter-spacing:.12em;white-space:nowrap;color:#6b4c1c}
 .pitch-text .book-title{margin-top:.8cqw;font-size:7cqw;line-height:1.1;color:#3a240f}
+
+/* the cricket series as a top-bound notepad: punched margin with spiral rings, a stack of sheets below */
+.book-pad{transform-origin:center top}
+.book-pad:hover{transform:perspective(1000px) rotateX(7deg) translateY(-3px)}
+.book-pad::before{display:none}
+.book-pad::after{left:4px;right:-3px;bottom:-9px;height:10px}
+.book-pad .book-cover{background:#fbf8ef;border-radius:3px 3px 5px 5px}
+.book-pad .book-cover::before{inset:12cqw 0 0 0}
+.book-pad .book-cover img{top:12cqw;height:calc(100% - 12cqw)}
+.pad-rings{position:absolute;z-index:4;left:0;right:0;top:-2.4cqw;height:14cqw;pointer-events:none}
+.pad-rings-svg{display:block;width:100%;height:100%;filter:drop-shadow(0 1.5px 1.5px rgba(0,0,0,.35))}
+
+/* single-page layout: pinned cards, series shelf, then the full list with its own filters */
+.series-shelf .series-grid{margin-top:1.1rem}
+.chip-series{font-size:.75rem;padding:.42rem .85rem}
+.pin-tag{display:inline-flex;align-items:center;gap:.3rem;color:var(--brass)}
+.pin-icon{flex:none;transform:rotate(20deg)}

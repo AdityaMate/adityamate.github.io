@@ -1,33 +1,27 @@
 (function () {
-  // ---- menu on the blog index: Featured (cards) | All | topics | series (list)
+  // ---- filters for the "All writing" list on the blog index (the Pinned and Series rows above never change)
   var chips = [].slice.call(document.querySelectorAll('.chip'));
-  var browse = document.querySelector('.browse');
-  if (chips.length && browse) {
-    var def = browse.dataset.default || 'all';
+  var archive = document.querySelector('.archive');
+  if (chips.length && archive) {
     var rows = [].slice.call(document.querySelectorAll('.row'));
     var years = [].slice.call(document.querySelectorAll('.year'));
     var count = document.querySelector('.archive-count');
     var empty = document.querySelector('.empty');
     var notes = [].slice.call(document.querySelectorAll('.series-note'));
-    var pFeat = document.querySelector('.panel-featured');
-    var pList = document.querySelector('.panel-list');
     var apply = function (key) {
-      var featured = key === 'featured';
-      if (pFeat) pFeat.hidden = !featured;
-      if (pList) pList.hidden = featured;
       var n = 0;
       rows.forEach(function (r) {
-        var ok = key === 'all' || featured || r.dataset.tags.split(' ').indexOf(key) > -1;
-        r.hidden = !ok; if (ok && !featured) n++;
+        var ok = key === 'all' || r.dataset.tags.split(' ').indexOf(key) > -1;
+        r.hidden = !ok; if (ok) n++;
       });
       years.forEach(function (y) { y.hidden = !y.querySelector('.row:not([hidden])'); });
       chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.key === key)); });
       notes.forEach(function (x) { x.hidden = x.dataset.key !== key; });
-      if (count) count.textContent = featured ? '' : n + (n === 1 ? ' piece' : ' pieces');
-      if (empty) empty.hidden = featured || n > 0;
+      if (count) count.textContent = n + (n === 1 ? ' piece' : ' pieces');
+      if (empty) empty.hidden = n > 0;
     };
     var keys = chips.map(function (c) { return c.dataset.key; });
-    var setHash = function (key) { history.replaceState(null, '', key === def ? location.pathname : '#' + key); };
+    var setHash = function (key) { history.replaceState(null, '', key === 'all' ? location.pathname : '#' + key); };
     chips.forEach(function (c) {
       c.addEventListener('click', function () { apply(c.dataset.key); setHash(c.dataset.key); });
     });
@@ -37,10 +31,10 @@
     });
     var route = function (scroll) {
       var h = location.hash.slice(1);
-      if (!h) { apply(def); return; }
+      if (!h) { apply('all'); return; }
       if (keys.indexOf(h) > -1) {
         apply(h);
-        if (scroll) browse.scrollIntoView();
+        if (scroll) archive.scrollIntoView();
       }
     };
     window.addEventListener('hashchange', function () { route(true); });
