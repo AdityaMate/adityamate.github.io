@@ -277,6 +277,7 @@ footer a:hover{color:var(--indigo)}
 
 /* cricket book as a notepad: spiral binding down the left edge */
 .book-score .book-cover{border-radius:2px 6px 6px 2px}
+.book-score .book-cover img{inset:auto 0 auto 0;top:-9%;height:112%}
 .score-spiral{position:absolute;z-index:3;left:0;top:0;bottom:0;width:6.5cqw;background-color:#eceae4;
   background-image:
     radial-gradient(circle at 72% 50%,#9a9890 0 .8cqw,transparent .95cqw),

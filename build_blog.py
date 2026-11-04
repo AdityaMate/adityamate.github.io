@@ -60,7 +60,7 @@ BLOG = {
 SERIES = {
     'crease': {
         'title': 'Tales from the Crease',
-        'cover': '/blog/img/cricket-houston-01.jpg',   # optional; defaults to the first story's cover
+        'cover': '/blog/img/crease-trophy.jpg',   # optional; defaults to the first story's cover
         'spine': '#2E4372',                              # book spine colour
         'style': 'pitch',                                # title plate drawn as a sketched cricket pitch
         'blurb': ('Stories from matches I’ve played: the collapses, the comebacks, '
