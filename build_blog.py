@@ -455,16 +455,17 @@ def build_index(posts):
         rows = ''
         for p in years[y]:
             tags = ' '.join([p['format']] + [slugify(t) for t in p['topics']] + ([f'series-{p["series"]}'] if p['series'] else []))
-            bits = [fmt_badge(p)] + [f'<span>{esc(t)}</span>' for t in p['topics']] + [f'<span>{p["minutes"]} min</span>']
-            marks = ''
-            if p['series']:
-                part = series_posts(posts, p['series']).index(p) + 1
-                label = f"{SERIES[p['series']]['title']} · Part {part}"
-                mini = SERIES_MINI.get(SERIES[p['series']].get('style'), BOOK_MINI)
-                marks += f'<span class="mark" title="{esc(label)}" role="img" aria-label="{esc(label)}">{mini}</span>'
-            if p['slug'] in pinned_slugs:
-                marks += f'<span class="mark mark-star" title="Recommended" role="img" aria-label="Recommended">{STAR_ICON}</span>'
-            marks_html = f'<span class="row-marks">{marks}</span>' if marks else ''
+            sr = SERIES.get(p['series']) if p['series'] else None
+            if sr and sr.get('style') == 'snapshot':
+                first, series_bit = f'<span class="fmt fmt-{p["format"]}">{esc(sr["title"])}</span>', ''
+            else:
+                first = fmt_badge(p)
+                series_bit = ''
+                if sr:
+                    part = series_posts(posts, p['series']).index(p) + 1
+                    series_bit = f'<span class="series-tag">{esc(sr["title"])} · {part:02d}</span>'
+            bits = [first] + ([series_bit] if series_bit else []) + [f'<span>{esc(t)}</span>' for t in p['topics']] + [f'<span>{p["minutes"]} min</span>']
+            marks_html = ''
             row_hook = (inline_md(p['excerpt']) + ' <span class="read-more">Read more...</span>') if p['excerpt'] else esc(p['hook'])
             thumb = thumb_for(p, '')
             thumb_html = f'\n  <span class="row-thumb"><img src="{esc(thumb)}" alt="" loading="lazy" decoding="async"></span>' if thumb else ''
