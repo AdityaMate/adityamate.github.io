@@ -41,7 +41,7 @@ SITE = 'https://adityamate.github.io'
 UNLISTED = True
 
 BLOG = {
-    'title': 'A Slice of Life',
+    'title': 'Slice of Life',
     'subtitle': '',   # small italic line under the title; '' to hide
     'intro': ('Welcome to my non-technical, non-serious personal blog! This is where I post curious '
               'stories, armchair thoughts, travel accounts or just some random slice-of-my-life '
