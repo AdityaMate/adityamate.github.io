@@ -42,7 +42,7 @@ UNLISTED = True
 
 BLOG = {
     'title': 'A Slice of My Life',
-    'subtitle': 'Mate Notes',   # small italic line under the title; '' to hide
+    'subtitle': '',   # small italic line under the title; '' to hide
     'intro': ('Welcome to my non-technical, non-serious personal blog! This is where I post curious '
               'stories, armchair thoughts, travel accounts or just some random slice-of-my-life '
               'narrations from my personal diary.'),
@@ -341,9 +341,7 @@ def series_block(key, v, sp):
   <span class="book-cover">
     {img}
     <span class="pitch-plate">{PITCH_SVG}<span class="pitch-text"><span class="book-kicker">Series · {n} {unit}</span><span class="book-title">{esc(v['title'])}</span></span></span>
-    <span class="score-corner score-corner-tr" aria-hidden="true"></span>
-    <span class="score-corner score-corner-br" aria-hidden="true"></span>
-    <span class="score-spine" aria-hidden="true"></span>
+    <span class="score-spiral" aria-hidden="true"></span>
   </span>
 </a>'''
     if v.get('style') == 'snapshot':
@@ -442,7 +440,7 @@ def build_index(posts):
   </div>
 </div>'''
 
-    pinned_items = [series_block(k, v, sp) for k, v, sp in live_series[:3]] + [card(p, rel) for p in feat]
+    pinned_items = [card(p, rel) for p in feat] + [series_block(k, v, sp) for k, v, sp in live_series[:3]]
     pinned_html = ''
     if pinned_items:
         pinned_html = (f'<section class="block pinned" aria-labelledby="pinned-h">\n  <h2 class="eyebrow" id="pinned-h">Recommended</h2>\n'

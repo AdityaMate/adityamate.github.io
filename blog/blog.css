@@ -272,14 +272,14 @@ footer a:hover{color:var(--indigo)}
 @media (max-width:760px){
   }
 
-/* cricket book as a scorebook: hardback with a stitched cloth-tape spine and cloth corners */
+/* cricket book as a notepad: spiral binding down the left edge */
 .book-score .book-cover{border-radius:2px 6px 6px 2px}
-.score-spine{position:absolute;z-index:3;left:0;top:0;bottom:0;width:11cqw;background-color:#7e1c26;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 1px,transparent 1px 3px),repeating-linear-gradient(-45deg,rgba(0,0,0,.1) 0 1px,transparent 1px 3px),linear-gradient(90deg,rgba(0,0,0,.35),rgba(255,255,255,.08) 55%,rgba(0,0,0,.25));box-shadow:1px 0 3px rgba(0,0,0,.4)}
-.score-spine::before,.score-spine::after{content:"";position:absolute;top:2cqw;bottom:2cqw;width:0;border-left:1.5px dashed rgba(255,255,255,.75)}
-.score-spine::before{left:1.8cqw}.score-spine::after{right:1.8cqw}
-.score-corner{position:absolute;z-index:3;width:11cqw;height:11cqw;background-color:#7e1c26;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 1px,transparent 1px 3px),repeating-linear-gradient(-45deg,rgba(0,0,0,.1) 0 1px,transparent 1px 3px)}
-.score-corner-tr{top:0;right:0;clip-path:polygon(0 0,100% 0,100% 100%)}
-.score-corner-br{bottom:0;right:0;clip-path:polygon(100% 0,100% 100%,0 100%)}
+.score-spiral{position:absolute;z-index:3;left:0;top:0;bottom:0;width:11cqw;background-color:rgba(20,20,24,.55);
+  background-image:
+    radial-gradient(circle at 72% 50%,#0c0c0e 0 1.1cqw,transparent 1.25cqw),
+    linear-gradient(180deg,transparent 0 1.1cqw,#8d9199 1.1cqw 1.7cqw,#f4f5f7 1.7cqw 2.3cqw,#6c7077 2.3cqw 2.9cqw,transparent 2.9cqw);
+  background-size:100% 4.4cqw,88% 4.4cqw;background-repeat:repeat-y;background-position:0 0,0 0;
+  box-shadow:1px 0 3px rgba(0,0,0,.4)}
 
 /* title: a slice of cheesecake and the dots */
 .nowrap{white-space:nowrap}
