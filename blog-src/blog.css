@@ -255,4 +255,16 @@ footer a:hover{color:var(--indigo)}
 .series-shelf .series-grid{margin-top:1.1rem}
 .chip-series{font-size:.75rem;padding:.42rem .85rem}
 .pin-tag{display:inline-flex;align-items:center;gap:.3rem;color:var(--brass)}
-.pin-icon{flex:none;transform:rotate(20deg)}
+.pin-icon{flex:none}
+
+/* one pinned row: series (notepad / book) + pinned stories, four across, all the same height */
+.pinned-grid{grid-template-columns:repeat(4,1fr);gap:1.4rem;align-items:stretch;padding-bottom:.9rem}
+.pinned-grid .book{aspect-ratio:auto;align-self:stretch;min-height:19rem}
+.pinned-grid .card h3{font-size:1.05rem}
+@media (max-width:760px){
+  .pinned-grid{grid-template-columns:1fr 1fr;gap:1.6rem 1.4rem}
+  .pinned-grid .card{grid-column:1/-1}
+  .pinned-grid .book{aspect-ratio:270/383;min-height:0}
+}
+.read-all{font-size:.8rem;color:var(--ink)}
+.read-all span{color:var(--brass);margin-left:.15rem}

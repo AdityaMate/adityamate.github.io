@@ -5,7 +5,7 @@ date: 2020-09-24
 date_label: September 2020
 format: essay
 topics: [Work & Study]
-featured: 3
+featured: 2
 cover: /blog/img/hbs-02.jpg
 hook: My first B-school class ever, a negotiation course at HBS, and a pleasant surprise about what actually goes on inside those revered classrooms.
 excerpt: **Sept 2020:** Last week I took my first B-school class ever—at Harvard Business school—my first sip towards quenching my curiosity about what lies inside the revered HBS classes. I was pleasantly surprised!

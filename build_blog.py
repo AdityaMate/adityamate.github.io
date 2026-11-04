@@ -13,7 +13,7 @@ Writing a new post: add blog-src/posts/YYYY-MM-DD-some-slug.md with front matter
     topics: [Cricket]        # any of the TOPICS below
     series: crease           # optional, a key from SERIES below
     series_part: 2           # optional, its position in the series
-    featured: 1              # optional, 1-3 = position in "Pinned stories"
+    featured: 1              # optional, 1-3 = position in the Recommended row
     cover: /blog/img/my-photo.jpg   # optional card image
     hook: One or two sentences that make people want to click.
     excerpt: **Mar 2022:** Optional text for the All writing list (markdown); ends with Read more...  Falls back to hook.
@@ -384,13 +384,13 @@ def series_block(key, v, sp):
 
 
 PIN_ICON = ('<svg class="pin-icon" viewBox="0 0 16 16" width="11" height="11" fill="currentColor" aria-hidden="true">'
-            '<circle cx="8" cy="4.6" r="3.5"/><path d="M5.6 7.8h4.8L9 11.4 8 15.4 7 11.4z"/></svg>')
+            '<path d="M8 1.2l2 4.3 4.7.6-3.4 3.2.9 4.7L8 11.7 3.8 14l.9-4.7L1.3 6.1 6 5.5z"/></svg>')
 
 
 def build_index(posts):
     """One page, fixed order, nothing swaps: Pinned cards, Series, then the complete list (filters apply to the list only)."""
     rel = ''
-    feat = sorted([p for p in posts if p['featured']], key=lambda p: p['featured'])[:3]
+    feat = sorted([p for p in posts if p['featured']], key=lambda p: p['featured'])[:4]
     pinned_slugs = {p['slug'] for p in feat}
     live_series = [(k, v, series_posts(posts, k)) for k, v in SERIES.items() if series_posts(posts, k)]
 
@@ -416,16 +416,13 @@ def build_index(posts):
         series_notes += (f'<p class="series-note" data-key="series-{k}" hidden><strong>{esc(v["title"])}</strong> — '
                          f'{esc(v["blurb"])}{more} <button class="note-clear" type="button">Show all writing ×</button></p>')
 
+    # one pinned row: the series (notepad / book) followed by the pinned stories
+    pinned_items = [series_block(k, v, sp) for k, v, sp in live_series[:3]] + [card(p, rel) for p in feat]
     pinned_html = ''
-    if feat:
-        cards = [card(feat[0], rel, 'lead')] + [card(p, rel) for p in feat[1:]]
-        pinned_html = (f'<section class="block pinned" aria-labelledby="pinned-h">\n  <h2 class="eyebrow" id="pinned-h">Pinned stories</h2>\n'
-                       f'  <div class="feat-grid">{"".join(cards)}</div>\n</section>')
+    if pinned_items:
+        pinned_html = (f'<section class="block pinned" aria-labelledby="pinned-h">\n  <h2 class="eyebrow" id="pinned-h">Recommended</h2>\n'
+                       f'  <div class="feat-grid pinned-grid">{"".join(pinned_items)}</div>\n</section>')
     series_html = ''
-    if live_series:
-        blocks = ''.join(series_block(k, v, sp) for k, v, sp in live_series[:3])
-        series_html = (f'<section class="block series-shelf" aria-labelledby="series-h">\n  <h2 class="eyebrow" id="series-h">Series</h2>\n'
-                       f'  <div class="series-grid">{blocks}</div>\n</section>')
 
     years = {}
     for p in posts:
@@ -440,7 +437,7 @@ def build_index(posts):
                 part = series_posts(posts, p['series']).index(p) + 1
                 bits.append(f'<span class="series-tag">{esc(SERIES[p["series"]]["title"])} · {part:02d}</span>')
             if p['slug'] in pinned_slugs:
-                bits.append(f'<span class="pin-tag">{PIN_ICON}Pinned</span>')
+                bits.append(f'<span class="pin-tag">{PIN_ICON}Recommended</span>')
             row_hook = (inline_md(p['excerpt']) + ' <span class="read-more">Read more...</span>') if p['excerpt'] else esc(p['hook'])
             thumb = thumb_for(p, '')
             thumb_html = f'\n  <span class="row-thumb"><img src="{esc(thumb)}" alt="" loading="lazy" decoding="async"></span>' if thumb else ''
@@ -470,7 +467,7 @@ def build_index(posts):
 {pinned_html}
 {series_html}
 <section class="block archive" aria-labelledby="all-h">
-  <div class="archive-head"><h2 class="eyebrow" id="all-h">All writing</h2><span class="archive-count" aria-live="polite">{len(posts)} pieces</span></div>
+  <div class="archive-head"><h2 class="eyebrow read-all" id="all-h">Read all <span aria-hidden="true">›</span></h2><span class="archive-count" aria-live="polite">{len(posts)} pieces</span></div>
   <div class="filters" role="group" aria-label="Filter writing">{''.join(chips)}</div>
   {series_notes}
   {year_html}
