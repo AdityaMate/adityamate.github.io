@@ -7,7 +7,7 @@
     var years = [].slice.call(document.querySelectorAll('.year'));
     var count = document.querySelector('.archive-count');
     var empty = document.querySelector('.empty');
-    var notes = [].slice.call(document.querySelectorAll('.series-note'));
+    var notes = [].slice.call(document.querySelectorAll('.series-hero'));
     var apply = function (key) {
       var n = 0;
       rows.forEach(function (r) {
@@ -23,7 +23,7 @@
     var keys = chips.map(function (c) { return c.dataset.key; });
     var setHash = function (key) { history.replaceState(null, '', key === 'all' ? location.pathname : '#' + key); };
     chips.forEach(function (c) {
-      c.addEventListener('click', function () { apply(c.dataset.key); setHash(c.dataset.key); });
+      c.addEventListener('click', function (e) { apply(c.dataset.key); setHash(c.dataset.key); if (e.detail > 0) c.blur(); });
     });
     notes.forEach(function (n) {
       var x = n.querySelector('.note-clear');

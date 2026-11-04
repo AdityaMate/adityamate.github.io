@@ -84,8 +84,6 @@ img{max-width:100%}
 .row.no-thumb a{grid-template-columns:3rem 1fr}
 .row-thumb{display:block;margin-top:.4rem;aspect-ratio:3/2;overflow:hidden;border-radius:3px;border:1px solid var(--rule);background:var(--indigo-tint)}
 .row-thumb img{display:block;width:100%;height:100%;object-fit:cover}
-.series-note{margin:1rem 0 0;padding:.7rem 1rem;border-left:3px solid var(--brass);background:var(--indigo-tint);color:var(--ink-soft);font-size:.92rem;max-width:62ch}
-.series-note .more{font-family:var(--mono);font-size:.74rem;color:var(--brass);white-space:nowrap}
 .row-thumb{position:relative;z-index:1;transition:transform .3s ease,box-shadow .3s ease}
 @media (hover:hover){
   .row a:hover .row-thumb{transform:scale(1.75);transform-origin:top right;z-index:5;box-shadow:0 20px 38px -14px rgba(22,25,31,.55)}
@@ -268,3 +266,24 @@ footer a:hover{color:var(--indigo)}
 }
 .read-all{font-size:.8rem;color:var(--ink)}
 .read-all span{color:var(--brass);margin-left:.15rem}
+
+/* chosen series: its thumbnail with a plain description beside it, then the filtered list below */
+.series-hero{display:flex;align-items:center;gap:2.2rem;margin:.2rem 0 2.4rem;padding-right:1.4rem}
+.series-hero[hidden]{display:none}
+.series-hero .book{flex:0 0 12.5rem;width:12.5rem;aspect-ratio:270/383;align-self:flex-start}
+.series-hero-text{flex:1;min-width:0}
+.series-hero-eyebrow{margin:0;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.series-hero-text h3{margin:.4rem 0 .6rem;font-family:var(--serif);font-weight:500;font-size:1.7rem;line-height:1.15}
+.series-hero-blurb{margin:0 0 .5rem;color:var(--ink-soft);max-width:44ch}
+.series-hero-more{margin:0 0 .9rem;font-family:var(--mono);font-size:.74rem;color:var(--brass)}
+@media (max-width:760px){
+  .series-hero{flex-direction:column;align-items:flex-start;gap:1.4rem;padding-right:.8rem}
+  .series-hero .book{flex:none;width:11rem}
+}
+
+/* the diary book is a little shorter than its neighbours */
+.pinned-grid .book-snap{align-self:start;aspect-ratio:auto;height:87%;min-height:0}
+.series-hero .book-snap{aspect-ratio:270/335}
+@media (max-width:760px){
+  .pinned-grid .book-snap{align-self:start;height:auto;aspect-ratio:270/335}
+}

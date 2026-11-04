@@ -387,6 +387,12 @@ PIN_ICON = ('<svg class="pin-icon" viewBox="0 0 16 16" width="11" height="11" fi
             '<path d="M8 1.2l2 4.3 4.7.6-3.4 3.2.9 4.7L8 11.7 3.8 14l.9-4.7L1.3 6.1 6 5.5z"/></svg>')
 
 
+def uniq_ids(html_, suffix):
+    for i in ('pad-wire', 'pitch-sand'):
+        html_ = html_.replace(f'id="{i}"', f'id="{i}{suffix}"').replace(f'url(#{i})', f'url(#{i}{suffix})')
+    return html_
+
+
 def build_index(posts):
     """One page, fixed order, nothing swaps: Pinned cards, Series, then the complete list (filters apply to the list only)."""
     rel = ''
@@ -412,11 +418,20 @@ def build_index(posts):
         chips += [chip(f'series-{k}', esc(v['title']), len(sp), ' chip-series') for k, v, sp in live_series]
     series_notes = ''
     for k, v, sp in live_series:
-        more = f' <span class="more">· {esc(v["more_coming"])}</span>' if v.get('more_coming') else ''
-        series_notes += (f'<p class="series-note" data-key="series-{k}" hidden><strong>{esc(v["title"])}</strong> — '
-                         f'{esc(v["blurb"])}{more} <button class="note-clear" type="button">Show all writing ×</button></p>')
+        n = len(sp)
+        unit = v.get('unit', ('story', 'stories'))[0 if n == 1 else 1]
+        more = f'<p class="series-hero-more">{esc(v["more_coming"])}</p>' if v.get('more_coming') else ''
+        series_notes += f'''<div class="series-hero" data-key="series-{k}" hidden>
+  {uniq_ids(series_block(k, v, sp), '-h')}
+  <div class="series-hero-text">
+    <p class="series-hero-eyebrow">Series · {n} {unit} so far</p>
+    <h3>{esc(v['title'])}</h3>
+    <p class="series-hero-blurb">{esc(v['blurb'])}</p>
+    {more}
+    <button class="note-clear" type="button">Show all writing ×</button>
+  </div>
+</div>'''
 
-    # one pinned row: the series (notepad / book) followed by the pinned stories
     pinned_items = [series_block(k, v, sp) for k, v, sp in live_series[:3]] + [card(p, rel) for p in feat]
     pinned_html = ''
     if pinned_items:
