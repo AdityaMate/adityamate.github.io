@@ -14,7 +14,9 @@ excerpt: "**Sep 2026:** It was hard and depressing, but I tried my best to compa
 
 <p class="match-line">BGSC Paltan vs ISCC Stallions · Sunday, Sep 12, 2026 · Westborough, MA</p>
 
-“We’ve had a dream run so far. But the final match is the all important match”, I wrote in our team group chat, as captain of BGSC Paltan, on the eve of the match. And indeed this game unleashed everything – it was a heady mix of so much emotion, so much drama, so many close calls, and so many lessons learned. Lessons for cricket, and honestly even more so for life. But certainly, so many sweet memories locked in for lifetime! I will try to capture some of them as vividly as I can, here.
+> “We’ve had a dream run so far. But the final match is the all important match”
+
+I wrote in our team group chat, on the eve of the match. I was captain of BGSC Paltan and we were preparing to face ISCC Stallions in the much anticipated final. And indeed this game unleashed everything – it was a heady mix of so much emotion, so much drama, so many close calls, and so many lessons learned. Lessons for cricket, and honestly even more so for life. But certainly, so many sweet memories locked in for lifetime! I will try to capture some of them as vividly as I can, here.
 
 In many ways this game reminded me of the India vs South Africa T20 World Cup final of 2024, in which Rohit Sharma led Team India to a win. India had managed to grab victory from the jaws of defeat. In this case I think we snatched it straight from the oesophagus.
 
