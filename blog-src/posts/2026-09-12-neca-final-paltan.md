@@ -8,7 +8,7 @@ topics: [Cricket, Life]
 series: crease
 series_part: 2
 cover: /blog/img/crease-trophy.jpg
-hook: A final that unleashed everything, with so much drama, so many close calls and so many lessons for cricket and honestly even more for life. We snatched it straight from the oesophagus.
+hook: It was hard and depressing, but I tried my best to compartmentalize those thoughts and tried instead to focus on what I could do at that time to simply maximize our chances of winning.
 excerpt: "**Sep 2026:** It was hard and depressing, but I tried my best to compartmentalize those thoughts and tried instead to focus on what I could do at that time to simply maximize our chances of winning."
 ---
 
@@ -54,6 +54,10 @@ First ball of this over, the batsman punched it straight towards me at midwicket
 
 Kawal bhai’s sheer brilliance took care of the other remaining wicket, disturbing all three stumps. Clean bowled. Game over. BGSC Paltan won the championship!!
 
+![BGSC Paltan, NECA 2026 champions](/blog/img/neca-final-team.jpg)
+
+*BGSC Paltan, NECA 2026 champions*
+
 ## Fortune favors the brave
 
 Personally, I neither had a good game with the bat nor with the ball. I contributed 2 humble runs in 6 balls before getting myself run out. With the ball, I was smashed mercilessly for at least 2 towering sixes or boundaries in every over I bowled. I contributed one scintillating run out, but that was all.
@@ -64,6 +68,8 @@ But in this game, I had found myself walking back to the pavilion after being di
 
 In the end, we got fortunate. We easily could’ve not won this game. Most direct hits don’t kiss the stumps. That day, mine did. Fate decided to let us win. I am super grateful for that. But I will also remember that fortune favors the brave. Luck is when opportunity meets preparation. If we didn’t have the courage to try, there was no question of getting fortunate. Even when all seems lost and the hour seems darkest, I should always remember that it is not over until it is actually over and quitting is not allowed.
 
-<!-- PHOTO 2 goes here -->
+![The winning moment](/blog/img/neca-final-celebration.mp4)
+
+*The winning moment that I will cherish forever!!*
 
 [Watch the winning moment on the live stream](https://www.youtube.com/live/nzbEs34ibJI?si=TXmsHbvo3i2cNp8W&t=12218)
