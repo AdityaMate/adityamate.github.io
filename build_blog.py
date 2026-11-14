@@ -208,6 +208,16 @@ def render_body(p, rel):
                 i += 1
             alt = alt or re.sub(r'[*_]', '', cap) or f'Photo from “{p["title"]}”'
             fc = f'<figcaption>{inline_md(cap)}</figcaption>' if cap else ''
+            if src.lower().endswith(('.mp4', '.webm', '.mov')):
+                # video clip: shows full width with controls; uses <name>-poster.jpg as its still if present
+                flush()
+                poster_src = re.sub(r'\.\w+$', '-poster.jpg', src)
+                has_poster = (OUT / poster_src[len('/blog/'):]).exists() if poster_src.startswith('/blog/') else False
+                poster = f' poster="{esc(local(poster_src, rel))}"' if has_poster else ''
+                out.append(f'<figure class="video"><video controls playsinline preload="metadata"{poster} aria-label="{esc(alt)}">'
+                           f'<source src="{esc(local(src, rel))}" type="video/mp4"></video>{fc}</figure>')
+                i += 1
+                continue
             gallery.append(f'<figure><img src="{esc(local(src, rel))}" alt="{esc(alt)}" loading="lazy" decoding="async">{fc}</figure>')
         else:
             flush()
