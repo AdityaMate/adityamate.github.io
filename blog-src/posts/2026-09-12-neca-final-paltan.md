@@ -15,7 +15,7 @@ excerpt: "**Sep 2026:** It was hard and depressing, but I tried my best to compa
 
 <p class="dateline"><strong>BGSC Paltan vs ISCC Stallions</strong><span class="vs">Sunday, Sep 12, 2026 · Westborough, MA</span></p>
 
-> *“We’ve had a dream run so far. But the final match is the all important match”*, <span class="quote-by">I wrote in our team group chat, eve of the match.</span>
+> *“We’ve had a dream run so far. But the final match is the all important match…”*, <span class="quote-by">I wrote in our team group chat, eve of the match.</span>
 
 I was captain of BGSC Paltan and we were preparing to face the ISCC Stallions in the much anticipated final. And indeed this game unleashed everything – it was a heady mix of so much emotion, so much drama, so many close calls, and so many lessons learned. Lessons for cricket, and honestly even more so for life. But certainly, so many sweet memories locked in for lifetime! I will try to capture some of them as vividly as I can, here.
 
