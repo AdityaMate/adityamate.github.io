@@ -130,6 +130,7 @@ def parse_post(path):
         'series_part': meta.get('series_part'),
         'featured': meta.get('featured') if isinstance(meta.get('featured'), int) and meta.get('featured') is not True else (1 if meta.get('featured') is True else None),
         'cover': meta.get('cover'),
+        'header_image': meta.get('header_image'),  # optional faded photo behind the title
         'hook': meta.get('hook', ''),
         'excerpt': meta.get('excerpt', ''),
         'draft': meta.get('draft', False),
@@ -516,7 +517,7 @@ def build_post(p, posts):
         sp = series_posts(posts, p['series'])
         part = sp.index(p) + 1
         s = SERIES[p['series']]
-        pill = f'<a class="series-pill" href="../#series-{p["series"]}">{esc(s["title"])} · Part {part}</a>'
+        pill = f'<a class="series-pill" href="../#series-{p["series"]}">{esc(s["title"])}</a>'
         series_box = f'''<aside class="series-box" aria-labelledby="sb-h">
   <p class="eyebrow">Part of a series</p>
   <h2 id="sb-h">{esc(s['title'])}</h2>
@@ -535,15 +536,20 @@ def build_post(p, posts):
   <h2 class="eyebrow" id="keep-h">Keep reading</h2>
   <div class="keep-grid">{''.join(card(q, rel, 'small') for q in picks)}</div>
 </section>'''
+    hero_open = hero_close = ''
+    if p['header_image']:
+        hero_open = (f'<div class="post-hero"><div class="post-hero-bg" aria-hidden="true" '
+                     f'style="background-image:url(\'{esc(local(p["header_image"], rel))}\')"></div>\n')
+        hero_close = '</div>\n'
     body = f'''<main id="content" class="post">
-<a class="back" href="../">← All writing</a>
+{hero_open}<a class="back" href="../">← All writing</a>
 <header class="post-head">
   <p class="kicker">{fmt_badge(p)}<span>{esc(p['date_label'])}</span><span>{p['minutes']} min read</span></p>
   <h1>{esc(p['title'])}</h1>
   {f'<p class="dek">{esc(p["hook"])}</p>' if p['hook'] else ''}
   {pill}
 </header>
-<article class="prose {p['format']}">
+{hero_close}<article class="prose {p['format']}">
 {render_body(p, rel)}
 </article>
 {series_box}

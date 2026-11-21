@@ -110,6 +110,14 @@ body{overflow-x:clip}
 .post-head{padding:2.2rem 0 2.2rem;border-bottom:1px solid var(--rule);margin-bottom:2.6rem}
 .post-head h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.3rem,6vw,3.4rem);line-height:1.06;letter-spacing:-.015em;margin:1rem 0 1rem}
 .dek{font-family:var(--serif);font-style:italic;font-size:1.32rem;line-height:1.5;color:var(--ink-soft);margin:0}
+/* optional faded photo behind a post's title (front matter: header_image) */
+html,body{overflow-x:clip}
+.post-hero{position:relative;isolation:isolate;padding-top:2.2rem;margin-bottom:2.6rem}
+.post-hero-bg{position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background-position:center 32%;background-size:cover;background-repeat:no-repeat}
+.post-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(249,248,244,.74) 0%,rgba(249,248,244,.8) 60%,rgba(249,248,244,.94) 88%,var(--paper) 100%)}
+.post-hero .back{margin-top:0;color:var(--ink)}
+.post-hero .post-head{border-bottom:0;margin-bottom:0;padding-bottom:3rem}
+.post-hero .dek{color:#3b3f47}
 .series-pill{display:inline-block;margin-top:1.4rem;font-family:var(--mono);font-size:.72rem;padding:.38rem .8rem;background:var(--brass-tint);color:var(--brass);border-radius:999px}
 .series-pill:hover{background:var(--brass);color:var(--card)}
 

@@ -1,6 +1,6 @@
 ---
 slug: neca-final-paltan
-title: "Paltan’s Ride to Victory: NECA 2026 Championship Final"
+title: "Championship Victory from My Eyes"
 date: 2026-09-12
 date_label: September 2026
 format: essay
@@ -8,6 +8,7 @@ topics: [Cricket, Life]
 series: crease
 series_part: 2
 cover: /blog/img/crease-trophy.jpg
+header_image: /blog/img/neca-final-team.jpg
 hook: It was hard and depressing, but I tried my best to compartmentalize those thoughts and tried instead to focus on what I could do at that time to simply maximize our chances of winning.
 excerpt: "**Sep 2026:** It was hard and depressing, but I tried my best to compartmentalize those thoughts and tried instead to focus on what I could do at that time to simply maximize our chances of winning."
 ---
