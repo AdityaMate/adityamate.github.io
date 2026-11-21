@@ -128,7 +128,11 @@ html,body{overflow-x:clip}
 .prose h2::before{content:'';display:block;width:2.2rem;height:2px;background:var(--brass);margin-bottom:1rem}
 .prose blockquote{margin:2.2rem 0;padding:.3rem 0 .3rem 1.4rem;border-left:3px solid var(--brass);font-size:1.45rem;line-height:1.45}
 .prose blockquote p{margin:0}
-.prose.essay > p:first-child:not(.match-line)::first-letter,.prose.essay > p.match-line + p::first-letter{float:left;font-size:3.7em;line-height:.82;padding:.07em .09em 0 0;color:var(--brass);font-weight:500}
+.prose.essay > p:first-child:not(.match-line):not(.dateline)::first-letter,.prose.essay > p.match-line + p::first-letter{float:left;font-size:3.7em;line-height:.82;padding:.07em .09em 0 0;color:var(--brass);font-weight:500}
+.prose .dateline{font-family:var(--serif);font-size:1.12rem;line-height:1.45;margin:0 0 2.2rem;padding:.75rem 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
+.prose .dateline strong{font-weight:600;letter-spacing:.09em;text-transform:uppercase;font-size:.92em}
+.prose .dateline .vs{display:block;font-style:italic;color:var(--ink-soft)}
+.prose blockquote .quote-by{font-size:.8em;font-style:normal;color:var(--ink-soft);letter-spacing:0}
 .prose .match-line{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--ink-soft);margin:0 0 1.4rem}
 .prose figure{margin:2.4rem 0}
 .prose figure.video video{display:block;width:100%;height:auto;max-height:78vh;background:#000;border-radius:2px}
