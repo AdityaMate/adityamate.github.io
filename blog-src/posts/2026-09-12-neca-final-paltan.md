@@ -1,6 +1,6 @@
 ---
 slug: neca-final-paltan
-title: "Championship Victory from My Eyes"
+title: "Victory in the Championship Final, Through My Eyes"
 date: 2026-09-12
 date_label: September 2026
 format: essay
