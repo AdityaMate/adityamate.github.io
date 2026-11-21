@@ -13,7 +13,7 @@ hook: It was hard and depressing, but I tried my best to compartmentalize those 
 excerpt: "**Sep 2026:** It was hard and depressing, but I tried my best to compartmentalize those thoughts and tried instead to focus on what I could do at that time to simply maximize our chances of winning."
 ---
 
-<p class="dateline"><strong>Westborough, MA</strong> · Sunday, Sep 12, 2026<span class="vs">BGSC Paltan vs ISCC Stallions</span></p>
+<p class="dateline"><strong>BGSC Paltan vs ISCC Stallions</strong><span class="vs">Sunday, Sep 12, 2026 · Westborough, MA</span></p>
 
 > *“We’ve had a dream run so far. But the final match is the all important match”*, <span class="quote-by">I wrote in our team group chat, eve of the match.</span>
 
