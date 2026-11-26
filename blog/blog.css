@@ -125,7 +125,7 @@ html,body{overflow-x:clip}
 .prose{font-family:var(--serif);font-size:1.18rem;line-height:1.7;color:#1d2027}
 .prose p{margin:0 0 1rem}
 .prose a{border-bottom:1px solid rgba(46,67,114,.35)}
-.prose h2{font-family:var(--sans);font-weight:500;font-size:1.45rem;line-height:1.25;margin:1.9rem 0 .6rem;color:var(--indigo)}
+.prose h2{font-family:var(--serif);font-weight:500;font-size:1.55rem;line-height:1.25;margin:1.9rem 0 .6rem;color:var(--indigo)}
 .prose blockquote{margin:0 0 1rem;padding:.65rem 1rem;background:rgba(22,25,31,.06);border-left:3px solid var(--brass);font-size:1em;line-height:1.6}
 .prose blockquote p{margin:0}
 .prose.essay > p:first-child:not(.match-line):not(.dateline)::first-letter,.prose.essay > p.match-line + p::first-letter{float:left;font-size:3.7em;line-height:.82;padding:.07em .09em 0 0;color:var(--brass);font-weight:500}
