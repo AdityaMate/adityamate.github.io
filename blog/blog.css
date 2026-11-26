@@ -114,11 +114,10 @@ body{overflow-x:clip}
 html,body{overflow-x:clip}
 .post-hero{position:relative;isolation:isolate;padding-top:2.2rem;margin-bottom:2.6rem}
 .post-hero-bg{position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background-position:center 32%;background-size:cover;background-repeat:no-repeat}
-.post-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(249,248,244,.5) 0%,rgba(249,248,244,.58) 60%,rgba(249,248,244,.9) 88%,var(--paper) 100%)}
+.post-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(249,248,244,0) 70%,var(--paper) 100%),linear-gradient(90deg,rgba(249,248,244,.84) 0%,rgba(249,248,244,.78) 55%,rgba(249,248,244,.5) 100%)}
 .post-hero .back{margin-top:0;color:var(--ink)}
 .post-hero .post-head{border-bottom:0;margin-bottom:0;padding-bottom:3rem}
 .post-hero .post-head h1{font-size:clamp(2rem,5.3vw,2.9rem);text-wrap:balance}
-.post-hero .post-head{text-shadow:0 0 14px rgba(249,248,244,.95),0 0 4px rgba(249,248,244,.9),0 0 2px rgba(249,248,244,.8)}
 .post-hero .dek{color:#3b3f47}
 .series-pill{display:inline-block;margin-top:1.4rem;font-family:var(--mono);font-size:.72rem;padding:.38rem .8rem;background:var(--brass-tint);color:var(--brass);border-radius:999px}
 .series-pill:hover{background:var(--brass);color:var(--card)}
