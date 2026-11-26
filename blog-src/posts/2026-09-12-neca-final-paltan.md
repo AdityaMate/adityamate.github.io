@@ -25,7 +25,7 @@ After losing the toss and being asked to bat first, we had posted a modest but c
 
 ## The second innings
 
-We started the second innings brilliantly, snapping up 4 quick wickets in no time. They struggled against our pace attack, spearheaded by Kamal paaji and Meet Patel. Both of them looked like out-of-syllabus bowlers in this contest and took no prisoners at all in their fiery opening spells. The Stallions were down in the doldrums, reeling at 29/4 in 7 overs at one stage. However, the Stallions’ main batsmen were known to walk in only after the fall of their 3rd or 4th wickets. So we knew the real contest was only just beginning at this stage.
+We started the second innings brilliantly, snapping up 4 quick wickets in no time. They struggled against our pace attack, spearheaded by Kawal paaji and Meet Patel. Both of them looked like out-of-syllabus bowlers in this contest and took no prisoners at all in their fiery opening spells. The Stallions were down in the doldrums, reeling at 29/4 in 7 overs at one stage. However, the Stallions’ main batsmen were known to walk in only after the fall of their 3rd or 4th wickets. So we knew the real contest was only just beginning at this stage.
 
 From here on --notwithstanding the initial setback -- their main star batsmen fought back hard and unleashed a massive counter-attack and started smashing sixes, at will. This forced us on the back foot a little bit. In a blink, they had raced to 63/4 in 10 overs – suddenly now at par with the required run rate – bouncing back hard from a miserable situation just 3 overs ago. Their ability to tonk those huge sixes on-demand made it quite clear that the game wasn’t going down the wire. Whoever had to win, had to do it much sooner than the 20th over.
 
