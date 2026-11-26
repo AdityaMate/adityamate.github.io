@@ -104,7 +104,7 @@ body{overflow-x:clip}
 .empty{font-family:var(--serif);font-style:italic;color:var(--ink-soft)}
 
 /* post */
-.post{max-width:680px;margin:0 auto;padding:0 1.5rem}
+.post{max-width:900px;margin:0 auto;padding:0 1.5rem}
 .back{display:inline-block;margin-top:2.2rem;font-family:var(--mono);font-size:.78rem;color:var(--ink-soft)}
 .back:hover{color:var(--indigo)}
 .post-head{padding:2.2rem 0 2.2rem;border-bottom:1px solid var(--rule);margin-bottom:2.6rem}
@@ -123,12 +123,11 @@ html,body{overflow-x:clip}
 .series-pill{display:inline-block;margin-top:1.4rem;font-family:var(--mono);font-size:.72rem;padding:.38rem .8rem;background:var(--brass-tint);color:var(--brass);border-radius:999px}
 .series-pill:hover{background:var(--brass);color:var(--card)}
 
-.prose{font-family:var(--serif);font-size:1.24rem;line-height:1.72;color:#1d2027}
-.prose p{margin:0 0 1.4rem}
+.prose{font-family:var(--serif);font-size:1.18rem;line-height:1.7;color:#1d2027}
+.prose p{margin:0 0 1rem}
 .prose a{border-bottom:1px solid rgba(46,67,114,.35)}
-.prose h2{font-family:var(--serif);font-weight:500;font-size:1.7rem;line-height:1.2;margin:3rem 0 1.1rem;color:var(--ink)}
-.prose h2::before{content:'';display:block;width:2.2rem;height:2px;background:var(--brass);margin-bottom:1rem}
-.prose blockquote{margin:2.2rem 0;padding:.3rem 0 .3rem 1.4rem;border-left:3px solid var(--brass);font-size:1.45rem;line-height:1.45}
+.prose h2{font-family:var(--sans);font-weight:500;font-size:1.45rem;line-height:1.25;margin:1.9rem 0 .6rem;color:var(--indigo)}
+.prose blockquote{margin:0 0 1rem;padding:.65rem 1rem;background:rgba(22,25,31,.06);border-left:3px solid var(--brass);font-size:1em;line-height:1.6}
 .prose blockquote p{margin:0}
 .prose.essay > p:first-child:not(.match-line):not(.dateline)::first-letter,.prose.essay > p.match-line + p::first-letter{float:left;font-size:3.7em;line-height:.82;padding:.07em .09em 0 0;color:var(--brass);font-weight:500}
 .prose .dateline{font-family:var(--serif);font-size:1.12rem;line-height:1.45;margin:0 0 2.2rem;padding:.75rem 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
@@ -136,7 +135,7 @@ html,body{overflow-x:clip}
 .prose .dateline .vs{display:block;font-style:italic;color:var(--ink-soft)}
 .prose blockquote .quote-by{font-style:normal}
 .prose .match-line{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--ink-soft);margin:0 0 1.4rem}
-.prose figure{margin:2.4rem 0}
+.prose figure{margin:1.7rem 0}
 .prose figure.video video{display:block;width:100%;height:auto;max-height:78vh;background:#000;border-radius:2px}
 .prose figure img{display:block;max-width:100%;height:auto;max-height:78vh;margin:0 auto;cursor:zoom-in;background:var(--indigo-tint)}
 .prose figcaption{font-family:var(--mono);font-size:.74rem;line-height:1.55;color:var(--ink-soft);margin-top:.75rem;text-align:center}
