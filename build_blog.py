@@ -186,6 +186,7 @@ def inline_md(s):
 
 
 IMG_RE = re.compile(r'^!\[(.*?)\]\((\S+?)\)$')
+LINK_IMG_RE = re.compile(r'^\[!\[(.*?)\]\((\S+?)\)\]\((https?://\S+?)\)$')  # [![alt](img)](url): photo that links out
 CAP_RE = re.compile(r'^\*[^*\s].*\*$|^\*[^*\s]\*$', re.S)
 
 
@@ -201,9 +202,11 @@ def render_body(p, rel):
         gallery.clear()
 
     while i < len(blocks):
-        m = IMG_RE.match(blocks[i])
+        lm = LINK_IMG_RE.match(blocks[i])
+        m = IMG_RE.match(blocks[i]) or lm
         if m:
-            alt, src = m.groups()
+            alt, src = m.groups()[:2]
+            href = lm.group(3) if lm else None
             cap = ''
             if i + 1 < len(blocks) and CAP_RE.match(blocks[i + 1]):
                 cap = blocks[i + 1][1:-1].strip()
@@ -220,7 +223,10 @@ def render_body(p, rel):
                            f'<source src="{esc(local(src, rel))}" type="video/mp4"></video>{fc}</figure>')
                 i += 1
                 continue
-            gallery.append(f'<figure><img src="{esc(local(src, rel))}" alt="{esc(alt)}" loading="lazy" decoding="async">{fc}</figure>')
+            img_tag = f'<img src="{esc(local(src, rel))}" alt="{esc(alt)}" loading="lazy" decoding="async">'
+            if href:
+                img_tag = f'<a class="photo-link" href="{esc(href)}" target="_blank" rel="noopener" title="Open the full stats">{img_tag}</a>'
+            gallery.append(f'<figure>{img_tag}{fc}</figure>')
         else:
             flush()
             out.append(blocks[i])

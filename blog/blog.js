@@ -42,7 +42,7 @@
   }
 
   // ---- click any photo in a post to see it full size
-  var imgs = document.querySelectorAll('.prose figure img');
+  var imgs = [].filter.call(document.querySelectorAll('.prose figure img'), function (im) { return !im.closest('.photo-link'); });
   if (!imgs.length) return;
   var lb = document.createElement('div');
   lb.className = 'lightbox'; lb.hidden = true;

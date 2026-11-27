@@ -142,6 +142,8 @@ html,body{overflow-x:clip}
 .prose .match-line{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--ink-soft);margin:0 0 1.4rem}
 .prose figure{margin:1.7rem 0}
 .prose figure.video video{display:block;width:100%;height:auto;max-height:78vh;background:#000;border-radius:2px}
+.prose figure .photo-link{display:block}
+.prose figure .photo-link img{cursor:pointer}
 .prose figure img{display:block;max-width:100%;height:auto;max-height:78vh;margin:0 auto;cursor:zoom-in;background:var(--indigo-tint)}
 .prose figcaption{font-family:var(--mono);font-size:.74rem;line-height:1.55;color:var(--ink-soft);margin-top:.75rem;text-align:center}
 .prose figcaption em{font-style:normal}

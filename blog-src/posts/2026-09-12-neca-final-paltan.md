@@ -27,7 +27,7 @@ After losing the toss and being asked to bat first, we had managed a modest but 
 
 Personally, I neither had a good game with the bat nor with the ball. I contributed 2 humble runs in 6 balls before getting myself run out. Later with the ball, I was smashed mercilessly for at least 2 towering sixes or boundaries in every over I bowled. I had enjoyed tremendous success with the bat in the whole season prior to this game. That had felt intoxicating – I was the highest run-scorer in the whole league with 500+ runs so far, had a batting average of 55+, and had already cranked out 2 centuries and 3 half-centuries in the season. For comparison, the second-highest run-scorer in our team had scored less than half the runs I had. The second-highest run-scorer across all 15 teams in our division was also at a distant 340. 
 
-![NECA 2026 Friendship League batting table: Aditya Mate, 508 runs in 13 matches](/blog/img/neca-league-batting.jpg)
+[![NECA 2026 Friendship League batting table: Aditya Mate, 508 runs in 13 matches](/blog/img/neca-league-batting.jpg)](https://www.neca2020.org/battingStats?division=E)
 
 But in this game, I had found myself walking back to the pavilion after being dismissed for just 2 runs. That walk felt long and I remember feeling utterly helpless and dejected at having failed to contribute meaningfully in this “all important match”. I was thinking how inconsequential that mountain of 500 old runs was on the day. 
 
