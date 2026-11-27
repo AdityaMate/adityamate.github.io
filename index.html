@@ -162,14 +162,14 @@
     align-items:flex-end;
     justify-content:center;
   }
-  .tlogo img{ display:block; width:auto; height: 38px; }
-  .tnode.minor .tlogo img{ height: 32px; }
-  .tlogo img.tl-ibm{ height: 26px; }
-  .tlogo img.tl-ms{ height: 24px; }
-  .tnode.minor .tlogo img.tl-ibm{ height: 26px; }
+  .tlogo img{ display:block; width:auto; height: 41px; }
+  .tnode.minor .tlogo img{ height: 35px; }
+  .tlogo img.tl-ibm{ height: 28px; }
+  .tlogo img.tl-ms{ height: 26px; }
+  .tnode.minor .tlogo img.tl-ibm{ height: 28px; }
 
   /* ---------- Trajectory (signature element) ---------- */
-  .trajectory{ --tlogo-h: 44px; }
+  .trajectory{ --tlogo-h: 48px; }
   .trajectory{
     position: relative;
     display:flex;
@@ -180,7 +180,7 @@
   }
   .trajectory .tline{
     position:absolute;
-    top: calc(0.4rem + var(--tlogo-h) + 0.6rem + 6px);
+    top: calc(0.4rem + var(--tlogo-h) + 0.6rem + 7.5px);
     left: 6px; right: 6px;
     height: 1px;
     background: var(--rule);
@@ -194,23 +194,23 @@
     background: var(--paper);
   }
   .tnode .dot{
-    width: 13px; height: 13px;
+    width: 15px; height: 15px;
     border-radius: 50%;
     background: var(--paper);
     border: 1.5px solid var(--indigo);
   }
   .tnode.current .dot{ background: var(--brass); border-color: var(--brass); }
   .tnode.minor{ margin-top: 0; }
-  .tnode.minor .dot{ margin-top: 3px; }
+  .tnode.minor .dot{ margin-top: 3.5px; }
   .tnode.minor .dot{
-    width: 7px; height: 7px;
+    width: 8px; height: 8px;
     border-width: 1px;
     border-color: var(--rule);
   }
-  .tnode.minor .tlabel{ font-size: 0.6rem; opacity: 0.8; }
+  .tnode.minor .tlabel{ font-size: 0.64rem; opacity: 0.8; }
   .tlabel{
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     text-align:center;
     color: var(--ink-soft);
     line-height: 1.5;
@@ -315,12 +315,12 @@
   @media (max-width: 640px){
     .masthead{ flex-direction: column; align-items:flex-start; }
     .trajectory{ max-width: 100%; }
-    .trajectory{ --tlogo-h: 36px; }
-    .tlogo img{ height: 30px; }
-    .tnode.minor .tlogo img{ height: 26px; }
-    .tlogo img.tl-ibm, .tnode.minor .tlogo img.tl-ibm{ height: 20px; }
+    .trajectory{ --tlogo-h: 40px; }
+    .tlogo img{ height: 34px; }
+    .tnode.minor .tlogo img{ height: 30px; }
+    .tlogo img.tl-ibm, .tnode.minor .tlogo img.tl-ibm{ height: 23px; }
     .tlogo img.tl-ms{ height: 17px; }
-    .tlabel{ font-size: 0.56rem; white-space: normal; line-height: 1.35; }
+    .tlabel{ font-size: 0.54rem; white-space: normal; line-height: 1.35; }
     .tnode.minor .tlabel{ font-size: 0.5rem; }
     .hero{ padding-top: 2.5rem; flex-direction: column-reverse; align-items: flex-start; gap: 1.5rem; }
     .portrait{ width: 148px; height: 148px; }
