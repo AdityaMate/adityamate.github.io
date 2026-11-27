@@ -130,6 +130,7 @@ def parse_post(path):
         'series_part': meta.get('series_part'),
         'featured': meta.get('featured') if isinstance(meta.get('featured'), int) and meta.get('featured') is not True else (1 if meta.get('featured') is True else None),
         'cover': meta.get('cover'),
+        'header_position': meta.get('header_position'),  # optional vertical focus of the banner photo, e.g. 80%
         'header_image': meta.get('header_image'),  # optional faded photo behind the title
         'hook': meta.get('hook', ''),
         'excerpt': meta.get('excerpt', ''),
@@ -542,7 +543,7 @@ def build_post(p, posts):
     hero_src = p['header_image'] or p['cover']
     if hero_src:
         hero_open = (f'<div class="post-hero"><div class="post-hero-bg" aria-hidden="true" '
-                     f'style="background-image:url(\'{esc(local(hero_src, rel))}\')"></div>\n')
+                     f'style="background-image:url(\'{esc(local(hero_src, rel))}\')' + (f';background-position:center {esc(str(p["header_position"]))}' if p['header_position'] else '') + '"></div>\n')
         hero_close = '</div>\n'
     body = f'''<main id="content" class="post">
 {hero_open}<a class="back" href="../">← All writing</a>
