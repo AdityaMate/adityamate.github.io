@@ -83,7 +83,7 @@ I don’t remember the last time I have effected a direct-hit run out in a crick
 
 Kawal bhai with his sheer brilliance wasted no further time in bundling up the other remaining wicket, and rattled all three stumps. Clean bowled! Game over and BGSC Paltan won the championship!!
 
-Here is the winning moment that I will cherish forever... when 11 grown men jumped like little kids...
+Here is the winning moment that I will cherish forever... when 11 grown men jumped jubilantly like little kids...
 
 ![The winning moment](/blog/img/neca-final-celebration.mp4)
 
