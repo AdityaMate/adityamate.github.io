@@ -10,7 +10,7 @@ series_part: 2
 cover: /blog/img/crease-trophy.jpg
 header_image: /blog/img/neca-final-team.jpg
 hook: It was hard and depressing, but I tried my best to compartmentalize those thoughts and tried instead to focus on what I could do at that time to simply maximize our chances of winning.
-excerpt: "**Sep 2026:** It was hard and depressing, but I tried my best to compartmentalize those thoughts and tried instead to focus on what I could do at that time to simply maximize our chances of winning."
+excerpt: "It was hard and depressing, but I tried my best to compartmentalize those thoughts and tried instead to focus on what I could do at that time to simply maximize our chances of winning."
 ---
 
 <p class="dateline"><strong>BGSC Paltan vs ISCC Stallions</strong><span class="vs">Sunday, Sep 12, 2026 · Westborough, MA</span></p>
