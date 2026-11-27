@@ -29,7 +29,7 @@ Personally, I neither had a good game with the bat nor with the ball. I contribu
 
 But in this game, I had found myself walking back to the pavilion after being dismissed for just 2 runs. That walk felt long and I remember feeling utterly helpless and dejected at having failed to contribute meaningfully in this “all important match”. I was thinking how inconsequential that mountain of 500 old runs was on the day. 
 
-At the half-way stage, the game hung in the balance with both teams pretty going neck-to-neck in the contest. All of the drama, emotional roller-coaster and back-and-forth teetering however, awaited us in the second half.
+By the half-way stage, the game hung in the balance with both teams going neck and neck. All of the drama, emotional roller-coaster and back-and-forth teetering awaited us in the second half.
 
 ## The second innings
 
