@@ -232,7 +232,8 @@ def render_body(p, rel):
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500'
-         '&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">')
+         '&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500'
+         '&family=Caveat:wght@400;500;600&family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">')
 
 
 def page(*, rel, title, desc, url, image, body, og_type='article'):
@@ -537,19 +538,20 @@ def build_post(p, posts):
   <div class="keep-grid">{''.join(card(q, rel, 'small') for q in picks)}</div>
 </section>'''
     hero_open = hero_close = ''
-    if p['header_image']:
+    lede_html = (f'<div class="post-lede">' + (f'<p class="dek">{esc(p["hook"])}</p>' if p['hook'] else '') + pill + '</div>') if (p['hook'] or pill) else ''
+    hero_src = p['header_image'] or p['cover']
+    if hero_src:
         hero_open = (f'<div class="post-hero"><div class="post-hero-bg" aria-hidden="true" '
-                     f'style="background-image:url(\'{esc(local(p["header_image"], rel))}\')"></div>\n')
+                     f'style="background-image:url(\'{esc(local(hero_src, rel))}\')"></div>\n')
         hero_close = '</div>\n'
     body = f'''<main id="content" class="post">
 {hero_open}<a class="back" href="../">← All writing</a>
 <header class="post-head">
   <p class="kicker">{fmt_badge(p)}<span>{esc(p['date_label'])}</span><span>{p['minutes']} min read</span></p>
   <h1>{esc(p['title'])}</h1>
-  {f'<p class="dek">{esc(p["hook"])}</p>' if p['hook'] else ''}
-  {pill}
+  {'' if hero_open else lede_html}
 </header>
-{hero_close}<article class="prose {p['format']}">
+{hero_close}{lede_html if hero_open else ''}<article class="prose {p['format']}">
 {render_body(p, rel)}
 </article>
 {series_box}
