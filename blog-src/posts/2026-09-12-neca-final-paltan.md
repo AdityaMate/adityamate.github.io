@@ -81,16 +81,16 @@ I don’t remember the last time I have effected a direct-hit run out in a crick
 
 Kawal bhai with his sheer brilliance wasted no further time in bundling up the other remaining wicket, and rattled all three stumps. Clean bowled! Game over and BGSC Paltan won the championship!!
 
-![BGSC Paltan, NECA 2026 champions](/blog/img/neca-final-team.jpg)
+Here is the winning moment that I will cherish forever... when 11 grown men jumped like little kids...
 
-*BGSC Paltan, NECA 2026 champions*
+![The winning moment](/blog/img/neca-final-celebration.mp4)
 
 ## Fortune favors the brave
 
 In the end, we got fortunate. We easily could’ve not won this game. Most direct hits don’t kiss the stumps. That day, mine did. God decided to let us win. I am super grateful for that. But I will also remember that fortune favors the brave. It wouldn't have helped if I had been brooding over my 2-run dismissal while fielding at midwicket when the opportunity came walking to me. Luck is when opportunity meets preparation. If we didn’t have the courage to try, there was no question of getting fortunate. Even when all seems lost and the hour seems darkest, I should always remember that it is not over until it is actually over and quitting is not allowed.
 
-![The winning moment](/blog/img/neca-final-celebration.mp4)
+![BGSC Paltan, NECA 2026 champions](/blog/img/neca-final-team.jpg)
 
-*The winning moment that I will cherish forever!!*
+*BGSC Paltan, NECA 2026 champions*
 
 [Watch the winning moment on the live stream](https://www.youtube.com/live/nzbEs34ibJI?si=TXmsHbvo3i2cNp8W&t=12218)
