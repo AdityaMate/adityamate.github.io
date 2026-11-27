@@ -156,6 +156,20 @@
     margin: 0 0 2.6rem;
   }
 
+  /* ---------- Affiliation logos ---------- */
+  .affil{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 0.9rem;
+    max-width: 620px;
+    margin: 0 0 1.5rem;
+  }
+  .affil img{ display:block; width:auto; }
+  .affil .h-sm{ height: 26px; }
+  .affil .h-wm{ height: 20px; }
+  .affil .h-ibm{ height: 22px; }
+
   /* ---------- Trajectory (signature element) ---------- */
   .trajectory{
     position: relative;
@@ -333,6 +347,14 @@
       <p class="role">Applied Scientist, Microsoft<br><span class="ital">Previously, Harvard PhD in CS, Google Research, IBM Research.</span></p>
 
       <p class="blurb"><span id="yoe">8</span> years of AI/ML experience spanning LLMs, reasoning agents, probabilistic modeling, reinforcement learning and bandit algorithms for decision-making under uncertainty. Published at NeurIPS, ICML, AAAI, AAMAS, EMNLP, PNAS, etc. — with experience translating research into deployed ML systems in product settings.</p>
+
+      <div class="affil" role="group" aria-label="Institutions and employers">
+        <img class="h-sm" src="logos/iitb.png" alt="IIT Bombay" title="IIT Bombay" width="27" height="26">
+        <img class="h-sm" src="logos/harvard.png" alt="Harvard University" title="Harvard University" width="26" height="26">
+        <img class="h-ibm" src="logos/ibm.svg" alt="IBM Research" title="IBM Research" width="54" height="22">
+        <img class="h-sm" src="logos/google-research.png" alt="Google Research" title="Google Research" width="23" height="26">
+        <img class="h-wm" src="logos/microsoft.svg" alt="Microsoft" title="Microsoft" width="94" height="20">
+      </div>
 
       <div class="trajectory" aria-hidden="true">
         <div class="tline"></div>
