@@ -156,21 +156,19 @@
     margin: 0 0 2.6rem;
   }
 
-  /* ---------- Affiliation logos ---------- */
-  .affil{
+  .tlogo{
+    height: var(--tlogo-h);
     display:flex;
-    align-items:center;
-    justify-content: space-between;
-    gap: 0.9rem;
-    max-width: 620px;
-    margin: 0 0 1.5rem;
+    align-items:flex-end;
+    justify-content:center;
   }
-  .affil img{ display:block; width:auto; }
-  .affil .h-sm{ height: 26px; }
-  .affil .h-wm{ height: 20px; }
-  .affil .h-ibm{ height: 22px; }
+  .tlogo img{ display:block; width:auto; height: 38px; }
+  .tnode.minor .tlogo img{ height: 32px; }
+  .tlogo img.tl-ibm{ height: 26px; }
+  .tnode.minor .tlogo img.tl-ibm{ height: 26px; }
 
   /* ---------- Trajectory (signature element) ---------- */
+  .trajectory{ --tlogo-h: 44px; }
   .trajectory{
     position: relative;
     display:flex;
@@ -181,7 +179,7 @@
   }
   .trajectory .tline{
     position:absolute;
-    top: 7px;
+    top: calc(0.4rem + var(--tlogo-h) + 0.6rem + 6px);
     left: 6px; right: 6px;
     height: 1px;
     background: var(--rule);
@@ -201,7 +199,8 @@
     border: 1.5px solid var(--indigo);
   }
   .tnode.current .dot{ background: var(--brass); border-color: var(--brass); }
-  .tnode.minor{ margin-top: 3px; }
+  .tnode.minor{ margin-top: 0; }
+  .tnode.minor .dot{ margin-top: 3px; }
   .tnode.minor .dot{
     width: 7px; height: 7px;
     border-width: 1px;
@@ -315,6 +314,10 @@
   @media (max-width: 640px){
     .masthead{ flex-direction: column; align-items:flex-start; }
     .trajectory{ max-width: 100%; }
+    .trajectory{ --tlogo-h: 36px; }
+    .tlogo img{ height: 30px; }
+    .tnode.minor .tlogo img{ height: 26px; }
+    .tlogo img.tl-ibm, .tnode.minor .tlogo img.tl-ibm{ height: 20px; }
     .tlabel{ font-size: 0.56rem; white-space: normal; line-height: 1.35; }
     .tnode.minor .tlabel{ font-size: 0.5rem; }
     .hero{ padding-top: 2.5rem; flex-direction: column-reverse; align-items: flex-start; gap: 1.5rem; }
@@ -348,33 +351,30 @@
 
       <p class="blurb"><span id="yoe">8</span> years of AI/ML experience spanning LLMs, reasoning agents, probabilistic modeling, reinforcement learning and bandit algorithms for decision-making under uncertainty. Published at NeurIPS, ICML, AAAI, AAMAS, EMNLP, PNAS, etc. — with experience translating research into deployed ML systems in product settings.</p>
 
-      <div class="affil" role="group" aria-label="Institutions and employers">
-        <img class="h-sm" src="logos/iitb.png" alt="IIT Bombay" title="IIT Bombay" width="27" height="26">
-        <img class="h-sm" src="logos/harvard.png" alt="Harvard University" title="Harvard University" width="26" height="26">
-        <img class="h-ibm" src="logos/ibm.svg" alt="IBM Research" title="IBM Research" width="54" height="22">
-        <img class="h-sm" src="logos/google-research.png" alt="Google Research" title="Google Research" width="23" height="26">
-        <img class="h-wm" src="logos/microsoft.svg" alt="Microsoft" title="Microsoft" width="94" height="20">
-      </div>
-
       <div class="trajectory" aria-hidden="true">
         <div class="tline"></div>
         <div class="tnode">
+          <span class="tlogo"><img class="tl-seal" src="logos/iitb.png" alt=""></span>
           <span class="dot"></span>
           <span class="tlabel">IIT Bombay<br><em>2013–18</em></span>
         </div>
         <div class="tnode">
+          <span class="tlogo"><img class="tl-seal" src="logos/harvard.png" alt=""></span>
           <span class="dot"></span>
           <span class="tlabel">Harvard PhD<br><em>2018–23</em></span>
         </div>
         <div class="tnode minor">
+          <span class="tlogo"><img class="tl-ibm" src="logos/ibm.svg" alt=""></span>
           <span class="dot"></span>
           <span class="tlabel">IBM Research<br><em>2021</em></span>
         </div>
         <div class="tnode minor">
+          <span class="tlogo"><img class="tl-seal" src="logos/google-g.svg" alt=""></span>
           <span class="dot"></span>
           <span class="tlabel">Google Research<br><em>2021–22</em></span>
         </div>
         <div class="tnode current">
+          <span class="tlogo"><img class="tl-seal" src="logos/microsoft-mark.svg" alt=""></span>
           <span class="dot"></span>
           <span class="tlabel">Microsoft<br><em>2023–</em></span>
         </div>
