@@ -51,7 +51,9 @@ It is one thing to play good cricket, score runs, take wickets and win games. Cl
 
 Somehow, one by one, we found ways to keep taking wickets and kept ourselves in the hunt. It was all about not ruling ourselves out. We kept that one foot in the door, one toe sometimes, and that much proved enough. Every time their batsman hit a couple of sixes, our bowlers found a way to come back each time with a wicket.
 
-In the 2024 world cup final, team India seemed headed to a certain defeat at one stage. Rishabh Pant faked a knee injury to buy time and stalled South Africa’s momentum. The tide completely turned from there and when play resumed South Africa seemed to have lost the plot and the rest is history. In an eerily similar turn of events, in the 14th over, their star batsman who was smacking it in all directions faced a (real) injury and was down on the ground. He had already dispatched the first four balls of the over for 10 runs already. I was the unfortunate soul bowling the over, and I found myself praying that he retires himself out. Unfortunately, he didn't. Play halted for 10 minutes. However, when we resumed, the momentum was completely broken and the star batter got out the very first ball after the break!
+In the 2024 world cup final, team India seemed headed to a certain defeat at one stage. Rishabh Pant faked a knee injury to buy time and stalled South Africa’s momentum. The tide completely turned from there and when play resumed South Africa seemed to have lost the plot and the rest is history. In an eerily similar turn of events, in the 14th over, their star batsman who was smacking it in all directions faced a (real) injury and was down on the ground. He had already dispatched the first four balls of the over for 10 runs. I was the unfortunate soul bowling that over, and I found myself praying that he retires himself out. Unfortunately, he didn't. Play halted for 10 minutes. However, when we resumed, the momentum was completely broken and the star batter got out the very first ball after the break!
+
+![Ball-by-ball commentary of Shubham’s wicket and the injury delay](/blog/img/neca-final-scorecard.jpg)
 
 ## 6 more to go...
 
