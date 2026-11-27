@@ -539,7 +539,7 @@ def build_post(p, posts):
   <div class="keep-grid">{''.join(card(q, rel, 'small') for q in picks)}</div>
 </section>'''
     hero_open = hero_close = ''
-    lede_html = (f'<div class="post-lede">' + (f'<p class="dek">{esc(p["hook"])}</p>' if p['hook'] else '') + pill + '</div>') if (p['hook'] or pill) else ''
+    lede_html = f'<div class="post-lede">{pill}</div>' if pill else ''
     hero_src = p['header_image'] or p['cover']
     if hero_src:
         hero_open = (f'<div class="post-hero"><div class="post-hero-bg" aria-hidden="true" '
