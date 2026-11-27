@@ -47,7 +47,7 @@ At so many points, I felt the game slipping away. It reminded me of a past defea
 
 ## Battling the last 8 overs 
 
-It is one thing to play good cricket, score runs, take wickets and win games. Clearly it seemed to take a lot more to win a championship. This final tested our mettle. It asked us to show some character going beyond cricket – keeping cool, staying focused and showing the courage to fight even when our backs were pinned against the wall. 
+It is one thing to play good cricket, score runs, take wickets and win games. Clearly it seemed to take a lot more to win a championship. This final tested our mettle. It asked us to show some character going beyond cricket – keeping cool, staying focused and showing the courage to fight even when it looked all hopeless with our backs pinned against the wall. 
 
 Somehow, one by one, we found ways to keep taking wickets and kept ourselves in the hunt. It was all about not ruling ourselves out. We kept that one foot in the door, one toe sometimes, and that much proved enough. Every time their batsman hit a couple of sixes, our bowlers found a way to come back each time with a wicket.
 
