@@ -108,6 +108,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 2rem;
   }
   .hero-text{ flex: 1; min-width: 0; }
@@ -153,7 +154,7 @@
     font-size: 0.98rem;
     color: var(--ink-soft);
     max-width: 48ch;
-    margin: 0 0 2.6rem;
+    margin: 0;
   }
 
   .tlogo{
@@ -162,25 +163,28 @@
     align-items:flex-end;
     justify-content:center;
   }
-  .tlogo img{ display:block; width:auto; height: 41px; }
-  .tnode.minor .tlogo img{ height: 35px; }
-  .tlogo img.tl-ibm{ height: 28px; }
-  .tlogo img.tl-ms{ height: 26px; }
-  .tnode.minor .tlogo img.tl-ibm{ height: 28px; }
+  .tlogo img{ display:block; width:auto; height: 50px; }
+  .tnode.minor .tlogo img{ height: 43px; }
+  .tlogo img.tl-ibm{ height: 34px; }
+  .tlogo img.tl-ms{ height: 32px; }
+  .tnode.minor .tlogo img.tl-ibm{ height: 34px; }
 
   /* ---------- Trajectory (signature element) ---------- */
-  .trajectory{ --tlogo-h: 48px; }
+  .trajectory{ --tlogo-h: 58px; }
   .trajectory{
     position: relative;
     display:flex;
     align-items: flex-start;
     justify-content: space-between;
-    max-width: 620px;
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
     padding-top: 0.4rem;
+    margin-top: 0.6rem;
   }
   .trajectory .tline{
     position:absolute;
-    top: calc(0.4rem + var(--tlogo-h) + 0.6rem + 7.5px);
+    top: calc(0.4rem + var(--tlogo-h) + 0.6rem + 8.5px);
     left: 6px; right: 6px;
     height: 1px;
     background: var(--rule);
@@ -194,23 +198,23 @@
     background: var(--paper);
   }
   .tnode .dot{
-    width: 15px; height: 15px;
+    width: 17px; height: 17px;
     border-radius: 50%;
     background: var(--paper);
     border: 1.5px solid var(--indigo);
   }
   .tnode.current .dot{ background: var(--brass); border-color: var(--brass); }
   .tnode.minor{ margin-top: 0; }
-  .tnode.minor .dot{ margin-top: 3.5px; }
+  .tnode.minor .dot{ margin-top: 4.5px; }
   .tnode.minor .dot{
     width: 8px; height: 8px;
     border-width: 1px;
     border-color: var(--rule);
   }
-  .tnode.minor .tlabel{ font-size: 0.64rem; opacity: 0.8; }
+  .tnode.minor .tlabel{ font-size: 0.72rem; opacity: 0.8; }
   .tlabel{
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.82rem;
     text-align:center;
     color: var(--ink-soft);
     line-height: 1.5;
@@ -314,7 +318,7 @@
 
   @media (max-width: 640px){
     .masthead{ flex-direction: column; align-items:flex-start; }
-    .trajectory{ max-width: 100%; }
+    .trajectory{ max-width: 100%; order: -1; margin-top: 0; flex: none; }
     .trajectory{ --tlogo-h: 40px; }
     .tlogo img{ height: 34px; }
     .tnode.minor .tlogo img{ height: 30px; }
@@ -353,38 +357,39 @@
 
       <p class="blurb"><span id="yoe">8</span> years of AI/ML experience spanning LLMs, reasoning agents, probabilistic modeling, reinforcement learning and bandit algorithms for decision-making under uncertainty. Published at NeurIPS, ICML, AAAI, AAMAS, EMNLP, PNAS, etc. — with experience translating research into deployed ML systems in product settings.</p>
 
-      <div class="trajectory" aria-hidden="true">
-        <div class="tline"></div>
-        <div class="tnode">
-          <span class="tlogo"><img class="tl-seal" src="logos/iitb.png" alt=""></span>
-          <span class="dot"></span>
-          <span class="tlabel">IIT Bombay<br><em>2013–18</em></span>
-        </div>
-        <div class="tnode">
-          <span class="tlogo"><img class="tl-seal" src="logos/harvard.png" alt=""></span>
-          <span class="dot"></span>
-          <span class="tlabel">Harvard PhD<br><em>2018–23</em></span>
-        </div>
-        <div class="tnode minor">
-          <span class="tlogo"><img class="tl-ibm" src="logos/ibm.svg" alt=""></span>
-          <span class="dot"></span>
-          <span class="tlabel">IBM Research<br><em>2021</em></span>
-        </div>
-        <div class="tnode minor">
-          <span class="tlogo"><img class="tl-seal" src="logos/google-g.svg" alt=""></span>
-          <span class="dot"></span>
-          <span class="tlabel">Google Research<br><em>2021–22</em></span>
-        </div>
-        <div class="tnode current">
-          <span class="tlogo"><img class="tl-ms" src="logos/microsoft.svg" alt=""></span>
-          <span class="dot"></span>
-          <span class="tlabel">Microsoft<br><em>2023–</em></span>
-        </div>
-      </div>
     </div>
 
     <div class="portrait">
       <img src="portrait.jpg" alt="Aditya Mate" width="400" height="400" loading="eager">
+    </div>
+
+    <div class="trajectory" aria-hidden="true">
+      <div class="tline"></div>
+      <div class="tnode">
+        <span class="tlogo"><img class="tl-seal" src="logos/iitb.png" alt=""></span>
+        <span class="dot"></span>
+        <span class="tlabel">IIT Bombay<br><em>2013–18</em></span>
+      </div>
+      <div class="tnode">
+        <span class="tlogo"><img class="tl-seal" src="logos/harvard.png" alt=""></span>
+        <span class="dot"></span>
+        <span class="tlabel">Harvard PhD<br><em>2018–23</em></span>
+      </div>
+      <div class="tnode minor">
+        <span class="tlogo"><img class="tl-ibm" src="logos/ibm.svg" alt=""></span>
+        <span class="dot"></span>
+        <span class="tlabel">IBM Research<br><em>2021</em></span>
+      </div>
+      <div class="tnode minor">
+        <span class="tlogo"><img class="tl-seal" src="logos/google-g.svg" alt=""></span>
+        <span class="dot"></span>
+        <span class="tlabel">Google Research<br><em>2021–22</em></span>
+      </div>
+      <div class="tnode current">
+        <span class="tlogo"><img class="tl-ms" src="logos/microsoft.svg" alt=""></span>
+        <span class="dot"></span>
+        <span class="tlabel">Microsoft<br><em>2023 – current</em></span>
+      </div>
     </div>
   </section>
 
