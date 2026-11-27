@@ -45,7 +45,9 @@ However, at these exact trying times, we were telling ourselves the exact opposi
 
 ## Getting rid of the albatross round my neck
 
-At so many points, I felt the game slipping away. It reminded me of a past defeat in the tournament final of another cricket tournament we had played previously. That defeat was heartbreaking. Thoughts about losing yet again in a tournament final started cropping up. I caught myself imagining what would happen if we lost the game. How I would face people, and what I would explain. How I’d face my own teammates. What I would say to our club president. He had called me the previous evening and wished us luck saying “You guys have come this far. You don’t want to trip on this last hurdle”. I realize I might have been nearly as worried about facing other people’s reactions to our defeat as I was worried about facing defeat itself. In real life too, perhaps we burden ourselves so often with this unnecessary albatross of what other people might think of our situation. I’d be lying if I said I was confident we were still ahead in the battle. Fact is that I think we simply were not. It was hard and depressing, but I tried my best to compartmentalize those thoughts and tried instead to focus on what I could do at that time to simply maximize our chances of winning.
+At so many points, I felt the game slipping away. It reminded me of a past defeat in the tournament final of another cricket tournament we had played previously. That defeat was heartbreaking. Thoughts about losing yet again in a tournament final started cropping up. I caught myself imagining what would happen if we lost the game. How I would face people, and what I would explain. How I’d face my own teammates. What I would say to our club president. He had called me the previous evening and wished us luck saying “You guys have come this far. You don’t want to trip on this last hurdle”. I realize I might have been nearly as worried about facing other people’s reactions to our defeat as I was worried about facing defeat itself. In real life too, perhaps we burden ourselves so often with this unnecessary albatross of what other people might think of our situation. 
+
+I’d be lying if I said I was confident we were still ahead in the battle. Fact is that I think we simply were not. It was hard and depressing, but I tried my best to compartmentalize those thoughts and tried instead to focus on what I could do at that time to simply maximize our chances of winning.
 
 ## Battling the last 8 overs 
 
@@ -65,7 +67,7 @@ We were desperate, and I decided to spend the only remaining Meet over. It didn�
 
 So I brought in Sourav –- a clever bowler, not so quick, but bowls with accuracy and is hard to hit. Sourav tempted them with a carrot and they took the bite. He conceded a couple of sixes and some extras in the process, but managed to get their other star batsman out. Sriram snatched some blinding catches this game and one of those helped Sourav on this occasion. We had sustained significant damage from the sixes that had rained so far, but had managed to send all their star batsmen back to the dugout at this stage. T
 
-he tail was now exposed, but we had only a scanty 17 runs to defend in the last 4 overs, and they still had 2 wickets in hand. This is still a walk in the park on any given day -- an asking rate of just over 4 per over. I decided to spend the last of our remaining bowling trump cards at this stage and brought in Kawal bhai, hoping to go for the kill. 
+The tail was now exposed, but we had only a scanty 17 runs to defend in the last 4 overs, and they still had 2 wickets in hand. This is still a walk in the park on any given day -- an asking rate of just over 4 per over. I decided to spend the last of our remaining bowling trump cards at this stage and brought in Kawal bhai, hoping to go for the kill. 
 
 ## The direct hit
 
